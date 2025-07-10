@@ -25,7 +25,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll }) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   // Words to cycle through in typing animation
-  const typingWords = ["Developer", "Creator", "Innovator", "Designer"];
+  const typingWords = ["Engineer", "Developer", "Gamer"];
 
   /**
    * Typing Animation Effect
@@ -98,15 +98,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll }) => {
             <div className="relative group">
               {/* Main photo container with gradient border and floating animation */}
               <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20 relative transition-all duration-700 group-hover:scale-105 group-hover:shadow-purple-500/40">
-                {/* 
-                  Profile Photo
-                  TODO: Replace with your actual profile photo
-                  Current: Using sample profile image (profile.jpg when uploaded)
-                  Future: Upload your profile.jpg to public folder and update path to "/profile.jpg"
-                */}
                 <img
-                  src="/lovable-uploads/17e4cbcf-aa36-4f5d-a387-0957fd0d1a53.png"
-                  alt="Anas Khan - Profile" // TODO: Update alt text with your name
+                  src="/assets/profile.jpg"
+                  alt="Profile Photo"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
@@ -130,7 +124,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll }) => {
                   Hi there, I'm
                 </span>
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent font-medium tracking-tight">
-                  Anas Khan {/* TODO: Replace with your actual name */}
+                  Anas Khan
                 </span>
               </h1>
             </div>
@@ -139,7 +133,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll }) => {
             <div className="hero-element" data-scroll data-scroll-delay="0.3">
               <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-6 min-h-[3rem] flex items-center justify-center lg:justify-start">
                 <span className="text-gray-400 dark:text-gray-300 mr-3">
-                  I am a{" "}
+                  {/* Here we will have dynamic typing animation */}I am a{" "}
                 </span>
                 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-medium">
                   {typingText}
@@ -151,36 +145,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll }) => {
             {/* Professional Tagline */}
             <div className="hero-element" data-scroll data-scroll-delay="0.4">
               <p className="text-lg sm:text-xl lg:text-2xl font-light text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Crafting digital experiences that push the boundaries of
-                innovation and creativity.
+                I Build what I love and love what I Build ❤️
               </p>
             </div>
-
-            {/* Professional Status */}
-            <div className="hero-element" data-scroll data-scroll-delay="0.6">
-              <div className="flex items-center justify-center lg:justify-start mt-8 space-x-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Available for new opportunities
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hero-element"
-          data-scroll
-          data-scroll-delay="0.7"
-        >
-          <div className="flex flex-col items-center space-y-2 animate-bounce">
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              Scroll to explore
-            </span>
-            <div className="w-0.5 h-8 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full"></div>
           </div>
         </div>
       </div>
