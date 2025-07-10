@@ -1,0 +1,592 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Inter font for modern typography */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* Import Locomotive Scroll CSS */
+@import "locomotive-scroll/dist/locomotive-scroll.css";
+
+/* Definition of the futuristic design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-light;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Locomotive Scroll Overrides */
+  html.has-scroll-smooth {
+    overflow: hidden;
+  }
+
+  html.has-scroll-dragging {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .has-scroll-smooth body {
+    overflow: hidden;
+  }
+
+  .has-scroll-smooth [data-scroll-container] {
+    min-height: 100vh;
+  }
+
+  [data-scroll-direction="horizontal"] [data-scroll-container] {
+    height: 100vh;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  [data-scroll-direction="horizontal"] [data-scroll-section] {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    height: 100%;
+  }
+
+  .c-scrollbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 11px;
+    height: 100%;
+    transform-origin: center right;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0;
+  }
+  .c-scrollbar:hover {
+    transform: scaleX(1.45);
+  }
+  .c-scrollbar:hover,
+  .has-scroll-scrolling .c-scrollbar,
+  .has-scroll-dragging .c-scrollbar {
+    opacity: 1;
+  }
+  [data-scroll-direction="horizontal"] .c-scrollbar {
+    width: 100%;
+    height: 10px;
+    top: auto;
+    bottom: 0;
+    transform: scaleY(1);
+  }
+  [data-scroll-direction="horizontal"] .c-scrollbar:hover {
+    transform: scaleY(1.3);
+  }
+
+  .c-scrollbar_thumb {
+    background: linear-gradient(180deg, hsl(217, 91%, 60%), hsl(262, 83%, 58%));
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 7px;
+    border-radius: 10px;
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+  .c-scrollbar_thumb:hover {
+    background: linear-gradient(180deg, hsl(217, 91%, 55%), hsl(262, 83%, 53%));
+  }
+  .c-scrollbar_thumb:active {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+  [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+    right: auto;
+    bottom: 0;
+  }
+
+  /* Hide default scrollbars but keep functionality */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 92, 246, 0.5) transparent;
+  }
+
+  html::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    border-radius: 4px;
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2563eb, #7c3aed);
+  }
+}
+
+/* Futuristic animations and effects */
+@layer components {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      filter: blur(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  /* Enhanced fade in with stagger support */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide animations */
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Scale animations */
+  .animate-scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Glassmorphism effect with better theme support */
+  .glass-card {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(15, 23, 42, 0.3);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .glass-card:hover {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    box-shadow: 0 16px 64px rgba(139, 92, 246, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Light mode glassmorphism */
+  .light .glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  .light .glass-card:hover {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    box-shadow: 0 16px 64px rgba(139, 92, 246, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  /* Custom scrollbar for futuristic feel */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    border-radius: 3px;
+    transition: background 0.3s ease;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2563eb, #7c3aed);
+  }
+
+  /* Enhanced scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2563eb, #7c3aed);
+  }
+
+  /* Glow effects */
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  }
+
+  /* Text glow effects */
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  /* Enhanced hover effects */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.2);
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* Pulse glow animation */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulseGlow {
+    from {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
+    to {
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+    }
+  }
+
+  /* Cursor animations */
+  .cursor-hover-grow {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .cursor-hover-grow:hover {
+    transform: scale(1.5);
+  }
+
+  /* Typing cursor animation */
+  .typing-cursor {
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Gradient text animation */
+  .gradient-text-animated {
+    background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Loading animation */
+  .loading-dots {
+    display: inline-block;
+  }
+
+  .loading-dots::after {
+    content: "";
+    display: inline-block;
+    animation: dots 1.5s infinite;
+  }
+
+  @keyframes dots {
+    0%,
+    20% {
+      content: "";
+    }
+    40% {
+      content: ".";
+    }
+    60% {
+      content: "..";
+    }
+    90%,
+    100% {
+      content: "...";
+    }
+  }
+
+  /* Staggered animations */
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+  .stagger-5 {
+    animation-delay: 0.5s;
+  }
+
+  /* Improved transitions */
+  .transition-all-smooth {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .transition-transform-smooth {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Smooth reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Locomotive Scroll reveal animations */
+  [data-scroll] {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  [data-scroll].is-inview {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Progressive enhancement for better performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .has-scroll-smooth [data-scroll-container] {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-card {
+    border: 2px solid rgba(139, 92, 246, 0.8);
+  }
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  .glass-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  [data-scroll-container] {
+    overflow-x: hidden;
+  }
+}
+
+/* Dark mode refinements */
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    background: rgba(15, 23, 42, 0.4);
+  }
+}

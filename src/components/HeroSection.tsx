@@ -1,0 +1,191 @@
+import React, { useState, useEffect } from "react";
+
+interface HeroSectionProps {
+  /**
+   * Function to scroll to specific section
+   */
+  onSectionScroll: (sectionName: string) => void;
+}
+
+/**
+ * HeroSection Component
+ *
+ * Main landing section featuring:
+ * - Profile photo with floating animations
+ * - Name and role with typing animation
+ * - Responsive layout (photo on top for mobile, side-by-side for desktop)
+ *
+ * Uses typewriter effect for dynamic role display.
+ */
+const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll }) => {
+  // Typing animation state management
+  const [typingText, setTypingText] = useState("");
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Words to cycle through in typing animation
+  const typingWords = ["Developer", "Creator", "Innovator", "Designer"];
+
+  /**
+   * Typing Animation Effect
+   *
+   * Creates a typewriter effect that:
+   * 1. Types out each word character by character
+   * 2. Pauses when word is complete
+   * 3. Deletes the word character by character
+   * 4. Moves to next word and repeats
+   */
+  useEffect(() => {
+    const typingSpeed = 150; // Speed for typing characters
+    const deletingSpeed = 100; // Speed for deleting characters
+    const pauseDuration = 1500; // Pause duration when word is complete
+
+    const timeout = setTimeout(
+      () => {
+        const currentWord = typingWords[currentWordIndex];
+
+        if (isDeleting) {
+          // Deleting phase: remove characters
+          if (currentCharIndex > 0) {
+            setCurrentCharIndex((prev) => prev - 1);
+            setTypingText(currentWord.substring(0, currentCharIndex - 1));
+          } else {
+            // Finished deleting, move to next word
+            setIsDeleting(false);
+            setCurrentWordIndex((prev) => (prev + 1) % typingWords.length);
+          }
+        } else {
+          // Typing phase: add characters
+          if (currentCharIndex < currentWord.length) {
+            setCurrentCharIndex((prev) => prev + 1);
+            setTypingText(currentWord.substring(0, currentCharIndex + 1));
+          } else {
+            // Finished typing, start deleting after pause
+            setTimeout(() => setIsDeleting(true), pauseDuration);
+          }
+        }
+      },
+      isDeleting ? deletingSpeed : typingSpeed
+    );
+
+    return () => clearTimeout(timeout);
+  }, [currentCharIndex, isDeleting, currentWordIndex, typingWords]);
+
+  return (
+    <section
+      id="home"
+      className="min-h-screen flex items-center pt-16"
+      data-scroll-section
+    >
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
+        data-scroll
+        data-scroll-speed="0.5"
+      >
+        {/* 
+          Responsive Grid Layout:
+          - Mobile: Single column, photo first (order-1), text second (order-2) 
+          - Desktop: Two columns, text first (lg:order-1), photo second (lg:order-2)
+        */}
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Profile Photo Section - Shows first on mobile, second on desktop */}
+          <div
+            className="order-1 lg:order-2 flex justify-center hero-element"
+            data-scroll
+            data-scroll-delay="0.2"
+          >
+            <div className="relative group">
+              {/* Main photo container with gradient border and floating animation */}
+              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20 relative transition-all duration-700 group-hover:scale-105 group-hover:shadow-purple-500/40">
+                {/* 
+                  Profile Photo
+                  TODO: Replace with your actual profile photo
+                  Current: Using sample profile image (profile.jpg when uploaded)
+                  Future: Upload your profile.jpg to public folder and update path to "/profile.jpg"
+                */}
+                <img
+                  src="/lovable-uploads/17e4cbcf-aa36-4f5d-a387-0957fd0d1a53.png"
+                  alt="Anas Khan - Profile" // TODO: Update alt text with your name
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+
+                {/* Gradient overlay for hover effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              {/* Floating decorative elements with improved animations */}
+              <div className="absolute -top-6 -right-6 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg shadow-blue-500/50 animate-pulse"></div>
+              <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg shadow-purple-500/50 animate-bounce"></div>
+              <div className="absolute top-1/2 -left-8 w-4 h-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shadow-lg shadow-cyan-500/50 animate-ping"></div>
+            </div>
+          </div>
+
+          {/* Text Content Section - Shows second on mobile, first on desktop */}
+          <div className="order-2 lg:order-1 text-center lg:text-left space-y-6">
+            {/* Greeting and Main Name */}
+            <div className="hero-element" data-scroll data-scroll-delay="0.1">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight">
+                <span className="block text-gray-400 dark:text-gray-300 mb-2 text-2xl sm:text-3xl lg:text-4xl">
+                  Hi there, I'm
+                </span>
+                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent font-medium tracking-tight">
+                  Anas Khan {/* TODO: Replace with your actual name */}
+                </span>
+              </h1>
+            </div>
+
+            {/* Dynamic Role with Typing Animation */}
+            <div className="hero-element" data-scroll data-scroll-delay="0.3">
+              <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-6 min-h-[3rem] flex items-center justify-center lg:justify-start">
+                <span className="text-gray-400 dark:text-gray-300 mr-3">
+                  I am a{" "}
+                </span>
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-medium">
+                  {typingText}
+                  <span className="animate-pulse text-purple-400 ml-1">|</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Professional Tagline */}
+            <div className="hero-element" data-scroll data-scroll-delay="0.4">
+              <p className="text-lg sm:text-xl lg:text-2xl font-light text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                Crafting digital experiences that push the boundaries of
+                innovation and creativity.
+              </p>
+            </div>
+
+            {/* Professional Status */}
+            <div className="hero-element" data-scroll data-scroll-delay="0.6">
+              <div className="flex items-center justify-center lg:justify-start mt-8 space-x-4">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    Available for new opportunities
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hero-element"
+          data-scroll
+          data-scroll-delay="0.7"
+        >
+          <div className="flex flex-col items-center space-y-2 animate-bounce">
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              Scroll to explore
+            </span>
+            <div className="w-0.5 h-8 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
