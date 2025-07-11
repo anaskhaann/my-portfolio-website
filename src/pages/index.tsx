@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Play, Linkedin, Mail } from "lucide-react";
+import {
+  Github,
+  ExternalLink,
+  Play,
+  Linkedin,
+  MessageCircle,
+  Instagram,
+} from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LocomotiveScroll from "locomotive-scroll";
@@ -1147,11 +1154,10 @@ const Portfolio = () => {
             data-scroll-speed="0.1"
           >
             <div className="text-center">
-              {/* Social Media Links with Sample Icons */}
               <div className="flex justify-center space-x-6 mb-8">
                 {/* LinkedIn */}
                 <a
-                  href="https://linkedin.com" // TODO: Replace with your actual LinkedIn URL
+                  href="https://www.linkedin.com/in/mohd-anas-khan-0a4114205/" // TODO: Replace with your actual LinkedIn URL
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group transition-transform duration-300 hover:scale-110"
@@ -1167,25 +1173,9 @@ const Portfolio = () => {
                   </div>
                 </a>
 
-                {/* Email */}
-                <a
-                  href="mailto:your.email@example.com" // TODO: Replace with your actual email
-                  className="group transition-transform duration-300 hover:scale-110"
-                >
-                  <div
-                    className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl ${
-                      isDarkMode
-                        ? "bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600"
-                        : "bg-gradient-to-br from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500"
-                    }`}
-                  >
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                </a>
-
                 {/* GitHub */}
                 <a
-                  href="https://github.com" // TODO: Replace with your actual GitHub URL
+                  href="https://github.com/anaskhaann" // TODO: Replace with your actual GitHub URL
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group transition-transform duration-300 hover:scale-110"
@@ -1198,6 +1188,42 @@ const Portfolio = () => {
                     }`}
                   >
                     <Github className="w-6 h-6 text-white" />
+                  </div>
+                </a>
+
+                {/* Telegram */}
+                <a
+                  href="https://telegram.me/khannanas" // TODO: Replace with your actual GitHub URL
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group transition-transform duration-300 hover:scale-110"
+                >
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl ${
+                      isDarkMode
+                        ? "bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600"
+                        : "bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500"
+                    }`}
+                  >
+                    <MessageCircle className="w-6 h-6 text-white" />
+                  </div>
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href="https://www.instagram.com/khan._.anas/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group transition-transform duration-300 hover:scale-110"
+                >
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl ${
+                      isDarkMode
+                        ? "bg-gradient-to-br from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700"
+                        : "bg-gradient-to-br from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600"
+                    }`}
+                  >
+                    <Instagram className="w-6 h-6 text-white" />
                   </div>
                 </a>
               </div>
