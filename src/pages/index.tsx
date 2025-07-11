@@ -110,30 +110,21 @@ const Portfolio = () => {
   const experiences: Experience[] = [
     {
       id: 1,
-      title: "Senior Full Stack Developer", // TODO: Update with your actual title
-      company: "Tech Innovations Inc.", // TODO: Update with your actual company
-      duration: "2023 - Present", // TODO: Update with your actual duration
+      title: " Front End Developer Intern", // Update with your actual title
+      company: " Farsoft Infotech Pvt. Ltd.", // Update with your actual company
+      duration: "Dec 2023 - March 2024", // Update with your actual duration
       description:
-        "Led development of scalable web applications using React, Node.js, and cloud technologies. Mentored junior developers and improved system performance by 40%.", // TODO: Update with your actual responsibilities
-      technologies: ["React", "Node.js", "AWS", "TypeScript", "PostgreSQL"], // TODO: Update with technologies you actually used
+        "Developed responsive websites using HTML, CSS, and JavaScript, boosting mobile engagement by 15%. Customized and launched 5+ sites while maintaining brand consistency and cross-browser compatibility. Collaborated with cross-functional teams to enhance performance and resolve technical issues.", // Update with your actual description
+      technologies: ["HTML", "CSS", "Javascript", "Bootstrap"], // Update with technologies you actually used
     },
     {
       id: 2,
-      title: "Frontend Developer", // TODO: Update
-      company: "Digital Solutions Ltd.", // TODO: Update
-      duration: "2021 - 2023", // TODO: Update
+      title: " Machine Learning & Data Science Intern",
+      company: " PHNTechnology Pvt. Ltd.",
+      duration: "April 2023 - June 2023",
       description:
-        "Built responsive user interfaces and improved user experience across multiple projects. Collaborated with design teams to implement pixel-perfect designs.", // TODO: Update
-      technologies: ["React", "Vue.js", "Sass", "JavaScript", "Figma"], // TODO: Update
-    },
-    {
-      id: 3,
-      title: "Junior Web Developer", // TODO: Update
-      company: "StartUp Hub", // TODO: Update
-      duration: "2020 - 2021", // TODO: Update
-      description:
-        "Developed and maintained company websites using modern web technologies. Gained experience in full-stack development and agile methodologies.", // TODO: Update
-      technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"], // TODO: Update
+        "Gained hands-on experience in predictive modeling and data analysis through mentorship and project work. Contributed to building and validating a machine learning model using trading data. Created visualizations with Pandas and Matplotlib to support performance review and identify trading pattern improvements.",
+      technologies: ["Python", "Numpy", "Pandas", "Matplotlib"],
     },
   ];
 
@@ -145,134 +136,131 @@ const Portfolio = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-Commerce Platform", // TODO: Update with your actual project
+      title: "Chat with Database", // TODO: Update with your actual project
       description:
-        "A full-featured e-commerce platform with user authentication, payment integration, and admin dashboard.", // TODO: Update
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "JWT"], // TODO: Update
-      githubUrl: "https://github.com", // TODO: Update with your GitHub repo
-      liveUrl: "https://demo.com", // TODO: Update with live demo URL
-      videoUrl: "https://youtube.com", // TODO: Update with demo video
-      imageUrl: "/lovable-uploads/c690029b-7e30-420e-a647-d3fc30978d90.png", // Using sample project image
+        "Developed an AI tool enabling natural language SQL queries using LangChain, Streamlit, and Meta's LLaMA, allowing non-technical users to interact with MySQL and SQLite databases. Improved performance with caching and fine-tuned model parameters, reducing response times by 15-20% and enhancing query accuracy.", // TODO: Update
+      technologies: ["Python", "Langchain", "Streamlit", "LLama", "MySQL"], // TODO: Update
+      githubUrl: "https://github.com/anaskhaann/Chat-with-Database-SQL", // TODO: Update with your GitHub repo
+      // liveUrl: "https://demo.com", // TODO: Update with live demo URL if exists
+      videoUrl:
+        "https://drive.google.com/file/d/1_zDUrBSChOOdiV0xt4BLuEMJCrTBH9nL/view?usp=sharing", // TODO: Update with demo video if exists
+      imageUrl: "/assets/projects/sample.png", // Use as background image for a project
     },
     {
       id: 2,
-      title: "Task Management App", // TODO: Update
+      title: "Gesture Based Presentation Controller",
       description:
-        "A collaborative task management application with real-time updates and team collaboration features.", // TODO: Update
-      technologies: ["Vue.js", "Firebase", "Vuetify", "WebSockets"], // TODO: Update
-      githubUrl: "https://github.com", // TODO: Update
-      liveUrl: "https://demo.com", // TODO: Update
-      imageUrl: "/lovable-uploads/c690029b-7e30-420e-a647-d3fc30978d90.png", // Using sample project image
+        "Developed a Gesture-Based Presentation system using Python, OpenCV, and MediaPipe,enabling touch-free slide navigation and annotation for intuitive presentation experience.Achieved 85% hand detection accuracy and 90% gesture recognition accuracy, with optimized slide transition under 0.5s, ensuring fast and reliable real-time control",
+      technologies: ["Python", "MediaPipe", "OpenCV", "Numpy"],
+      githubUrl: "https://github.com/anaskhaann/Gesture-Based-Presentation",
+      imageUrl: "/assets/projects/sample.png",
     },
     {
       id: 3,
-      title: "Weather Dashboard", // TODO: Update
+      title: "Full Stack Web App",
       description:
-        "A responsive weather dashboard with location-based forecasts and interactive charts.", // TODO: Update
-      technologies: ["React", "D3.js", "OpenWeather API", "Tailwind"], // TODO: Update
-      githubUrl: "https://github.com", // TODO: Update
-      imageUrl: "/lovable-uploads/c690029b-7e30-420e-a647-d3fc30978d90.png", // Using sample project image
+        "Developed a Pinterest clone with Express.js and MongoDB, focusing on core social media features like board management, saving and deleting pins, and personalized feeds. Implemented file uploads with Multer, and used Mongoose for database interaction to streamline development.",
+      technologies: ["Javascript", "CSS", "Express.Js", "HTML"],
+      githubUrl: "https://github.com/anaskhaann/Pinterest-Clone",
+      imageUrl: "/assets/projects/sample.png",
     },
     {
       id: 4,
-      title: "Social Media Analytics", // TODO: Update
+      title: "Web Automation With Selenium",
       description:
-        "Analytics dashboard for social media metrics with real-time data visualization.", // TODO: Update
-      technologies: ["Angular", "Chart.js", "Express", "PostgreSQL"], // TODO: Update
-      githubUrl: "https://github.com", // TODO: Update
-      liveUrl: "https://demo.com", // TODO: Update
-      videoUrl: "https://youtube.com", // TODO: Update
-      imageUrl: "/lovable-uploads/c690029b-7e30-420e-a647-d3fc30978d90.png", // Using sample project image
+        "This Project Is Based On My Repo Named Daily Life Journal. This is Made to Automate its Printing Task and Create a Book.Automate webpage-to-PDF conversion with ease! Perfect for batch downloading and archiving web content.",
+      technologies: ["Python", "Selenium"],
+      githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
+      imageUrl: "/assets/projects/sample.png",
     },
   ];
 
   /**
    * Skills Data
-   * TODO: Update with your actual skills
    * Organize by categories (Languages, Frontend, Backend, Database, etc.)
    */
   const skillCategories: SkillCategory[] = [
     {
-      category: "Languages", // TODO: Update with your programming languages
+      category: "Languages",
       skills: [
         {
           name: "JavaScript",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
-        }, // Using sample icon
+          icon: "/assets/skills/1.svg",
+        },
         {
           name: "TypeScript",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "Python",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "Java",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
       ],
     },
     {
-      category: "Frontend", // TODO: Update with your frontend technologies
+      category: "Frontend", 
       skills: [
         {
           name: "React",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "Vue.js",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "Angular",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "Tailwind",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
       ],
     },
     {
-      category: "Backend", // TODO: Update with your backend technologies
+      category: "Backend",
       skills: [
         {
           name: "Node.js",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "Express",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "Django",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "Flask",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
       ],
     },
     {
-      category: "Database", // TODO: Update with your database technologies
+      category: "Database",
       skills: [
         {
           name: "MongoDB",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "PostgreSQL",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "MySQL",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
         {
           name: "Redis",
-          icon: "/lovable-uploads/07df244b-2959-40c2-a608-2d9cb7327a7f.png",
+          icon: "/assets/skills/1.svg",
         },
       ],
     },
@@ -652,8 +640,7 @@ const Portfolio = () => {
       <LoadingScreen
         loadingProgress={loadingProgress}
         onLoadingComplete={handleLoadingComplete}
-        loadingGifUrl="/loading.gif" // TODO: Upload your loading.gif to public folder
-        displayName="Anas Khan" // TODO: Update with your name
+        displayText="Loading..." // TODO: Update with your text
       />
     );
   }
@@ -769,13 +756,6 @@ const Portfolio = () => {
                   high-quality products. I'm always eager to learn new
                   technologies and take on challenging projects that push my
                   limits.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  When I'm not coding, you can find me exploring new coffee
-                  shops, hiking local trails, or contributing to open-source
-                  projects. I'm passionate about mentoring aspiring developers
-                  and giving back to the tech community that has taught me so
-                  much.
                 </p>
               </div>
             </div>
