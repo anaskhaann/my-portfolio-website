@@ -197,6 +197,8 @@ const Portfolio = () => {
       description:
         "This Project Is Based On My Repo Named Daily Life Journal. This is Made to Automate its Printing Task and Create a Book.Automate webpage-to-PDF conversion with ease! Perfect for batch downloading and archiving web content.",
       technologies: ["Python", "Selenium"],
+      liveUrl: "www.google.com",
+      videoUrl: "www.youtube.com",
       githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
       imageUrl: "/assets/projects/sample.png",
     },
@@ -225,6 +227,8 @@ const Portfolio = () => {
         "This Project Is Based On My Repo Named Daily Life Journal. This is Made to Automate its Printing Task and Create a Book.Automate webpage-to-PDF conversion with ease! Perfect for batch downloading and archiving web content.",
       technologies: ["Python", "Selenium"],
       githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
+      liveUrl: "www.google.com",
+      videoUrl: "www.youtube.com",
       imageUrl: "/assets/projects/sample.png",
     },
   ];
@@ -812,20 +816,26 @@ const Portfolio = () => {
               >
                 {/* TODO: Update with your actual bio */}
                 <p className="text-lg leading-relaxed mb-6">
-                  I'm a passionate full-stack developer with over 5 years of
-                  experience building scalable web applications and
-                  user-friendly interfaces. My journey in technology started
-                  with a curiosity about how things work, which led me to
-                  explore programming and eventually fall in love with creating
-                  digital solutions.
+                  My journey in technology started with a curiosity about how
+                  things work, which led me to explore programming and
+                  eventually fall in love with creating digital solutions.
                 </p>
                 <p className="text-lg leading-relaxed mb-6">
-                  I specialize in modern web technologies including React,
-                  Node.js, and cloud platforms. I believe in writing clean,
-                  maintainable code and following best practices to deliver
-                  high-quality products. I'm always eager to learn new
-                  technologies and take on challenging projects that push my
-                  limits.
+                  A self-starter and collaborative team player, passionate about
+                  building solutions that address real-world problems. Known for
+                  taking initiative, learning quickly, and consistently
+                  delivering results. I believe in dreaming big, starting small,
+                  and moving fast, and I bring a strong commitment to continuous
+                  learning and personal growth. I may not know everything, but I
+                  have the drive and resourcefulness to figure things out and
+                  get things done.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  I specialize in Artificial Intelligence and Data Science. I
+                  believe in writing clean, maintainable code and following best
+                  practices to deliver high-quality products. I'm always eager
+                  to learn new technologies and take on challenging projects
+                  that push my limits.
                 </p>
               </div>
             </div>
