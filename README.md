@@ -1,4 +1,4 @@
-# Professional Portfolio Website
+# My Personal Portfolio Website
 
 A modern, responsive personal portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth animations, dark/light mode toggle, and a professional design that showcases your skills and projects effectively.
 
@@ -14,7 +14,7 @@ A modern, responsive personal portfolio website built with React, TypeScript, an
 
 ### Sections
 
-1. **Home** - Hero section with photo, typing animation, and call-to-action
+1. **Home** - Hero section with photo, typing animation,
 2. **About** - Personal introduction and background
 3. **Experience** - Professional experience with scrollable timeline
 4. **Projects** - Interactive project cards with expandable details
@@ -36,7 +36,7 @@ A modern, responsive personal portfolio website built with React, TypeScript, an
 - **Icons**: Lucide React
 - **Build Tool**: Vite
 - **State Management**: React Hooks (useState, useEffect, useRef)
-- **Animations**: CSS transitions and custom keyframes
+- **Animations**: GSAP,Locomotive Scroll,CSS transitions and custom keyframes
 
 ## 📁 Project Structure
 
@@ -45,7 +45,7 @@ src/
 ├── components/          # Reusable UI components
 │   └── ui/             # Shadcn/ui components
 ├── pages/              # Main application pages
-│   └── Index.tsx       # Main portfolio component
+│   └── index.tsx       # Main portfolio component
 ├── hooks/              # Custom React hooks
 ├── lib/                # Utility functions
 ├── index.css           # Global styles and animations
@@ -82,6 +82,7 @@ src/
    ```
 
 4. **Open in browser**
+
    Navigate to `http://localhost:8080`
 
 ### Build for Production
@@ -94,7 +95,7 @@ npm run build
 
 ### Personal Information
 
-Update the portfolio data in `src/pages/Index.tsx`:
+Update the portfolio data in `src/pages/index.tsx`:
 
 ```typescript
 // Profile information
@@ -145,7 +146,7 @@ const skillCategories = [
   {
     category: "Frontend",
     skills: [
-      { name: "React", icon: "⚛️" },
+      { name: "Python", icon: "⚛️" },
       { name: "Vue.js", icon: "💚" },
     ],
   },
@@ -156,9 +157,9 @@ const skillCategories = [
 
 The website is optimized for:
 
-- **Mobile**: 320px - 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: 1024px+
+- **Mobile**
+- **Tablet**
+- **Desktop**
 
 Key responsive features:
 
@@ -176,11 +177,6 @@ Key responsive features:
 - **Efficient State Management**: Minimal re-renders
 
 ## 🚀 Deployment Options
-
-### Lovable Platform (Recommended)
-
-1. Click the "Publish" button in Lovable editor
-2. Get instant deployment with custom domain support
 
 ### Vercel
 
@@ -203,64 +199,7 @@ npm run build
 # Configure GitHub Pages to serve from dist/ folder
 ```
 
-## 🔍 SEO Features
-
-- Semantic HTML structure
-- Meta tags for social sharing
-- Descriptive alt texts for images
-- Optimized page titles and descriptions
-- Clean URL structure
-
-## 📈 Analytics Setup
-
-To add Google Analytics:
-
-1. Add tracking code to `index.html`:
-
-```html
-<!-- Google Analytics -->
-<script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"
-></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "GA_TRACKING_ID");
-</script>
-```
-
-## 🔒 Security Considerations
-
-- All external links open in new tabs with `rel="noopener noreferrer"`
-- Input validation for contact forms (if added)
-- HTTPS-only deployment recommended
-- Regular dependency updates
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Build Errors**
-
-- Ensure all dependencies are installed: `npm install`
-- Check Node.js version compatibility
-- Clear cache: `npm run dev -- --force`
-
-**Styling Issues**
-
-- Verify Tailwind CSS is properly configured
-- Check for conflicting CSS classes
-- Ensure dark mode toggle is working
-
-**Animation Problems**
-
-- Confirm CSS animations are enabled in browser
-- Check for reduced motion preferences
-- Verify JavaScript is enabled
+---
 
 ## 🤝 Contributing
 
@@ -274,20 +213,12 @@ To add Google Analytics:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- [Shadcn/ui](https://ui.shadcn.com/) for beautiful UI components
-- [Tailwind CSS](https://tailwindcss.com/) for utility-first styling
-- [Lucide](https://lucide.dev/) for consistent iconography
-- [Unsplash](https://unsplash.com/) for high-quality placeholder images
-
-## 📞 Support
+## 💡 Support
 
 For questions or support:
 
 - Open an issue on GitHub
-- Check the troubleshooting section above
-- Review Lovable documentation at [docs.lovable.dev](https://docs.lovable.dev)
+- Feel Free to Fork this and Make changes As per You like in the Website
 
 ---
 
