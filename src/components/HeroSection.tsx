@@ -145,7 +145,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll }) => {
             {/* Professional Tagline */}
             <div className="hero-element" data-scroll data-scroll-delay="0.4">
               <p className="text-lg sm:text-xl lg:text-2xl font-light text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                I Build what I love and love what I Build ❤️
+                I Build what I love and love what I Build.
+              </p>
+              <p className="text-lg sm:text-xl lg:text-2xl font-light text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                I am Good at What I Do.
               </p>
             </div>
           </div>
