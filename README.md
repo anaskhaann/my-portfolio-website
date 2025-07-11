@@ -66,7 +66,7 @@ src/
 
    ```bash
    git clone https://github.com/anaskhaann/my-portfolio-website
-   cd portfolio-website
+   cd my-portfolio-website
    ```
 
 2. **Install dependencies**
