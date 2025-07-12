@@ -3,10 +3,6 @@
 @import "tailwindcss/utilities";
 
 @import "./styles/fonts.css";
-@import "./styles/globals.css";
-@import "./styles/components/card.css";
-@import "./styles/themes/dark.css";
-
 
 
 /* Hide scrollbar globally for the website body */
@@ -108,35 +104,6 @@ All colors MUST be HSL.
       "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
     letter-spacing: -0.01em;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-
-
-  /* Hide default scrollbars but keep functionality */
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(139, 92, 246, 0.5) transparent;
-  }
-
-  html::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  html::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  html::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
-    border-radius: 4px;
-  }
-
-  html::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #2563eb, #7c3aed);
   }
 }
 
@@ -273,25 +240,6 @@ All colors MUST be HSL.
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #2563eb, #7c3aed);
-  }
-
-  /* Enhanced scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: rgba(15, 23, 42, 0.5);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
-    border-radius: 4px;
-    transition: background 0.3s ease;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #2563eb, #7c3aed);
   }
 

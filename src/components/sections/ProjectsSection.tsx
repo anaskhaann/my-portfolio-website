@@ -23,16 +23,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   const visibleProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
-    <section
-      ref={projectsRef}
-      id="projects"
-      className="py-10 animate-section"
-
-    >
-      <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-
-      >
+    <section ref={projectsRef} id="projects" className="py-10 animate-section">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-light text-center mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
           Projects
         </h2>
@@ -50,7 +42,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   expandedProject === project.id ? null : project.id
                 )
               }
-
             >
               <div className="relative overflow-hidden h-48">
                 <img
@@ -68,7 +59,11 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
 
               <div className="p-6">
-                <h3 className={`text-xl font-medium mb-4 ${isDarkMode ? 'text-blue-400' : 'text-white'}`}>
+                <h3
+                  className={`text-xl font-medium mb-4 ${
+                    isDarkMode ? "text-blue-400" : "text-white"
+                  }`}
+                >
                   {project.title}
                 </h3>
 
@@ -144,8 +139,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     }`}
                   >
                     {expandedProject === project.id
-                      ? "Click to collapse"
-                      : "Click to expand"}
+                      ? "Hide Details"
+                      : "Show Details"}
                   </span>
                 </div>
               </div>
