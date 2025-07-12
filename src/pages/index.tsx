@@ -9,6 +9,7 @@ import {
   Instagram,
 } from "lucide-react";
 import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger"; // LocomotiveScroll and its CSS removed
 import LoadingScreen from "@/components/LoadingScreen";
 import Navigation from "@/components/Navigation";
@@ -20,7 +21,7 @@ import AboutSection from "@/components/AboutSection";
 import FooterSection from "@/components/FooterSection";
 
 // Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 /**
  * Portfolio Data Types
@@ -637,13 +638,18 @@ const Portfolio = () => {
 
     const targetRef = sectionRefs[sectionName];
     if (targetRef?.current) {
-      targetRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      gsap.to(window, {
+        duration: 1.2, // Smooth, modern scroll duration
+        scrollTo: { y: targetRef.current, offsetY: 0 },
+        ease: "power2.inOut", // Smooth, modern easing
+      });
       console.log(`📍 Scrolled to: ${sectionName}`);
     }
 
     // Close mobile menu after navigation
     setIsMobileMenuOpen(false);
   };
+
 
   // ===== RENDER LOADING SCREEN =====
 
