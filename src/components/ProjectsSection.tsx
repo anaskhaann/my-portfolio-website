@@ -18,6 +18,10 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   setExpandedProject,
   projectsRef,
 }) => {
+  const [showAll, setShowAll] = React.useState(false);
+  const hasMore = projects.length > 4;
+  const visibleProjects = showAll ? projects : projects.slice(0, 4);
+
   return (
     <section
       ref={projectsRef}
@@ -34,7 +38,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           Projects
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 projects-container">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <div
               key={project.id}
               className={`group project-card glass-card rounded-xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 ${
@@ -117,9 +121,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   <div className="animate-fade-in">
                     <p
                       className={`mb-4 leading-relaxed transition-colors duration-300 ${
-                        isDarkMode
-                          ? "text-muted-foreground"
-                          : "text-slate-600"
+                        isDarkMode ? "text-muted-foreground" : "text-slate-600"
                       }`}
                     >
                       {project.description}
@@ -140,9 +142,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 <div className="mt-4 text-center">
                   <span
                     className={`text-sm transition-colors duration-300 ${
-                      isDarkMode
-                        ? "text-muted-foreground"
-                        : "text-slate-600"
+                      isDarkMode ? "text-muted-foreground" : "text-slate-600"
                     }`}
                   >
                     {expandedProject === project.id
@@ -153,6 +153,31 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
             </div>
           ))}
+        </div>
+        {/* View More / Show Less Button */}
+        {hasMore && (
+          <div className="flex justify-center mt-8">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-purple-500/30 hover:border-purple-400/50 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 transition-all duration-300"
+              onClick={() => setShowAll((prev) => !prev)}
+            >
+              {showAll ? "Show Less" : "View More"}
+            </Button>
+          </div>
+        )}
+        {/* More projects on GitHub */}
+        <div className="flex justify-center mt-8">
+          <a
+            href="https://github.com/anaskhaann?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 hover:border-purple-400/40 text-blue-400 hover:text-purple-400 transition-all duration-300 font-medium shadow-sm hover:shadow-lg"
+          >
+            <Github className="w-5 h-5 mr-2" />
+            For more projects, visit my GitHub
+          </a>
         </div>
       </div>
     </section>

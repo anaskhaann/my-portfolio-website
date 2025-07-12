@@ -157,35 +157,6 @@ const Portfolio = () => {
       githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
       imageUrl: "/assets/projects/sample.png",
     },
-    {
-      id: 5,
-      title: "Test project for website checking 1",
-      description:
-        "This Project Is Based On My Repo Named Daily Life Journal. This is Made to Automate its Printing Task and Create a Book.Automate webpage-to-PDF conversion with ease! Perfect for batch downloading and archiving web content.",
-      technologies: ["Python", "Selenium"],
-      githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
-      imageUrl: "/assets/projects/sample.png",
-    },
-    {
-      id: 6,
-      title: "Test project for website checking 2",
-      description:
-        "This Project Is Based On My Repo Named Daily Life Journal. This is Made to Automate its Printing Task and Create a Book.Automate webpage-to-PDF conversion with ease! Perfect for batch downloading and archiving web content.",
-      technologies: ["Python", "Selenium"],
-      githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
-      imageUrl: "/assets/projects/sample.png",
-    },
-    {
-      id: 7,
-      title: "Test project for website checking 3",
-      description:
-        "This Project Is Based On My Repo Named Daily Life Journal. This is Made to Automate its Printing Task and Create a Book.Automate webpage-to-PDF conversion with ease! Perfect for batch downloading and archiving web content.",
-      technologies: ["Python", "Selenium"],
-      githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
-      liveUrl: "www.google.com",
-      videoUrl: "www.youtube.com",
-      imageUrl: "/assets/projects/sample.png",
-    },
   ];
 
   /**
