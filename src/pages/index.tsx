@@ -71,6 +71,7 @@ const Portfolio = () => {
    * Section refs for smooth scrolling navigation
    * Used to programmatically scroll to different sections
    */
+  const homeRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
@@ -630,6 +631,7 @@ const Portfolio = () => {
    */
   const scrollToSection = (sectionName: string) => {
     const sectionRefs: { [key: string]: React.RefObject<HTMLElement> } = {
+      home: homeRef,
       about: aboutRef,
       experience: experienceRef,
       projects: projectsRef,
@@ -731,7 +733,7 @@ const Portfolio = () => {
         />
 
         {/* Hero Section */}
-        <HeroSection onSectionScroll={scrollToSection} />
+        <HeroSection onSectionScroll={scrollToSection} homeRef={homeRef} />
 
         {/* About Section */}
         <AboutSection isDarkMode={isDarkMode} aboutRef={aboutRef} />
