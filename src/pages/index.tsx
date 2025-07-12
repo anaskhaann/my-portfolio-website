@@ -13,6 +13,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { useLoading } from "@/hooks/useLoading";
 import { usePortfolioAnimations } from "@/hooks/usePortfolioAnimations";
 import { experiences, projects, skillCategories } from "@/data/portfolioData";
+import { useLenis } from "@/providers/LenisProvider";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -28,6 +29,7 @@ const Portfolio = () => {
   const { isDarkMode, setIsDarkMode } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isLoading, setIsLoading, loadingProgress } = useLoading();
+  const { lenis } = useLenis(); // Get the shared Lenis instance
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
 
   // ===== REFS FOR DOM ELEMENTS =====
@@ -39,19 +41,13 @@ const Portfolio = () => {
   const mainContentRef = useRef<HTMLDivElement>(null);
 
   // ===== ANIMATIONS & LOADING =====
-  const { initializeAnimations } = usePortfolioAnimations();
+  // The usePortfolioAnimations hook now manages its own lifecycle via useLayoutEffect.
+  // We just need to pass it the ref of the container element.
+  usePortfolioAnimations(mainContentRef);
 
   const handleLoadingComplete = () => {
-    console.log("✅ Loading complete - initializing page...");
+    console.log("✅ Loading complete.");
     setIsLoading(false);
-    if (mainContentRef.current) {
-      mainContentRef.current.style.opacity = "1";
-      mainContentRef.current.style.visibility = "visible";
-      mainContentRef.current.style.display = "block";
-    }
-    setTimeout(() => {
-      initializeAnimations();
-    }, 100);
   };
 
   // ===== THEME MANAGEMENT =====
@@ -73,13 +69,14 @@ const Portfolio = () => {
       skills: skillsRef,
     };
     const targetRef = sectionRefs[sectionName];
-    if (targetRef?.current) {
-      gsap.to(window, {
-        duration: 1.2,
-        scrollTo: { y: targetRef.current, offsetY: 0 },
-        ease: "power2.inOut",
+    const target = sectionRefs[sectionName]?.current;
+    if (lenis && target) {
+      lenis.scrollTo(target, {
+        offset: 0,
+        duration: 3,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });
-      console.log(`📍 Scrolled to: ${sectionName}`);
+      console.log(`📍 Scrolling to: ${sectionName}`);
     }
     setIsMobileMenuOpen(false);
   };
@@ -104,7 +101,10 @@ const Portfolio = () => {
       onSectionScroll={scrollToSection}
       isLoading={isLoading}
     >
-      <div ref={mainContentRef}>
+            <div
+        ref={mainContentRef}
+        style={{ opacity: isLoading ? 0 : 1, transition: "opacity 0.5s ease-in" }}
+      >
         <HeroSection onSectionScroll={scrollToSection} homeRef={homeRef} />
         <AboutSection isDarkMode={isDarkMode} aboutRef={aboutRef} />
         <ExperienceSection
