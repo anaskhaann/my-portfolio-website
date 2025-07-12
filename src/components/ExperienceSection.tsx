@@ -50,12 +50,12 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experiences, isDa
               aria-expanded={openIndex === index}
             >
               {/* Timeline Dot */}
-              <span className={`absolute left-2 top-8 w-6 h-6 rounded-full border-4 ${isDarkMode ? "border-purple-400 bg-background" : "border-blue-400 bg-white"} shadow-lg z-10 flex items-center justify-center transition-all duration-300`}> 
-                <span className={`w-2.5 h-2.5 rounded-full ${isDarkMode ? "bg-purple-400" : "bg-blue-400"}`}></span>
+              <span className={`absolute left-2 top-8 w-5 h-5 rounded-full border-2 ${isDarkMode ? "border-purple-400 bg-background" : "border-blue-400 bg-white"} shadow-lg z-10 flex items-center justify-center transition-all duration-300`}> 
+                <span className={`w-2 h-2 rounded-full ${isDarkMode ? "bg-purple-400" : "bg-blue-400"}`}></span>
               </span>
 
               <div className="flex-1">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2 mx-2">
                   <div>
                     <h3 className="text-xl font-medium text-blue-400">{exp.title}</h3>
                     <p className="text-lg font-light text-purple-300">{exp.company}</p>
