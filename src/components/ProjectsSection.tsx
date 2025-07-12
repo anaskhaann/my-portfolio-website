@@ -26,7 +26,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
     <section
       ref={projectsRef}
       id="projects"
-      className="py-20 animate-section"
+      className="py-10 animate-section"
       data-scroll-section
     >
       <div
@@ -70,7 +70,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-medium mb-4 text-blue-400">
+                <h3 className={`text-xl font-medium mb-4 ${isDarkMode ? 'text-blue-400' : 'text-white'}`}>
                   {project.title}
                 </h3>
 
@@ -120,8 +120,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 {expandedProject === project.id && (
                   <div className="animate-fade-in">
                     <p
-                      className={`mb-4 leading-relaxed transition-colors duration-300 ${
-                        isDarkMode ? "text-muted-foreground" : "text-slate-600"
+                      className={`mb-4 leading-relaxed transition-colors duration-300 text-justify ${
+                        isDarkMode ? "text-muted-foreground" : "text-white"
                       }`}
                     >
                       {project.description}
@@ -142,7 +142,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 <div className="mt-4 text-center">
                   <span
                     className={`text-sm transition-colors duration-300 ${
-                      isDarkMode ? "text-muted-foreground" : "text-slate-600"
+                      isDarkMode ? "text-muted-foreground" : "text-white/80"
                     }`}
                   >
                     {expandedProject === project.id
@@ -176,7 +176,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 hover:border-purple-400/40 text-blue-400 hover:text-purple-400 transition-all duration-300 font-medium shadow-sm hover:shadow-lg"
           >
             <Github className="w-5 h-5 mr-2" />
-            For more projects, visit my GitHub
+            For more projects, Checkout my GitHub
           </a>
         </div>
       </div>

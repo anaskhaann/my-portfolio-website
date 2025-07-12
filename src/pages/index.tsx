@@ -40,7 +40,6 @@ import { experiences, projects, skillCategories } from "@/data/portfolioData";
  * - Navigation between sections
  * - Responsive design
  * - GSAP animations for smooth user experience
- * - Locomotive Scroll for smooth scrolling
  * - Animated cursor follower effect
  */
 const Portfolio = () => {
@@ -51,7 +50,8 @@ const Portfolio = () => {
    */
   const { isDarkMode, setIsDarkMode } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isLoading, setIsLoading, loadingProgress, setLoadingProgress } = useLoading();
+  const { isLoading, setIsLoading, loadingProgress, setLoadingProgress } =
+    useLoading();
 
   /**
    * Project Interaction State
@@ -76,20 +76,11 @@ const Portfolio = () => {
   // Locomotive Scroll removed
   useCursorFollower(cursorRef, cursorDotRef, isLoading);
 
-  // ===== PORTFOLIO DATA =====
-
-
 
   // ===== LOADING ANIMATION EFFECT =====
 
-
-
-
-
-
-
   /**
-   * Initialize Locomotive Scroll and GSAP ScrollTrigger integration
+  GSAP ScrollTrigger integration
    */
   // Locomotive Scroll removed. No custom scroll initialization needed.
   // If you want to add smooth scrolling in the future, you can use CSS or another JS solution.
@@ -119,9 +110,6 @@ const Portfolio = () => {
       initializeAnimations();
     }, 100);
   };
-
-
-
 
   // ===== THEME MANAGEMENT =====
 

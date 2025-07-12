@@ -16,7 +16,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({
     <section
       ref={skillsRef}
       id="skills"
-      className="py-20 animate-section"
+      className="py-10 animate-section"
       data-scroll-section
     >
       <div

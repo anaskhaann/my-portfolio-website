@@ -77,7 +77,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    category: "Framworks",
+    category: "Frameworks",
     skills: [
       { name: "Git", icon: "/assets/skills/git.svg" },
       { name: "Flask", icon: "/assets/skills/flask.svg" },
