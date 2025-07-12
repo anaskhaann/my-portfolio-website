@@ -21,7 +21,10 @@ interface HeroSectionProps {
  *
  * Uses typewriter effect for dynamic role display.
  */
-const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll, homeRef }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({
+  onSectionScroll,
+  homeRef,
+}) => {
   // Typing animation state management
   const [typingText, setTypingText] = useState("");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -29,7 +32,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll, homeRef }) =
   const [isDeleting, setIsDeleting] = useState(false);
 
   // Words to cycle through in typing animation
-  const typingWords = ["Engineer", "Developer", "Gamer"];
+  const typingWords = ["an Engineer", "a Developer", "a Gamer"];
 
   /**
    * Typing Animation Effect
@@ -138,7 +141,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll, homeRef }) =
             <div className="hero-element" data-scroll data-scroll-delay="0.3">
               <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-6 min-h-[3rem] flex items-center justify-center lg:justify-start">
                 <span className="text-gray-400 dark:text-gray-300 mr-3">
-                  {/* Here we will have dynamic typing animation */}I am a{" "}
+                  {/* Here we will have dynamic typing animation */}I am{" "}
                 </span>
                 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-medium">
                   {typingText}
