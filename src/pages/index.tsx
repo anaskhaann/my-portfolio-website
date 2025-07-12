@@ -9,9 +9,8 @@ import {
   Instagram,
 } from "lucide-react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/dist/locomotive-scroll.css";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger"; // LocomotiveScroll and its CSS removed
 import LoadingScreen from "@/components/LoadingScreen";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
@@ -22,7 +21,7 @@ import AboutSection from "@/components/AboutSection";
 import FooterSection from "@/components/FooterSection";
 
 // Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 /**
  * Portfolio Data Types
@@ -72,6 +71,7 @@ const Portfolio = () => {
    * Section refs for smooth scrolling navigation
    * Used to programmatically scroll to different sections
    */
+  const homeRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
@@ -80,9 +80,7 @@ const Portfolio = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  // Locomotive Scroll instance
-  const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null);
+  // Locomotive Scroll removed
 
   // ===== PORTFOLIO DATA =====
 
@@ -356,9 +354,6 @@ const Portfolio = () => {
     return () => {
       clearInterval(progressInterval);
       ScrollTrigger.killAll();
-      if (locomotiveScrollRef.current) {
-        locomotiveScrollRef.current.destroy();
-      }
     };
   }, []);
 
@@ -449,39 +444,8 @@ const Portfolio = () => {
   /**
    * Initialize Locomotive Scroll and GSAP ScrollTrigger integration
    */
-  useEffect(() => {
-    if (isLoading || !scrollContainerRef.current) return;
-
-    const initLocomotiveScroll = () => {
-      locomotiveScrollRef.current = new LocomotiveScroll({
-        el: scrollContainerRef.current!,
-        smooth: true,
-        multiplier: 1,
-        class: "is-revealed",
-        smartphone: {
-          smooth: true,
-        },
-        tablet: {
-          smooth: true,
-        },
-      });
-
-      // Update ScrollTrigger when Locomotive Scroll updates
-      locomotiveScrollRef.current.on("scroll", ScrollTrigger.update);
-
-      // Refresh ScrollTrigger and Locomotive Scroll after setup
-      ScrollTrigger.refresh();
-    };
-
-    // Initialize after content is loaded
-    setTimeout(initLocomotiveScroll, 500);
-
-    return () => {
-      if (locomotiveScrollRef.current) {
-        locomotiveScrollRef.current.destroy();
-      }
-    };
-  }, [isLoading]);
+  // Locomotive Scroll removed. No custom scroll initialization needed.
+  // If you want to add smooth scrolling in the future, you can use CSS or another JS solution.
 
   /**
    * Handle loading completion
@@ -661,12 +625,13 @@ const Portfolio = () => {
   // ===== NAVIGATION FUNCTIONS =====
 
   /**
-   * Smooth scroll to specific section using Locomotive Scroll
+   * Smooth scroll to specific section using native smooth scrolling
    *
    * @param sectionName - Name of the section to scroll to
    */
   const scrollToSection = (sectionName: string) => {
     const sectionRefs: { [key: string]: React.RefObject<HTMLElement> } = {
+      home: homeRef,
       about: aboutRef,
       experience: experienceRef,
       projects: projectsRef,
@@ -674,18 +639,19 @@ const Portfolio = () => {
     };
 
     const targetRef = sectionRefs[sectionName];
-    if (targetRef?.current && locomotiveScrollRef.current) {
-      locomotiveScrollRef.current.scrollTo(targetRef.current, {
-        duration: 1500,
-        easing: [0.25, 0.0, 0.35, 1.0],
+    if (targetRef?.current) {
+      gsap.to(window, {
+        duration: 1.2, // Smooth, modern scroll duration
+        scrollTo: { y: targetRef.current, offsetY: 0 },
+        ease: "power2.inOut", // Smooth, modern easing
       });
-
       console.log(`📍 Scrolled to: ${sectionName}`);
     }
 
     // Close mobile menu after navigation
     setIsMobileMenuOpen(false);
   };
+
 
   // ===== RENDER LOADING SCREEN =====
 
@@ -706,7 +672,7 @@ const Portfolio = () => {
   // ===== MAIN PORTFOLIO CONTENT =====
 
   return (
-    <div ref={scrollContainerRef} data-scroll-container className="relative">
+    <div className="relative"> // scrollContainerRef and data-scroll-container removed
       <div
         ref={mainContentRef}
         className={`min-h-screen transition-all duration-500 ease-out ${
@@ -767,11 +733,10 @@ const Portfolio = () => {
         />
 
         {/* Hero Section */}
-        <HeroSection onSectionScroll={scrollToSection} />
+        <HeroSection onSectionScroll={scrollToSection} homeRef={homeRef} />
 
         {/* About Section */}
         <AboutSection isDarkMode={isDarkMode} aboutRef={aboutRef} />
-
 
         {/* Experience Section */}
         <ExperienceSection
@@ -798,7 +763,6 @@ const Portfolio = () => {
 
         {/* Footer */}
         <FooterSection isDarkMode={isDarkMode} />
-
       </div>
     </div>
   );

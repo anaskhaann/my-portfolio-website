@@ -5,6 +5,10 @@ interface HeroSectionProps {
    * Function to scroll to specific section
    */
   onSectionScroll: (sectionName: string) => void;
+  /**
+   * Ref for the home section (for scroll-to-home functionality)
+   */
+  homeRef?: React.RefObject<HTMLElement>;
 }
 
 /**
@@ -17,7 +21,7 @@ interface HeroSectionProps {
  *
  * Uses typewriter effect for dynamic role display.
  */
-const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll, homeRef }) => {
   // Typing animation state management
   const [typingText, setTypingText] = useState("");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -75,6 +79,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSectionScroll }) => {
   return (
     <section
       id="home"
+      ref={homeRef}
       className="min-h-screen flex items-center pt-16"
       data-scroll-section
     >
