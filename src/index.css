@@ -9,6 +9,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbar globally for the website body */
+html,
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 /* Definition of the futuristic design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
@@ -101,11 +112,6 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
-  }
-
-  /* Locomotive Scroll Overrides */
-  html.has-scroll-smooth {
-    overflow: hidden;
   }
 
   html.has-scroll-dragging {
