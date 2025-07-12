@@ -80,10 +80,10 @@ const Navigation: React.FC<NavigationProps> = ({
           <button
             type="button"
             onClick={() => onSectionScroll("home")}
-            className="text-2xl font-light tracking-wide bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-purple-400 hover:to-cyan-400 transition-all duration-300 cursor-pointer focus:outline-none"
+            className="text-2xl font-black tracking-wide bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-purple-400 hover:to-cyan-400 transition-all duration-300 cursor-pointer focus:outline-none"
             aria-label="Scroll to home section"
           >
-            Anas Khan
+            A.KHAN
           </button>
 
           {/* Desktop Navigation */}
