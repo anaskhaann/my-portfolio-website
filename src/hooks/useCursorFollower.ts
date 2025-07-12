@@ -1,5 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
+
+// Helper function to detect mobile devices
+const isMobileDevice = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
 
 /**
  * Custom hook for animated cursor follower effect.
@@ -9,10 +14,22 @@ import gsap from "gsap";
  * @param isLoading - loading state (to delay effect until loaded)
  */
 export function useCursorFollower(cursorRef: React.RefObject<HTMLDivElement>, cursorDotRef: React.RefObject<HTMLDivElement>, isLoading: boolean) {
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
+    // Check if it's a mobile device
+    const mobile = isMobileDevice();
+    setIsMobile(mobile);
+
     const cursor = cursorRef.current;
     const cursorDot = cursorDotRef.current;
-    if (!cursor || !cursorDot) return;
+    
+    // If it's a mobile device or elements don't exist, hide the cursors and return early
+    if (mobile || !cursor || !cursorDot) {
+      if (cursor) cursor.style.display = 'none';
+      if (cursorDot) cursorDot.style.display = 'none';
+      return;
+    }
 
     let mouseX = 0;
     let mouseY = 0;
