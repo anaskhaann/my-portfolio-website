@@ -1,0 +1,8 @@
+/* Card component styles (e.g., glass-card) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 1rem;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.05);
+  backdrop-filter: blur(8px);
+  padding: 2rem;
+}

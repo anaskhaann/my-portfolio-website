@@ -2,12 +2,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* Import Inter font for modern typography */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "./styles/fonts.css";
+@import "./styles/globals.css";
+@import "./styles/components/card.css";
+@import "./styles/themes/dark.css";
 
-html {
-  scroll-behavior: smooth;
-}
+
 
 /* Hide scrollbar globally for the website body */
 html,
@@ -104,7 +104,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-light;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    font-family: "Gilroy", -apple-system, BlinkMacSystemFont, "Segoe UI",
       "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
     letter-spacing: -0.01em;

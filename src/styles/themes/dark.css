@@ -1,0 +1,6 @@
+/* Dark mode refinements */
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    background: rgba(15, 23, 42, 0.4);
+  }
+}
