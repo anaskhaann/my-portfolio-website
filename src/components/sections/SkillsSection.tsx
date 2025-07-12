@@ -17,12 +17,11 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({
       ref={skillsRef}
       id="skills"
       className="py-10 animate-section"
-      data-scroll-section
+
     >
       <div
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-        data-scroll
-        data-scroll-speed="0.2"
+
       >
         <h2 className="text-4xl font-light text-center mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
           Skills
@@ -31,8 +30,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={categoryIndex}
-              data-scroll
-              data-scroll-delay={categoryIndex * 0.1}
+
             >
               <h3 className="text-2xl font-light mb-6 text-center text-purple-400">
                 {category.category}

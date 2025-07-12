@@ -23,13 +23,8 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
       ref={experienceRef}
       id="experience"
       className="py-10 animate-section"
-      data-scroll-section
     >
-      <div
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-        data-scroll
-        data-scroll-speed="0.3"
-      >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-light text-center mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
           Experience
         </h2>
@@ -49,8 +44,6 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   ? "bg-card/30 border-purple-500/20 hover:border-purple-400/40"
                   : "bg-white/50 border-purple-500/20 hover:border-purple-400/40"
               } shadow-lg hover:shadow-xl hover:shadow-purple-500/10`}
-              data-scroll
-              data-scroll-delay={index * 0.1}
               onClick={() => handleToggle(index)}
               tabIndex={0}
               role="button"
@@ -113,7 +106,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 {/* Expand/Collapse Button (optional chevron) */}
                 <button
                   type="button"
-                  className="flex items-center text-black hover:text-black focus:outline-none focus:ring-2 focus:ring-black mt-2 mb-1"
+                  className="flex items-center text-white hover:text-white focus:ring-2 focus:ring-black mt-2 mb-1"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleToggle(index);

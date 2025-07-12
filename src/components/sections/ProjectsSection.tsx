@@ -27,12 +27,11 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       ref={projectsRef}
       id="projects"
       className="py-10 animate-section"
-      data-scroll-section
+
     >
       <div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        data-scroll
-        data-scroll-speed="0.4"
+
       >
         <h2 className="text-4xl font-light text-center mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
           Projects
@@ -51,8 +50,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   expandedProject === project.id ? null : project.id
                 )
               }
-              data-scroll
-              data-scroll-delay={index * 0.1}
+
             >
               <div className="relative overflow-hidden h-48">
                 <img
