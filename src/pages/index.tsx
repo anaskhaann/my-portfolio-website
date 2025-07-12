@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Github,
@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger"; // LocomotiveScroll and its CSS removed
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
@@ -19,16 +19,13 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import AboutSection from "@/components/AboutSection";
 import FooterSection from "@/components/FooterSection";
+import { useTheme } from "@/hooks/useTheme";
+import { useLoading } from "@/hooks/useLoading";
+import { useCursorFollower } from "@/hooks/useCursorFollower";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-/**
- * Portfolio Data Types
- *
- * Define the structure for portfolio content
- * These interfaces ensure type safety and make it easy to update content
- */
 import type { Experience, Project, Skill, SkillCategory } from "@/types";
 
 /**
@@ -50,15 +47,9 @@ const Portfolio = () => {
   /**
    * Theme and UI State
    */
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { isDarkMode, setIsDarkMode } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  /**
-   * Loading State
-   * Controls the loading screen visibility and progress
-   */
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadingProgress, setLoadingProgress] = useState(0);
+  const { isLoading, setIsLoading, loadingProgress, setLoadingProgress } = useLoading();
 
   /**
    * Project Interaction State
@@ -81,6 +72,7 @@ const Portfolio = () => {
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   // Locomotive Scroll removed
+  useCursorFollower(cursorRef, cursorDotRef, isLoading);
 
   // ===== PORTFOLIO DATA =====
 
@@ -268,122 +260,11 @@ const Portfolio = () => {
 
   // ===== LOADING ANIMATION EFFECT =====
 
-  /**
-   * Initialize loading sequence
-   *
-   * This effect:
-   * 1. Starts the loading progress animation
-   * 2. Simulates loading time (2.5 seconds)
-   * 3. Updates progress state
-   * 4. Triggers completion when done
-   */
-  useEffect(() => {
-    console.log("🚀 Starting loading sequence...");
 
-    // Simulate loading progress over 2.5 seconds
-    const progressInterval = setInterval(() => {
-      setLoadingProgress((prevProgress) => {
-        const newProgress = prevProgress + 4; // Increment by 4% each time
 
-        if (newProgress >= 100) {
-          clearInterval(progressInterval);
-          return 100;
-        }
 
-        return newProgress;
-      });
-    }, 100); // Update every 100ms for smooth animation
 
-    // Cleanup interval on component unmount
-    return () => {
-      clearInterval(progressInterval);
-      ScrollTrigger.killAll();
-    };
-  }, []);
 
-  /**
-   * Initialize theme from localStorage or system preference
-   */
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    const shouldUseDarkMode =
-      savedTheme === "dark" || (!savedTheme && prefersDark);
-    setIsDarkMode(shouldUseDarkMode);
-
-    // Apply theme to document
-    document.documentElement.classList.toggle("dark", shouldUseDarkMode);
-  }, []);
-
-  /**
-   * Initialize animated cursor follower effect
-   */
-  useEffect(() => {
-    const cursor = cursorRef.current;
-    const cursorDot = cursorDotRef.current;
-    if (!cursor || !cursorDot) return;
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    const moveCursor = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    };
-
-    const animateCursor = () => {
-      // Smooth follow animation for main cursor
-      cursorX += (mouseX - cursorX) * 0.1;
-      cursorY += (mouseY - cursorY) * 0.1;
-
-      gsap.set(cursor, {
-        x: cursorX - 20,
-        y: cursorY - 20,
-      });
-
-      // Instant follow for dot
-      gsap.set(cursorDot, {
-        x: mouseX - 4,
-        y: mouseY - 4,
-      });
-
-      requestAnimationFrame(animateCursor);
-    };
-
-    // Add hover effects for interactive elements
-    const addHoverEffect = (selector: string, scale: number = 1.5) => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach((element) => {
-        element.addEventListener("mouseenter", () => {
-          gsap.to(cursor, { scale, duration: 0.3, ease: "power2.out" });
-        });
-        element.addEventListener("mouseleave", () => {
-          gsap.to(cursor, { scale: 1, duration: 0.3, ease: "power2.out" });
-        });
-      });
-    };
-
-    document.addEventListener("mousemove", moveCursor);
-    animateCursor();
-
-    // Add hover effects to interactive elements
-    setTimeout(() => {
-      addHoverEffect("button", 1.8);
-      addHoverEffect("a", 1.5);
-      addHoverEffect(".project-card", 1.3);
-      addHoverEffect(".skill-card", 1.2);
-      addHoverEffect(".experience-card", 1.2);
-    }, 1000);
-
-    return () => {
-      document.removeEventListener("mousemove", moveCursor);
-    };
-  }, [isLoading]);
 
   /**
    * Initialize Locomotive Scroll and GSAP ScrollTrigger integration
