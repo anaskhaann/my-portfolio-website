@@ -108,33 +108,6 @@ const Portfolio = () => {
         "Gained hands-on experience in predictive modeling and data analysis through mentorship and project work. Contributed to building and validating a machine learning model using trading data. Created visualizations with Pandas and Matplotlib to support performance review and identify trading pattern improvements.",
       technologies: ["Python", "Numpy", "Pandas", "Matplotlib"],
     },
-    {
-      id: 3,
-      title: "Test experience for website checking 1",
-      company: " PHNTechnology Pvt. Ltd.",
-      duration: "April 2023 - June 2023",
-      description:
-        "Gained hands-on experience in predictive modeling and data analysis through mentorship and project work. Contributed to building and validating a machine learning model using trading data. Created visualizations with Pandas and Matplotlib to support performance review and identify trading pattern improvements.",
-      technologies: ["Python", "Numpy", "Pandas", "Matplotlib"],
-    },
-    {
-      id: 4,
-      title: "Test experience for website checking 2",
-      company: " PHNTechnology Pvt. Ltd.",
-      duration: "April 2023 - June 2023",
-      description:
-        "Gained hands-on experience in predictive modeling and data analysis through mentorship and project work. Contributed to building and validating a machine learning model using trading data. Created visualizations with Pandas and Matplotlib to support performance review and identify trading pattern improvements.",
-      technologies: ["Python", "Numpy", "Pandas", "Matplotlib"],
-    },
-    {
-      id: 5,
-      title: "Test experience for website checking 3",
-      company: " PHNTechnology Pvt. Ltd.",
-      duration: "April 2023 - June 2023",
-      description:
-        "Gained hands-on experience in predictive modeling and data analysis through mentorship and project work. Contributed to building and validating a machine learning model using trading data. Created visualizations with Pandas and Matplotlib to support performance review and identify trading pattern improvements.",
-      technologies: ["Python", "Numpy", "Pandas", "Matplotlib"],
-    },
   ];
 
   /**
@@ -652,7 +625,6 @@ const Portfolio = () => {
     setIsMobileMenuOpen(false);
   };
 
-
   // ===== RENDER LOADING SCREEN =====
 
   /**
@@ -672,7 +644,9 @@ const Portfolio = () => {
   // ===== MAIN PORTFOLIO CONTENT =====
 
   return (
-    <div className="relative"> // scrollContainerRef and data-scroll-container removed
+    <div className="relative">
+      {" "}
+      // scrollContainerRef and data-scroll-container removed
       <div
         ref={mainContentRef}
         className={`min-h-screen transition-all duration-500 ease-out ${
