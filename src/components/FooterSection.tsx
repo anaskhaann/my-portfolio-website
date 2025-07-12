@@ -8,16 +8,13 @@ interface FooterSectionProps {
 const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
   return (
     <footer
-      className={`py-16 border-t transition-all duration-300 ${
-        isDarkMode ? "border-border bg-card/50" : "border-slate-200 bg-white/50"
+      className={`py-16 border-t transition-all duration-100 ${
+        isDarkMode
+          ? "border-border bg-card/50 text-white"
+          : "border-slate-200 bg-white/50 text-black"
       } animate-section`}
-      data-scroll-section
     >
-      <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        data-scroll
-        data-scroll-speed="0.1"
-      >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="flex justify-center space-x-6 mb-8">
             {/* LinkedIn */}
