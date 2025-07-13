@@ -26,7 +26,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
  */
 const Portfolio = () => {
   // ===== STATE MANAGEMENT =====
-  const { isDarkMode, setIsDarkMode } = useTheme();
+  const { isDarkMode, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isLoading, setIsLoading, loadingProgress } = useLoading();
   const { lenis } = useLenis(); // Get the shared Lenis instance
@@ -51,13 +51,9 @@ const Portfolio = () => {
   };
 
   // ===== THEME MANAGEMENT =====
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    document.documentElement.classList.toggle("dark", newTheme);
-    localStorage.setItem("theme", newTheme ? "dark" : "light");
-    console.log(`🎨 Theme switched to: ${newTheme ? "dark" : "light"}`);
-  };
+  // Now handled by useTheme context
+  // const toggleTheme = ... (removed)
+
 
   // ===== NAVIGATION =====
   const scrollToSection = (sectionName: string) => {

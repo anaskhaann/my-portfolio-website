@@ -4,19 +4,22 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "./pages/index";
 import { LenisProvider } from "@/providers/LenisProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <LenisProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <Index />
-      </TooltipProvider>
-    </QueryClientProvider>
-  </LenisProvider>
+  <ThemeProvider>
+    <LenisProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <Index />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </LenisProvider>
+  </ThemeProvider>
 );
 
 export default App;

@@ -21,6 +21,8 @@ interface HeroSectionProps {
  *
  * Uses typewriter effect for dynamic role display.
  */
+import { useTheme } from "@/hooks/useTheme";
+
 const HeroSection: React.FC<HeroSectionProps> = ({
   onSectionScroll,
   homeRef,
@@ -79,33 +81,23 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     return () => clearTimeout(timeout);
   }, [currentCharIndex, isDeleting, currentWordIndex, typingWords]);
 
+  const { isDarkMode } = useTheme();
+
   return (
     <section
       id="home"
       ref={homeRef}
       className="min-h-screen flex items-center pt-16"
-
     >
-      <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
-
-      >
-        {/* 
-          Responsive Grid Layout:
-          - Mobile: Single column, photo first (order-1), text second (order-2) 
-          - Desktop: Two columns, text first (lg:order-1), photo second (lg:order-2)
-        */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Profile Photo Section - Shows first on mobile, second on desktop */}
-          <div
-            className="order-1 lg:order-2 flex justify-center hero-element"
-
-          >
+          <div className="order-1 lg:order-2 flex justify-center hero-element">
             <div className="relative group">
-              {/* Main photo container with gradient border and floating animation */}
               <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20 relative transition-all duration-700 group-hover:scale-105 group-hover:shadow-purple-500/40">
                 <img
-                  src="/assets/profile.jpg"
+                  src={
+                    isDarkMode ? "/assets/light_pf.jpg" : "/assets/dark_pf.jpg"
+                  }
                   alt="Profile Photo"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
