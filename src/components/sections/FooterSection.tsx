@@ -55,7 +55,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
 
             {/* Telegram */}
             <a
-              href="https://telegram.me/khannanas"
+              href="https://t.me/anaskhaann"
               target="_blank"
               rel="noopener noreferrer"
               className="group transition-transform duration-300 hover:scale-110"
