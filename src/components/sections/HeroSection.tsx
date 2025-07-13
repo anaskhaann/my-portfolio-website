@@ -95,9 +95,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="relative group">
               <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20 relative transition-all duration-700 group-hover:scale-105 group-hover:shadow-purple-500/40">
                 <div className="w-full h-full relative">
-                  {/* Dark mode photo */}
+                  {/* Light mode photo */}
                   <img
-                    src="/assets/light_pf.jpg"
+                    src="/assets/dark_pf.jpg"
                     alt="Profile Photo Dark"
                     className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 group-hover:scale-110 ${
                       isDarkMode ? "opacity-0" : "opacity-100"
@@ -105,9 +105,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     style={{ zIndex: isDarkMode ? 1 : 2 }}
                     draggable={false}
                   />
-                  {/* Light mode photo */}
+                  {/* Dark mode photo */}
                   <img
-                    src="/assets/dark_pf.jpg"
+                    src="/assets/light_pf.jpg"
                     alt="Profile Photo Light"
                     className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 group-hover:scale-110 ${
                       isDarkMode ? "opacity-100" : "opacity-0"
