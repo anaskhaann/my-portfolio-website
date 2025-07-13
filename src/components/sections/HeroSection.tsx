@@ -94,13 +94,28 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="order-1 lg:order-2 flex justify-center hero-element">
             <div className="relative group">
               <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20 relative transition-all duration-700 group-hover:scale-105 group-hover:shadow-purple-500/40">
-                <img
-                  src={
-                    isDarkMode ? "/assets/light_pf.jpg" : "/assets/dark_pf.jpg"
-                  }
-                  alt="Profile Photo"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <div className="w-full h-full relative">
+                  {/* Dark mode photo */}
+                  <img
+                    src="/assets/light_pf.jpg"
+                    alt="Profile Photo Dark"
+                    className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 group-hover:scale-110 ${
+                      isDarkMode ? "opacity-0" : "opacity-100"
+                    }`}
+                    style={{ zIndex: isDarkMode ? 1 : 2 }}
+                    draggable={false}
+                  />
+                  {/* Light mode photo */}
+                  <img
+                    src="/assets/dark_pf.jpg"
+                    alt="Profile Photo Light"
+                    className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 group-hover:scale-110 ${
+                      isDarkMode ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{ zIndex: isDarkMode ? 2 : 1 }}
+                    draggable={false}
+                  />
+                </div>
 
                 {/* Gradient overlay for hover effect */}
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
