@@ -1,16 +1,105 @@
-# My Personal Portfolio Website
+# My Personal Portfolio
 
-A modern, responsive personal portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth animations, dark/light mode toggle, and a professional design that showcases your skills and projects effectively.
+This is my personal portfolio website, built with a modern tech stack to showcase my skills, projects, and professional experience. The site is designed to be fully responsive, interactive, and visually appealing, featuring smooth animations and a clean user interface.
 
-## 🌟 Features
+<!-- **Live Demo:** [Link to your deployed portfolio]() -->
 
-### Core Functionality
+---
 
-- **Single Page Application (SPA)** - Smooth scrolling navigation without page reloads
-- **Responsive Design** - Optimized for all screen sizes (mobile, tablet, desktop)
-- **Dark/Light Mode Toggle** - User preference saved in localStorage
-- **Smooth Animations** - Professional transitions and micro-interactions
-- **Loading Screen** - Elegant initial loading animation
+## ✨ Features
+
+- **🎨 Modern UI/UX:** Clean, modern design with a focus on user experience.
+- **🌓 Dark/Light Mode:** Seamless theme switching for user preference.
+- **🚀 Smooth Scrolling:** Implemented with Lenis for a fluid browsing experience.
+- **🎬 Interactive Animations:** Engaging animations powered by GSAP and ScrollTrigger.
+- **📱 Fully Responsive:** Adapts perfectly to all screen sizes, from mobile to desktop.
+- **🧩 Component-Based Architecture:** Built with reusable React components for maintainability.
+- **📂 Project Showcase:** Detailed view of my projects with descriptions and links.
+- **💼 Experience Timeline:** An overview of my professional journey.
+- **🛠️ Skills Section:** A comprehensive list of my technical skills.
+
+---
+
+## 🚀 Technologies Used
+
+- **Frontend Framework**: React 18 with TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/ui
+- **Icons**: Lucide React
+- **Build Tool**: Vite
+- **State Management**: React Hooks (useState, useEffect, useRef)
+- **Animations**: GSAP,CSS transitions and custom keyframes
+
+---
+
+## 🚀 Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/en/) (version 18 or higher) and [npm](https://www.npmjs.com/) installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/anaskhaann/my-portfolio-website.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd my-portfolio-website
+   ```
+3. Install NPM packages:
+   ```sh
+   npm install
+   ```
+
+### Running the Development Server
+
+To start the development server, run the following command. This will open the project in your default browser.
+
+```sh
+npm run dev
+```
+
+### Building for Production
+
+To create a production-ready build of the application, run:
+
+```sh
+npm run build
+```
+
+This will create a `dist` folder with the optimized and minified files for deployment.
+
+---
+
+## 📂 Project Structure
+
+Here is an overview of the project's directory structure:
+
+```
+├── public/             # Static assets
+├── src/
+│   ├── components/     # Reusable UI components (Shadcn UI and custom)
+│   │   ├── layout/     # Layout components (e.g., AppLayout, Header, Footer)
+│   │   └── sections/   # Major page sections (e.g., Hero, About, Projects)
+│   ├── data/           # Static data for the portfolio (e.g., projects, skills)
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions (e.g., cn for classnames)
+│   ├── pages/          # Page components
+│   ├── providers/      # Context providers (e.g., ThemeProvider, LenisProvider)
+│   ├── styles/         # Global styles
+│   ├── App.tsx         # Main application component with routing
+│   └── main.tsx        # Entry point of the application
+├── .eslintrc.cjs       # ESLint configuration
+├── tailwind.config.ts  # Tailwind CSS configuration
+├── tsconfig.json       # TypeScript configuration
+└── vite.config.ts      # Vite configuration
+```
+
+---
 
 ### Sections
 
@@ -28,74 +117,11 @@ A modern, responsive personal portfolio website built with React, TypeScript, an
 - **Smooth Section Navigation** - Intelligent active section highlighting
 - **Mobile-Friendly Menu** - Collapsible hamburger navigation
 
-## 🚀 Technologies Used
-
-- **Frontend Framework**: React 18 with TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Shadcn/ui
-- **Icons**: Lucide React
-- **Build Tool**: Vite
-- **State Management**: React Hooks (useState, useEffect, useRef)
-- **Animations**: GSAP,Locomotive Scroll,CSS transitions and custom keyframes
-
-## 📁 Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-│   └── ui/             # Shadcn/ui components
-├── pages/              # Main application pages
-│   └── index.tsx       # Main portfolio component
-├── hooks/              # Custom React hooks
-├── lib/                # Utility functions
-├── index.css           # Global styles and animations
-├── main.tsx           # Application entry point
-└── App.tsx            # Root component
-```
-
-## 🛠️ Installation & Setup
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn package manager
-
-### Local Development
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/anaskhaann/my-portfolio-website
-   cd my-portfolio-website
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**
-
-   Navigate to `http://localhost:8080`
-
-### Build for Production
-
-```bash
-npm run build
-```
-
 ## 🎨 Customization Guide
 
 ### Personal Information
 
-Update the portfolio data in `src/pages/index.tsx`:
+Update the portfolio data in `src/data/portfolioData.ts`:
 
 ```typescript
 // Profile information
@@ -144,10 +170,10 @@ Update the `skillCategories` array to reflect your technical skills:
 ```typescript
 const skillCategories = [
   {
-    category: "Frontend",
+    category: "Others",
     skills: [
-      { name: "Python", icon: "⚛️" },
-      { name: "Vue.js", icon: "💚" },
+      { name: "Vscode", icon: "/assets/skills/vscode.svg" },
+      { name: "Github", icon: "/assets/skills/github.svg" },
     ],
   },
 ];
@@ -199,26 +225,9 @@ npm run build
 # Configure GitHub Pages to serve from dist/ folder
 ```
 
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit changes: `git commit -m 'Add feature'`
-4. Push to branch: `git push origin feature-name`
-5. Submit a pull request
-
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 💡 Support
-
-For questions or support:
-
-- Open an issue on GitHub
-- Feel Free to Fork this and Make changes As per You like in the Website
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ---
 
