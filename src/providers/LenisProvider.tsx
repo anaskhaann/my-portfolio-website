@@ -1,7 +1,13 @@
-import React, { createContext, ReactNode, useContext, useLayoutEffect, useState } from 'react';
-import Lenis from '@studio-freight/lenis';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useLayoutEffect,
+  useState,
+} from "react";
+import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // 1. Define the shape of the context
 interface LenisContextType {
@@ -15,7 +21,7 @@ const LenisContext = createContext<LenisContextType | undefined>(undefined);
 export const useLenis = () => {
   const context = useContext(LenisContext);
   if (!context) {
-    throw new Error('useLenis must be used within a LenisProvider');
+    throw new Error("useLenis must be used within a LenisProvider");
   }
   return context;
 };
@@ -40,12 +46,17 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
         return newLenis.scroll;
       },
       getBoundingClientRect() {
-        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
       },
     });
 
     const scrollUpdate = () => ScrollTrigger.update();
-    newLenis.on('scroll', scrollUpdate);
+    newLenis.on("scroll", scrollUpdate);
 
     // Drive the animation loop
     const update = (time: number) => {
@@ -64,7 +75,7 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
     // Cleanup on unmount
     return () => {
       ScrollTrigger.scrollerProxy(document.body, undefined);
-      newLenis.off('scroll', scrollUpdate);
+      newLenis.off("scroll", scrollUpdate);
       gsap.ticker.remove(update);
       resizeObserver.disconnect();
       newLenis.destroy();
@@ -73,8 +84,6 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
   }, []);
 
   return (
-    <LenisContext.Provider value={{ lenis }}>
-      {children}
-    </LenisContext.Provider>
+    <LenisContext.Provider value={{ lenis }}>{children}</LenisContext.Provider>
   );
 };
