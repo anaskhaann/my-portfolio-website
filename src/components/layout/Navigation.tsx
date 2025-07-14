@@ -69,7 +69,7 @@ const Navigation: React.FC<NavigationProps> = ({
    * Opens resume in new tab
    */
   const handleResumeDownload = () => {
-    window.open("/assets/resume/test.pdf", "_blank");
+    window.open("/assets/resume.pdf", "_blank");
   };
 
   return (

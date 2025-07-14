@@ -40,7 +40,7 @@ export const projects: Project[] = [
       "Built a fully responsive portfolio using React (TypeScript), Tailwind CSS, and Vite to showcase skills, projects, and experience.Integrated modern UI/UX features including dark/light mode, smooth scrolling (Lenis), and animations (GSAP, ScrollTrigger).Structured with reusable components and dynamic sections (Projects, Experience, Skills) for scalability and maintainability.",
     technologies: ["HTML/CSS", "TypeScript", "React", "Vite", "GSAP"],
     githubUrl: "https://github.com/anaskhaann/my-portfolio-website",
-    // liveUrl:"",
+    liveUrl: "https://anaskhaann.vercel.app/",
     imageUrl: "/assets/projects/portfolio.gif",
   },
   {
