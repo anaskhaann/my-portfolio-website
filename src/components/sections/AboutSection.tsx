@@ -10,16 +10,8 @@ const AboutSection: React.FC<AboutSectionProps> = ({
   aboutRef,
 }) => {
   return (
-    <section
-      ref={aboutRef}
-      id="about"
-      className="py-10 animate-section"
-
-    >
-      <div
-        className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
-
-      >
+    <section ref={aboutRef} id="about" className="py-10 animate-section">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-light text-center mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
           About Me
         </h2>
@@ -36,12 +28,12 @@ const AboutSection: React.FC<AboutSectionProps> = ({
             }`}
           >
             {/* TODO: Update with your actual bio */}
-            <p className="text-lg leading-relaxed mb-6">
-              My journey in technology started with a curiosity about how things
-              work, which led me to explore programming and eventually fall in
-              love with creating digital solutions.
+            <p className="text-lg mb-2">
+              Hello ! my name is Mohd Anas Khan, I have completed my Bachelors
+              in Computer Science and Engineering from RCOE, Mumbai. I
+              specialize in Artificial Intelligence and Data Science.
             </p>
-            <p className="text-lg leading-relaxed mb-6">
+            <p className="text-lg mb-2">
               A self-starter and collaborative team player, passionate about
               building solutions that address real-world problems. Known for
               taking initiative, learning quickly, and consistently delivering
@@ -50,12 +42,19 @@ const AboutSection: React.FC<AboutSectionProps> = ({
               personal growth. I may not know everything, but I have the drive
               and resourcefulness to figure things out and get things done.
             </p>
-            <p className="text-lg leading-relaxed mb-6">
-              I specialize in Artificial Intelligence and Data Science. I
-              believe in writing clean, maintainable code and following best
+            <p className="text-lg mb-2">
+              My skillset is quite wide-ranged, I like to choose the best tools
+              to get the best product as fast as possible. I'm a quick learner,
+              especially in fast-paced environments where I'm able to hone
+              skills on the fly to improve and deliver on time.
+              <br />
+              I believe in writing clean, maintainable code and following best
               practices to deliver high-quality products. I'm always eager to
               learn new technologies and take on challenging projects that push
               my limits.
+              <br />
+              When I'm not coding, you can find me Gaming, Swimming, or
+              Sleeping.
             </p>
           </div>
         </div>
