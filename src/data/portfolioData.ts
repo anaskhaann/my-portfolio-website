@@ -24,32 +24,33 @@ export const experiences: Experience[] = [
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Chat with Database",
+    title: "Natural Language to SQL AI",
     description:
       "Developed an AI tool enabling natural language SQL queries using LangChain, Streamlit, and Meta's LLaMA, allowing non-technical users to interact with MySQL and SQLite databases. Improved performance with caching and fine-tuned model parameters, reducing response times by 15-20% and enhancing query accuracy.",
     technologies: ["Python", "Langchain", "Streamlit", "LLama", "MySQL"],
     githubUrl: "https://github.com/anaskhaann/Chat-with-Database-SQL",
     videoUrl:
       "https://drive.google.com/file/d/1_zDUrBSChOOdiV0xt4BLuEMJCrTBH9nL/view?usp=sharing",
-    imageUrl: "/assets/projects/1.png",
+    imageUrl: "/assets/projects/nl_to_sql.png",
   },
   {
     id: 2,
+    title: "Personal Portfolio Website",
+    description:
+      "Built a fully responsive portfolio using React (TypeScript), Tailwind CSS, and Vite to showcase skills, projects, and experience.Integrated modern UI/UX features including dark/light mode, smooth scrolling (Lenis), and animations (GSAP, ScrollTrigger).Structured with reusable components and dynamic sections (Projects, Experience, Skills) for scalability and maintainability.",
+    technologies: ["HTML/CSS", "TypeScript", "React", "Vite", "GSAP"],
+    githubUrl: "https://github.com/anaskhaann/my-portfolio-website",
+    // liveUrl:"",
+    imageUrl: "/assets/projects/portfolio.gif",
+  },
+  {
+    id: 3,
     title: "Gesture Based Presentation Controller",
     description:
       "Developed a Gesture-Based Presentation system using Python, OpenCV, and MediaPipe,enabling touch-free slide navigation and annotation for intuitive presentation experience.Achieved 85% hand detection accuracy and 90% gesture recognition accuracy, with optimized slide transition under 0.5s, ensuring fast and reliable real-time control",
     technologies: ["Python", "MediaPipe", "OpenCV", "Numpy"],
     githubUrl: "https://github.com/anaskhaann/Gesture-Based-Presentation",
-    imageUrl: "/assets/projects/2.gif",
-  },
-  {
-    id: 3,
-    title: "Full Stack Web App",
-    description:
-      "Developed a Pinterest clone with Express.js and MongoDB, focusing on core social media features like board management, saving and deleting pins, and personalized feeds. Implemented file uploads with Multer, and used Mongoose for database interaction to streamline development.",
-    technologies: ["Javascript", "CSS", "Express.Js", "HTML"],
-    githubUrl: "https://github.com/anaskhaann/Pinterest-Clone",
-    imageUrl: "/assets/projects/3.png",
+    imageUrl: "/assets/projects/gesture_controller.gif",
   },
   {
     id: 4,
@@ -58,7 +59,7 @@ export const projects: Project[] = [
       "This Project Is Based On My Repo Named Daily Life Journal. This is Made to Automate its Printing Task and Create a Book.Automate webpage-to-PDF conversion with ease! Perfect for batch downloading and archiving web content.",
     technologies: ["Python", "Selenium"],
     githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
-    imageUrl: "/assets/projects/4.gif",
+    imageUrl: "/assets/projects/web_selenium.gif",
   },
 ];
 

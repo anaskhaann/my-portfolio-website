@@ -93,13 +93,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-1 lg:order-2 flex justify-center hero-element">
             <div className="relative group">
-              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20 relative transition-all duration-700 group-hover:scale-105 group-hover:shadow-purple-500/40">
+              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20 relative transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-purple-500/40">
                 <div className="w-full h-full relative">
                   {/* Light mode photo */}
                   <img
                     src="/assets/dark_pf.jpg"
                     alt="Profile Photo Dark"
-                    className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 group-hover:scale-110 ${
+                    className={`w-full h-full object-cover absolute inset-0 transition-all duration-300 ease-in-out group-hover:scale-110 ${
                       isDarkMode ? "opacity-0" : "opacity-100"
                     }`}
                     style={{ zIndex: isDarkMode ? 1 : 2 }}
@@ -109,7 +109,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   <img
                     src="/assets/light_pf.jpg"
                     alt="Profile Photo Light"
-                    className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 group-hover:scale-110 ${
+                    className={`w-full h-full object-cover absolute inset-0 transition-all duration-300 ease-in-out group-hover:scale-110 ${
                       isDarkMode ? "opacity-100" : "opacity-0"
                     }`}
                     style={{ zIndex: isDarkMode ? 2 : 1 }}
@@ -133,7 +133,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Greeting and Main Name */}
             <div className="hero-element">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight">
-                <span className="block text-gray-400 dark:text-gray-300 mb-2 text-2xl sm:text-3xl lg:text-4xl">
+                <span className="block text-black dark:text-white mb-2 text-2xl sm:text-3xl lg:text-4xl">
                   Hi there, I'm
                 </span>
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent font-medium tracking-tight">
@@ -145,7 +145,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Dynamic Role with Typing Animation */}
             <div className="hero-element">
               <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-6 min-h-[3rem] flex items-center justify-center lg:justify-start">
-                <span className="text-gray-400 dark:text-gray-300 mr-3">
+                <span className="text-black dark:text-white mr-3">
                   {/* Here we will have dynamic typing animation */}I am{" "}
                 </span>
                 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-medium">
@@ -157,10 +157,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Professional Tagline */}
             <div className="hero-element">
-              <p className="text-lg sm:text-xl lg:text-2xl font-light text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-lg sm:text-xl lg:text-2xl font-light text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 I Build what I love and love what I Build.
               </p>
-              <p className="text-lg sm:text-xl lg:text-2xl font-light text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-lg sm:text-xl lg:text-2xl font-light text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 I am Good at What I Do.
               </p>
             </div>
