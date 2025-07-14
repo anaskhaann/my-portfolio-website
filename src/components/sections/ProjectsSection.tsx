@@ -166,7 +166,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             href="https://github.com/anaskhaann"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 hover:border-purple-400/40 text-black hover:text-purple-400 transition-all duration-300 font-medium shadow-sm hover:shadow-lg"
+            className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 hover:border-purple-400/40 text-black dark:text-white hover:text-purple-400 transition-all duration-300 font-medium shadow-sm hover:shadow-lg"
           >
             <Github className="w-5 h-5 mr-2" />
             For more projects, Checkout my GitHub
