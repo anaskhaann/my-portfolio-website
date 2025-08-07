@@ -95,25 +95,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="relative group">
               <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20 relative transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-purple-500/40">
                 <div className="w-full h-full relative">
-                  {/* Light mode photo */}
                   <img
-                    src="/assets/dark_pf.jpg"
-                    alt="Profile Photo Dark"
-                    className={`w-full h-full object-cover absolute inset-0 transition-all duration-300 ease-in-out group-hover:scale-110 ${
-                      isDarkMode ? "opacity-0" : "opacity-100"
-                    }`}
-                    style={{ zIndex: isDarkMode ? 1 : 2 }}
-                    draggable={false}
-                  />
-                  {/* Dark mode photo */}
-                  <img
-                    src="/assets/light_pf.jpg"
-                    alt="Profile Photo Light"
-                    className={`w-full h-full object-cover absolute inset-0 transition-all duration-300 ease-in-out group-hover:scale-110 ${
-                      isDarkMode ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{ zIndex: isDarkMode ? 2 : 1 }}
-                    draggable={false}
+                    src="/assets/pfp.jpg"
+                    alt="Profile Photo"
+                    className="w-full h-full object-cover absolute inset-0 transition-all duration-300 ease-in-out group-hover:scale-110"
                   />
                 </div>
 
@@ -158,7 +143,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Professional Tagline */}
             <div className="hero-element">
               <p className="text-lg sm:text-xl lg:text-2xl font-light text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                I Build what I love and love what I Build.
+                I Build what I love and love what I Built.
               </p>
               <p className="text-lg sm:text-xl lg:text-2xl font-light text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 I am Good at What I Do.
