@@ -54,7 +54,6 @@ const Portfolio = () => {
   // Now handled by useTheme context
   // const toggleTheme = ... (removed)
 
-
   // ===== NAVIGATION =====
   const scrollToSection = (sectionName: string) => {
     const sectionRefs: { [key: string]: React.RefObject<HTMLElement> } = {
@@ -79,13 +78,7 @@ const Portfolio = () => {
 
   // ===== RENDER LOGIC =====
   if (isLoading) {
-    return (
-      <LoadingScreen
-        loadingProgress={loadingProgress}
-        onLoadingComplete={handleLoadingComplete}
-        displayText="Loading..."
-      />
-    );
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
   }
 
   return (
@@ -97,9 +90,12 @@ const Portfolio = () => {
       onSectionScroll={scrollToSection}
       isLoading={isLoading}
     >
-            <div
+      <div
         ref={mainContentRef}
-        style={{ opacity: isLoading ? 0 : 1, transition: "opacity 0.5s ease-in" }}
+        style={{
+          opacity: isLoading ? 0 : 1,
+          transition: "opacity 0.5s ease-in",
+        }}
       >
         <HeroSection onSectionScroll={scrollToSection} homeRef={homeRef} />
         <AboutSection isDarkMode={isDarkMode} aboutRef={aboutRef} />
