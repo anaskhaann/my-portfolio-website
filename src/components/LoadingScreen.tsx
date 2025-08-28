@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { Dot } from "lucide-react";
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
@@ -16,9 +15,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     "آداب",
     "Привет",
     "مرحبًا",
-    "हेलो",
     "Hola",
-    "Hallo",
+    "हेलो",
     "Bonjour",
     "Ciao",
   ];
@@ -29,18 +27,18 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         if (index < greetings.length - 1) {
           setIndex((prevIndex) => prevIndex + 1);
         } else {
-          // After the last greeting, wait a bit then start exit animation
+          // After the last greeting, start exit animation immediately
           setTimeout(() => {
             setIsVisible(false);
             // Call onLoadingComplete after the exit animation completes
             setTimeout(() => {
               onLoadingComplete();
-            }, 1000); // Give extra time for the exit animation to complete
-          }, 800); // Hold the last greeting a bit longer
+            }, 600); // Reduced time for faster transition
+          }, 300); // Reduced hold time for faster sequence
         }
       },
-      index === 0 ? 600 : 300
-    ); // Slightly longer timing for better UX
+      index === 0 ? 200 : 200 // Set initial start time to zero
+    );
 
     return () => clearTimeout(timer);
   }, [index, onLoadingComplete, greetings.length]);
@@ -52,7 +50,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     },
     exit: {
       top: "-100vh",
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+      transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1], delay: 0.1 },
     },
   };
 
@@ -62,7 +60,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     },
     enter: {
       opacity: 0.75,
-      transition: { duration: 1, delay: 0.2 },
+      transition: { duration: 0.5, delay: 0.1 },
     },
   };
 
@@ -92,7 +90,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             initial="initial"
             animate="enter"
           >
-            <Dot size={48} className="mr-3" />
             <p>{greetings[index]}</p>
           </motion.div>
 
