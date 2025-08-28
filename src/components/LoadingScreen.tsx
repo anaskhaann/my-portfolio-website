@@ -1,105 +1,117 @@
-import React, { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { Dot } from "lucide-react";
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
 }
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
-  const preloaderRef = useRef<HTMLDivElement>(null);
-  const spansRef = useRef<HTMLSpanElement[]>([]);
-  const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const [index, setIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   // List of greetings
   const greetings = [
     "Hello",
+    "آداب",
+    "Привет",
+    "مرحبًا",
+    "हेलो",
     "Hola",
     "Hallo",
     "Bonjour",
-    "السلام عليكم",
     "Ciao",
-    "你好",
-    "こんにちは",
-    "안녕하세요",
   ];
 
-  useLayoutEffect(() => {
-    const inDuration = 0.2;
-    const holdDuration = 0.45;
-    const outDuration = 0.2;
-
-    // reset all spans to hidden
-    spansRef.current.forEach((el) => el && gsap.set(el, { opacity: 0, y: 8 }));
-    // ensure overlay is visible immediately and first greeting is shown to avoid blank frame
-    if (preloaderRef.current && spansRef.current[0]) {
-      gsap.set(preloaderRef.current, { opacity: 1 });
-      gsap.set(spansRef.current[0], { opacity: 1, y: 0 });
-    }
-
-    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-    timelineRef.current = tl;
-
-    const lastIndex = greetings.length - 1;
-    spansRef.current.forEach((el, i) => {
-      if (!el) return;
-      // For the first one we already showed instantly; still do a tiny hold before animating
-      if (i === 0) {
-        tl.to({}, { duration: holdDuration });
-      } else {
-        // Fade in
-        tl.to(el, { opacity: 1, y: 0, duration: inDuration });
-        // Hold visible
-        tl.to({}, { duration: holdDuration });
-      }
-      // For all but last, fade out; for last, we keep it, then fade the overlay
-      if (i !== lastIndex) {
-        tl.to(el, { opacity: 0, y: -8, duration: outDuration });
-      }
-    });
-
-    // After the last greeting has held, fade out the overlay
-    tl.to(preloaderRef.current, {
-      opacity: 0,
-      duration: 0.4,
-      ease: "power2.inOut",
-      onComplete: () => {
-        // hide completely to avoid any overlay flash
-        if (preloaderRef.current) {
-          preloaderRef.current.style.display = "none";
+  useEffect(() => {
+    const timer = setTimeout(
+      () => {
+        if (index < greetings.length - 1) {
+          setIndex((prevIndex) => prevIndex + 1);
+        } else {
+          // After the last greeting, wait a bit then start exit animation
+          setTimeout(() => {
+            setIsVisible(false);
+            // Call onLoadingComplete after the exit animation completes
+            setTimeout(() => {
+              onLoadingComplete();
+            }, 1000); // Give extra time for the exit animation to complete
+          }, 800); // Hold the last greeting a bit longer
         }
-        onLoadingComplete();
       },
-    });
+      index === 0 ? 600 : 300
+    ); // Slightly longer timing for better UX
 
-    return () => {
-      if (timelineRef.current) timelineRef.current.kill();
-      const pre = preloaderRef.current;
-      if (pre) gsap.killTweensOf(pre);
-      spansRef.current.forEach((el) => el && gsap.killTweensOf(el));
-    };
-  }, [onLoadingComplete, greetings.length]);
+    return () => clearTimeout(timer);
+  }, [index, onLoadingComplete, greetings.length]);
+
+  // Animation variants
+  const slideUp: Variants = {
+    initial: {
+      top: 0,
+    },
+    exit: {
+      top: "-100vh",
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+    },
+  };
+
+  const fade: Variants = {
+    initial: {
+      opacity: 0,
+    },
+    enter: {
+      opacity: 0.75,
+      transition: { duration: 1, delay: 0.2 },
+    },
+  };
+
+  const curve: Variants = {
+    initial: {
+      d: `M0 0 L100 0 L100 100 Q50 130 0 100 L0 0`,
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
+    },
+    exit: {
+      d: `M0 0 L100 0 L100 100 Q50 100 0 100 L0 0`,
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
+    },
+  };
 
   return (
-    <div
-      ref={preloaderRef}
-      className="fixed inset-0 bg-background flex items-center justify-center z-50"
-      aria-live="polite"
-      role="status"
-    >
-      <div className="relative h-20 w-full">
-        {greetings.map((greeting, idx) => (
-          <span
-            key={idx}
-            ref={(el) => {
-              if (el) spansRef.current[idx] = el;
-            }}
-            className="absolute inset-0 flex items-center justify-center text-5xl sm:text-6xl font-light text-foreground tracking-tight opacity-0 will-change-transform will-change-opacity"
+    <AnimatePresence mode="wait">
+      {isVisible && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background"
+          variants={slideUp}
+          initial="initial"
+          exit="exit"
+        >
+          <motion.div
+            className="flex items-center text-3xl text-foreground md:text-4xl"
+            variants={fade}
+            initial="initial"
+            animate="enter"
           >
-            {greeting}
-          </span>
-        ))}
-      </div>
-    </div>
+            <Dot size={48} className="mr-3" />
+            <p>{greetings[index]}</p>
+          </motion.div>
+
+          {/* Curved background animation */}
+          <motion.svg
+            className="absolute top-0 -z-10 h-[calc(100%+300px)] w-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <motion.path
+              className="fill-background"
+              variants={curve}
+              initial="initial"
+              exit="exit"
+            />
+          </motion.svg>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
