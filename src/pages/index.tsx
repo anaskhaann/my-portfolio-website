@@ -34,7 +34,7 @@ const Portfolio = () => {
   // ===== STATE MANAGEMENT =====
   const { isDarkMode, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isLoading, setIsLoading, loadingProgress } = useLoading();
+  const { isLoading, setIsLoading } = useLoading();
   const { lenis } = useLenis(); // Get the shared Lenis instance
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
 
