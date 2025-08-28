@@ -19,7 +19,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
           <div className="flex justify-center space-x-6 mb-8">
             {/* LinkedIn */}
             <a
-              href="https://www.linkedin.com/in/mohd-anas-khan-0a4114205/"
+              href="https://www.linkedin.com/in/kanas/"
               target="_blank"
               rel="noopener noreferrer"
               className="group transition-transform duration-300 hover:scale-110"
