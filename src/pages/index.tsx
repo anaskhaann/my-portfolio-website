@@ -53,7 +53,6 @@ const Portfolio = () => {
   usePortfolioAnimations(mainContentRef);
 
   const handleLoadingComplete = () => {
-    console.log("✅ Loading complete.");
     setIsLoading(false);
   };
 
@@ -79,7 +78,6 @@ const Portfolio = () => {
         duration: 3,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });
-      console.log(`📍 Scrolling to: ${sectionName}`);
     }
     setIsMobileMenuOpen(false);
   };

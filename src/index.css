@@ -117,7 +117,7 @@ All colors MUST be HSL.
   }
 }
 
-/* Futuristic animations and effects */
+/* Essential animations and effects */
 @layer components {
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
@@ -133,69 +133,6 @@ All colors MUST be HSL.
       opacity: 1;
       transform: translateY(0) scale(1);
       filter: blur(0);
-    }
-  }
-
-  /* Enhanced fade in with stagger support */
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Slide animations */
-  .animate-slide-in-left {
-    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .animate-slide-in-right {
-    animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  /* Scale animations */
-  .animate-scale-in {
-    animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
     }
   }
 
@@ -227,49 +164,6 @@ All colors MUST be HSL.
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   }
 
-  /* Custom scrollbar for futuristic feel */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 3px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #777;
-    border-radius: 3px;
-    transition: background 0.3s ease;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #666;
-  }
-
-  /* Glow effects */
-  .glow-blue,
-  .glow-purple,
-  .glow-cyan {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
-  }
-
-  /* Text glow effects */
-  .text-glow {
-    text-shadow: 0 0 10px currentColor;
-  }
-
-  /* Enhanced hover effects */
-  .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.2);
-  }
-
   /* Floating animation */
   .float {
     animation: float 6s ease-in-out infinite;
@@ -283,29 +177,6 @@ All colors MUST be HSL.
     50% {
       transform: translateY(-20px);
     }
-  }
-
-  /* Pulse glow animation */
-  .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes pulseGlow {
-    from {
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-    }
-    to {
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
-    }
-  }
-
-  /* Cursor animations */
-  .cursor-hover-grow {
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .cursor-hover-grow:hover {
-    transform: scale(1.5);
   }
 
   /* Typing cursor animation */
@@ -322,69 +193,6 @@ All colors MUST be HSL.
     100% {
       opacity: 0;
     }
-  }
-
-  /* Previously gradient text animation removed for minimal theme */
-  .gradient-text-animated {
-    background: none;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: initial;
-    background-clip: initial;
-    animation: none;
-  }
-
-  /* Loading animation */
-  .loading-dots {
-    display: inline-block;
-  }
-
-  .loading-dots::after {
-    content: "";
-    display: inline-block;
-    animation: dots 1.5s infinite;
-  }
-
-  @keyframes dots {
-    0%,
-    20% {
-      content: "";
-    }
-    40% {
-      content: ".";
-    }
-    60% {
-      content: "..";
-    }
-    90%,
-    100% {
-      content: "...";
-    }
-  }
-
-  /* Staggered animations */
-  .stagger-1 {
-    animation-delay: 0.1s;
-  }
-  .stagger-2 {
-    animation-delay: 0.2s;
-  }
-  .stagger-3 {
-    animation-delay: 0.3s;
-  }
-  .stagger-4 {
-    animation-delay: 0.4s;
-  }
-  .stagger-5 {
-    animation-delay: 0.5s;
-  }
-
-  /* Improved transitions */
-  .transition-all-smooth {
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .transition-transform-smooth {
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   /* Smooth reveal animation */
@@ -427,13 +235,6 @@ All colors MUST be HSL.
   }
 }
 
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .glass-card {
-    border: 2px solid rgba(139, 92, 246, 0.8);
-  }
-}
-
 /* Enhanced mobile responsiveness */
 @media (max-width: 768px) {
   .glass-card {
@@ -443,12 +244,5 @@ All colors MUST be HSL.
 
   [data-scroll-container] {
     overflow-x: hidden;
-  }
-}
-
-/* Dark mode refinements */
-@media (prefers-color-scheme: dark) {
-  .glass-card {
-    background: rgba(15, 23, 42, 0.4);
   }
 }
