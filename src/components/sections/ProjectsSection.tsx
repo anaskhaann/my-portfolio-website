@@ -25,7 +25,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   return (
     <section ref={projectsRef} id="projects" className="py-10 animate-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-light text-center mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-light text-center mb-12 text-foreground">
           Projects
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 projects-container">
@@ -34,9 +34,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               key={project.id}
               className={`group project-card glass-card rounded-xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 ${
                 isDarkMode
-                  ? "bg-card/30 border-purple-500/20 hover:border-purple-400/40"
-                  : "bg-white/50 border-purple-500/20 hover:border-purple-400/40"
-              } shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer`}
+                  ? "bg-card/30 border-border hover:border-foreground/40"
+                  : "bg-card/30 border-border hover:border-foreground/40"
+              } shadow-lg hover:shadow-2xl cursor-pointer`}
               onClick={() =>
                 setExpandedProject(
                   expandedProject === project.id ? null : project.id
@@ -50,20 +50,12 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div
-                  className={`absolute inset-0 transition-opacity duration-300 ${
-                    isDarkMode
-                      ? "bg-gradient-to-t from-background/80 to-transparent"
-                      : "bg-gradient-to-t from-white/80 to-transparent"
-                  } opacity-0 group-hover:opacity-100`}
+                  className={`absolute inset-0 transition-opacity duration-300 bg-background/60 opacity-0 group-hover:opacity-100`}
                 ></div>
               </div>
 
               <div className="p-6">
-                <h3
-                  className={`text-xl font-medium mb-4 ${
-                    isDarkMode ? "text-blue-400" : "text-white"
-                  }`}
-                >
+                <h3 className={`text-xl font-medium mb-4 text-foreground`}>
                   {project.title}
                 </h3>
 
@@ -71,7 +63,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   <Button
                     size="sm"
                     variant="outline"
-                    className="border-blue-500/30 hover:border-blue-400/50 bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 transition-all duration-300"
+                    className="border-border hover:border-foreground/50 bg-secondary hover:bg-muted text-foreground transition-all duration-300"
                     onClick={(e) => {
                       e.stopPropagation();
                       window.open(project.githubUrl, "_blank");
@@ -84,7 +76,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-purple-500/30 hover:border-purple-400/50 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 transition-all duration-300"
+                      className="border-border hover:border-foreground/50 bg-secondary hover:bg-muted text-foreground transition-all duration-300"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.open(project.liveUrl, "_blank");
@@ -98,7 +90,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-cyan-500/30 hover:border-cyan-400/50 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 transition-all duration-300"
+                      className="border-border hover:border-foreground/50 bg-secondary hover:bg-muted text-foreground transition-all duration-300"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.open(project.videoUrl, "_blank");
@@ -113,9 +105,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 {expandedProject === project.id && (
                   <div className="animate-fade-in">
                     <p
-                      className={`mb-4 leading-relaxed transition-colors duration-300 text-justify ${
-                        isDarkMode ? "text-muted-foreground" : "text-white"
-                      }`}
+                      className={`mb-4 leading-relaxed transition-colors duration-300 text-justify text-muted-foreground`}
                     >
                       {project.description}
                     </p>
@@ -123,7 +113,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                       {project.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border border-blue-500/30 transition-all duration-300 hover:scale-105"
+                          className="px-3 py-1 rounded-full text-xs bg-secondary text-foreground/80 border border-border transition-all duration-300 hover:scale-105"
                         >
                           {tech}
                         </span>
@@ -134,9 +124,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
                 <div className="mt-4 text-center">
                   <span
-                    className={`text-sm transition-colors duration-300 ${
-                      isDarkMode ? "text-muted-foreground" : "text-white/80"
-                    }`}
+                    className={`text-sm transition-colors duration-300 text-muted-foreground`}
                   >
                     {expandedProject === project.id
                       ? "Hide Details"
@@ -153,7 +141,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             <Button
               size="lg"
               variant="outline"
-              className="border-purple-500/30 hover:border-purple-400/50 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 transition-all duration-300"
+              className="border-border hover:border-foreground/50 bg-secondary hover:bg-muted text-foreground transition-all duration-300"
               onClick={() => setShowAll((prev) => !prev)}
             >
               {showAll ? "Show Less" : "View More"}
@@ -166,7 +154,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             href="https://github.com/anaskhaann"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 hover:border-purple-400/40 text-black dark:text-white hover:text-purple-400 transition-all duration-300 font-medium shadow-sm hover:shadow-lg"
+            className="inline-flex items-center px-6 py-3 rounded-lg bg-secondary border border-border text-foreground hover:bg-muted transition-all duration-300 font-medium shadow-sm hover:shadow-lg"
           >
             <Github className="w-5 h-5 mr-2" />
             For more projects, Checkout my GitHub

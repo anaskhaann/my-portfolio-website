@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 interface LoadingScreenProps {
@@ -7,7 +7,8 @@ interface LoadingScreenProps {
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const preloaderRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
+  const spansRef = useRef<HTMLSpanElement[]>([]);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   // List of greetings
   const greetings = [
@@ -22,61 +23,82 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     "안녕하세요",
   ];
 
-  useEffect(() => {
-    let index = 0;
-    const intervalTime = 600; // speed of greeting changes
-    const fadeDuration = 0.25; // used for both fade-in and fade-out
-    const totalDuration = greetings.length * intervalTime; // finish after full cycle
+  useLayoutEffect(() => {
+    const inDuration = 0.2;
+    const holdDuration = 0.45;
+    const outDuration = 0.2;
 
-    const interval = setInterval(() => {
-      gsap
-        .timeline()
-        .to(textRef.current, {
-          opacity: 0,
-          duration: fadeDuration,
-          ease: "power2.out",
-        })
-        .add(() => {
-          index = (index + 1) % greetings.length;
-          if (textRef.current) {
-            textRef.current.innerText = greetings[index];
-          }
-        })
-        .to(textRef.current, {
-          opacity: 1,
-          duration: fadeDuration,
-          ease: "power2.in",
-        });
-    }, intervalTime);
+    // reset all spans to hidden
+    spansRef.current.forEach((el) => el && gsap.set(el, { opacity: 0, y: 8 }));
+    // ensure overlay is visible immediately and first greeting is shown to avoid blank frame
+    if (preloaderRef.current && spansRef.current[0]) {
+      gsap.set(preloaderRef.current, { opacity: 1 });
+      gsap.set(spansRef.current[0], { opacity: 1, y: 0 });
+    }
 
-    // Exit loader after one full greeting cycle
-    const timeout = setTimeout(() => {
-      clearInterval(interval);
-      gsap.to(preloaderRef.current, {
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.inOut",
-        onComplete: onLoadingComplete,
-      });
-    }, totalDuration);
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    timelineRef.current = tl;
+
+    const lastIndex = greetings.length - 1;
+    spansRef.current.forEach((el, i) => {
+      if (!el) return;
+      // For the first one we already showed instantly; still do a tiny hold before animating
+      if (i === 0) {
+        tl.to({}, { duration: holdDuration });
+      } else {
+        // Fade in
+        tl.to(el, { opacity: 1, y: 0, duration: inDuration });
+        // Hold visible
+        tl.to({}, { duration: holdDuration });
+      }
+      // For all but last, fade out; for last, we keep it, then fade the overlay
+      if (i !== lastIndex) {
+        tl.to(el, { opacity: 0, y: -8, duration: outDuration });
+      }
+    });
+
+    // After the last greeting has held, fade out the overlay
+    tl.to(preloaderRef.current, {
+      opacity: 0,
+      duration: 0.4,
+      ease: "power2.inOut",
+      onComplete: () => {
+        // hide completely to avoid any overlay flash
+        if (preloaderRef.current) {
+          preloaderRef.current.style.display = "none";
+        }
+        onLoadingComplete();
+      },
+    });
 
     return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
+      if (timelineRef.current) timelineRef.current.kill();
+      const pre = preloaderRef.current;
+      if (pre) gsap.killTweensOf(pre);
+      spansRef.current.forEach((el) => el && gsap.killTweensOf(el));
     };
-  }, [onLoadingComplete]);
+  }, [onLoadingComplete, greetings.length]);
 
   return (
     <div
       ref={preloaderRef}
-      className="fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center z-50"
+      className="fixed inset-0 bg-background flex items-center justify-center z-50"
+      aria-live="polite"
+      role="status"
     >
-      <h1
-        ref={textRef}
-        className="text-4xl font-light bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent"
-      >
-        {greetings[0]}
-      </h1>
+      <div className="relative h-20 w-full">
+        {greetings.map((greeting, idx) => (
+          <span
+            key={idx}
+            ref={(el) => {
+              if (el) spansRef.current[idx] = el;
+            }}
+            className="absolute inset-0 flex items-center justify-center text-5xl sm:text-6xl font-light text-foreground tracking-tight opacity-0 will-change-transform will-change-opacity"
+          >
+            {greeting}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };

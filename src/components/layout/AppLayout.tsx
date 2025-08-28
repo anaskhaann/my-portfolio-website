@@ -30,11 +30,7 @@ const AppLayout = ({
   return (
     <div className="relative">
       <div
-        className={`min-h-screen transition-all duration-500 ease-out ${
-          isDarkMode
-            ? "bg-background text-foreground"
-            : "bg-slate-50 text-slate-900"
-        }`}
+        className={`min-h-screen transition-all duration-500 ease-out bg-background text-foreground`}
         style={{
           opacity: 1,
           visibility: "visible",
@@ -58,23 +54,15 @@ const AppLayout = ({
         />
 
         {/* Background Effects with Theme Support */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
           <div
-            className={`absolute inset-0 transition-all duration-500 ${
-              isDarkMode
-                ? "bg-gradient-to-br from-background via-purple-900/10 to-background"
-                : "bg-gradient-to-br from-slate-50 via-blue-100/30 to-slate-50"
-            }`}
+            className={`absolute inset-0 transition-all duration-500 bg-background`}
           />
           <div
-            className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl transition-all duration-500 ${
-              isDarkMode ? "bg-purple-500/20" : "bg-purple-400/20"
-            }`}
+            className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl transition-all duration-500 bg-muted/60`}
           />
           <div
-            className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl transition-all duration-500 ${
-              isDarkMode ? "bg-blue-500/20" : "bg-blue-400/20"
-            }`}
+            className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl transition-all duration-500 bg-muted/60`}
           />
         </div>
 

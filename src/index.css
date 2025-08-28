@@ -4,7 +4,6 @@
 
 @import "./styles/fonts.css";
 
-
 /* Hide scrollbar globally for the website body */
 html,
 body {
@@ -21,75 +20,86 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  /* Light mode as default; grayscale minimal palette */
   :root {
-    --background: 222 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 100%; /* white */
+    --foreground: 0 0% 7%; /* near-black text */
 
-    --card: 222 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
 
-    --popover: 222 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47.4% 11.2%;
+    --primary: 0 0% 7%; /* primary = text color */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 96%; /* subtle gray surfaces */
+    --secondary-foreground: 0 0% 7%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 7%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 45%; /* muted red, still grayscale-ish constraint */
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 20%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 7%;
+    --sidebar-primary: 0 0% 7%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 7%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 0 0% 20%;
 
     --radius: 0.5rem;
   }
 
-  .light {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+  /* Dark mode override using the `dark` class used by the ThemeProvider */
+  .dark {
+    --background: 0 0% 3%; /* near-black */
+    --foreground: 0 0% 96%; /* near-white */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 96%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 96%;
+    --primary-foreground: 0 0% 7%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 12%;
+    --accent-foreground: 0 0% 96%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 40% 30%;
+    --destructive-foreground: 0 0% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 0 0% 70%;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 0 0% 96%;
+    --sidebar-primary-foreground: 0 0% 7%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 0 0% 70%;
   }
 }
 
@@ -191,36 +201,30 @@ All colors MUST be HSL.
 
   /* Glassmorphism effect with better theme support */
   .glass-card {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    background: rgba(15, 23, 42, 0.3);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
   }
 
   .glass-card:hover {
-    background: rgba(15, 23, 42, 0.4);
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    box-shadow: 0 16px 64px rgba(139, 92, 246, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--foreground) / 0.35);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
   }
 
   /* Light mode glassmorphism */
-  .light .glass-card {
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  :root .glass-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
 
-  .light .glass-card:hover {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    box-shadow: 0 16px 64px rgba(139, 92, 246, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  :root .glass-card:hover {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--foreground) / 0.35);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   }
 
   /* Custom scrollbar for futuristic feel */
@@ -229,31 +233,25 @@ All colors MUST be HSL.
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(15, 23, 42, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 3px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    background: #777;
     border-radius: 3px;
     transition: background 0.3s ease;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #2563eb, #7c3aed);
+    background: #666;
   }
 
   /* Glow effects */
-  .glow-blue {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-  }
-
-  .glow-purple {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-  }
-
+  .glow-blue,
+  .glow-purple,
   .glow-cyan {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
   }
 
   /* Text glow effects */
@@ -326,26 +324,13 @@ All colors MUST be HSL.
     }
   }
 
-  /* Gradient text animation */
+  /* Previously gradient text animation removed for minimal theme */
   .gradient-text-animated {
-    background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 3s ease infinite;
-  }
-
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    background-clip: initial;
+    animation: none;
   }
 
   /* Loading animation */

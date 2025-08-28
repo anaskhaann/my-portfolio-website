@@ -9,10 +9,16 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import AboutSection from "@/components/sections/AboutSection";
 import AppLayout from "@/components/layout/AppLayout"; // Import the new layout
+import EducationSection from "@/components/sections/EducationSection";
 import { useTheme } from "@/hooks/useTheme";
 import { useLoading } from "@/hooks/useLoading";
 import { usePortfolioAnimations } from "@/hooks/usePortfolioAnimations";
-import { experiences, projects, skillCategories } from "@/data/portfolioData";
+import {
+  experiences,
+  projects,
+  skillCategories,
+  education,
+} from "@/data/portfolioData";
 import { useLenis } from "@/providers/LenisProvider";
 
 // Register GSAP plugins
@@ -36,6 +42,7 @@ const Portfolio = () => {
   const homeRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
+  const educationRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
   const mainContentRef = useRef<HTMLDivElement>(null);
@@ -60,6 +67,7 @@ const Portfolio = () => {
       home: homeRef,
       about: aboutRef,
       experience: experienceRef,
+      education: educationRef,
       projects: projectsRef,
       skills: skillsRef,
     };
@@ -77,10 +85,6 @@ const Portfolio = () => {
   };
 
   // ===== RENDER LOGIC =====
-  if (isLoading) {
-    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
-  }
-
   return (
     <AppLayout
       isDarkMode={isDarkMode}
@@ -90,6 +94,7 @@ const Portfolio = () => {
       onSectionScroll={scrollToSection}
       isLoading={isLoading}
     >
+      {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
       <div
         ref={mainContentRef}
         style={{
@@ -103,6 +108,11 @@ const Portfolio = () => {
           experiences={experiences}
           isDarkMode={isDarkMode}
           experienceRef={experienceRef}
+        />
+        <EducationSection
+          education={education}
+          isDarkMode={isDarkMode}
+          educationRef={educationRef}
         />
         <ProjectsSection
           projects={projects}

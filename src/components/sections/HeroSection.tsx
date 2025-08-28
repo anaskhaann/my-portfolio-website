@@ -93,7 +93,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-1 lg:order-2 flex justify-center hero-element">
             <div className="relative group">
-              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20 relative transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-purple-500/40">
+              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-border shadow-2xl relative transition-all duration-300 ease-in-out group-hover:scale-105">
                 <div className="w-full h-full relative">
                   <img
                     src="/assets/pfp.jpg"
@@ -102,14 +102,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   />
                 </div>
 
-                {/* Gradient overlay for hover effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-muted/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
               {/* Floating decorative elements with improved animations */}
-              <div className="absolute -top-6 -right-6 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg shadow-blue-500/50 animate-pulse"></div>
-              <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg shadow-purple-500/50 animate-bounce"></div>
-              <div className="absolute top-1/2 -left-8 w-4 h-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shadow-lg shadow-cyan-500/50 animate-ping"></div>
+              <div className="absolute -top-6 -right-6 w-8 h-8 bg-muted rounded-full shadow-lg animate-pulse"></div>
+              <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-muted rounded-full shadow-lg animate-bounce"></div>
+              <div className="absolute top-1/2 -left-8 w-4 h-4 bg-muted rounded-full shadow-lg animate-ping"></div>
             </div>
           </div>
 
@@ -118,10 +117,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Greeting and Main Name */}
             <div className="hero-element">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight">
-                <span className="block text-black dark:text-white mb-2 text-2xl sm:text-3xl lg:text-4xl">
+                <span className="block text-foreground mb-2 text-2xl sm:text-3xl lg:text-4xl">
                   Hi there, I'm
                 </span>
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent font-medium tracking-tight">
+                <span className="text-foreground font-medium tracking-tight">
                   Anas Khan
                 </span>
               </h1>
@@ -130,12 +129,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Dynamic Role with Typing Animation */}
             <div className="hero-element">
               <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-6 min-h-[3rem] flex items-center justify-center lg:justify-start">
-                <span className="text-black dark:text-white mr-3">
+                <span className="text-foreground mr-3">
                   {/* Here we will have dynamic typing animation */}I am{" "}
                 </span>
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-medium">
+                <span className="text-foreground font-medium">
                   {typingText}
-                  <span className="animate-pulse text-purple-400 ml-1">|</span>
+                  <span className="animate-pulse text-foreground ml-1">|</span>
                 </span>
               </div>
             </div>

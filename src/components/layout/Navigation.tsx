@@ -48,6 +48,7 @@ const Navigation: React.FC<NavigationProps> = ({
   const navigationItems = [
     { name: "About", section: "about" },
     { name: "Experience", section: "experience" },
+    { name: "Education", section: "education" },
     { name: "Projects", section: "projects" },
     { name: "Skills", section: "skills" },
   ];
@@ -73,14 +74,14 @@ const Navigation: React.FC<NavigationProps> = ({
   };
 
   return (
-    <nav className="fixed top-0 w-full z-40 bg-slate-900/80 backdrop-blur-md border-b border-purple-500/20">
+    <nav className="fixed top-0 w-full z-40 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <button
             type="button"
             onClick={() => onSectionScroll("home")}
-            className="text-2xl font-black tracking-wide bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-purple-400 hover:to-cyan-400 transition-all duration-300 cursor-pointer focus:outline-none"
+            className="text-2xl font-black tracking-wide text-foreground transition-colors duration-300 cursor-pointer focus:outline-none"
             aria-label="Scroll to home section"
           >
             A.KHAN
@@ -93,18 +94,18 @@ const Navigation: React.FC<NavigationProps> = ({
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.section)}
-                className="text-gray-300 hover:text-white transition-colors duration-300 relative group"
+                className="text-foreground/80 hover:text-foreground transition-colors duration-300 relative group"
               >
                 {item.name}
                 {/* Animated underline effect */}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-foreground/40 group-hover:w-full transition-all duration-300" />
               </button>
             ))}
 
             {/* Resume Download Button */}
             <Button
               size="sm"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 border-0 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300"
+              className="bg-foreground text-background hover:opacity-90 border-0 shadow-lg shadow-black/10 dark:shadow-white/10 transition-all duration-300"
               onClick={handleResumeDownload}
             >
               <Download className="w-4 h-4 mr-2" />
@@ -114,7 +115,7 @@ const Navigation: React.FC<NavigationProps> = ({
             {/* Theme Toggle Button */}
             <button
               onClick={onThemeToggle}
-              className="p-2 rounded-full bg-slate-800/50 hover:bg-slate-700/50 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300"
+              className="p-2 rounded-full bg-secondary hover:bg-muted border border-border transition-all duration-300"
               aria-label="Toggle theme"
             >
               {isDarkMode ? (
@@ -130,7 +131,7 @@ const Navigation: React.FC<NavigationProps> = ({
             {/* Mobile Theme Toggle */}
             <button
               onClick={onThemeToggle}
-              className="p-2 rounded-full bg-slate-800/50 hover:bg-slate-700/50 border border-purple-500/20 transition-all duration-300"
+              className="p-2 rounded-full bg-secondary hover:bg-muted border border-border transition-all duration-300"
               aria-label="Toggle theme"
             >
               {isDarkMode ? (
@@ -157,14 +158,14 @@ const Navigation: React.FC<NavigationProps> = ({
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-purple-500/20 bg-slate-900/95 backdrop-blur-md">
+          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-md">
             <div className="flex flex-col space-y-3">
               {/* Mobile Navigation Links */}
               {navigationItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.section)}
-                  className="text-left py-2 text-gray-300 hover:text-white transition-colors duration-300"
+                  className="text-left py-2 text-foreground/80 hover:text-foreground transition-colors duration-300"
                 >
                   {item.name}
                 </button>
@@ -173,7 +174,7 @@ const Navigation: React.FC<NavigationProps> = ({
               {/* Mobile Resume Button */}
               <Button
                 size="sm"
-                className="w-fit bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                className="w-fit bg-foreground text-background hover:opacity-90"
                 onClick={handleResumeDownload}
               >
                 <Download className="w-4 h-4 mr-2" />

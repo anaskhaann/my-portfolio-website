@@ -1,4 +1,9 @@
-import type { Experience, Project, SkillCategory } from "@/types";
+import type {
+  Experience,
+  Project,
+  SkillCategory,
+  EducationItem,
+} from "@/types";
 
 export const experiences: Experience[] = [
   {
@@ -103,5 +108,20 @@ export const skillCategories: SkillCategory[] = [
       { name: "UV", icon: "/assets/skills/uv.svg" },
       { name: "Anaconda", icon: "/assets/skills/anaconda.svg" },
     ],
+  },
+];
+
+export const education: EducationItem[] = [
+  {
+    id: 1,
+    degree: "B.E in Artificial Intelligence and Data Science",
+    institution: "RCOE, Mumbai",
+    duration: "2021 - 2025",
+  },
+  {
+    id: 2,
+    degree: "Higher Secondary (Science)",
+    institution: "Maharashtra State Board",
+    duration: "2020 - 2021",
   },
 ];

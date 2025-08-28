@@ -25,14 +25,14 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
       className="py-10 animate-section"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-light text-center mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-light text-center mb-12 text-foreground">
           Experience
         </h2>
         {/* Timeline Container */}
         <div className="relative space-y-12 experience-container">
           {/* Vertical Timeline Line */}
           <div
-            className="absolute left-5 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500/40 via-purple-400/30 to-purple-500/40 rounded-full pointer-events-none"
+            className="absolute left-5 top-0 bottom-0 w-1 bg-muted rounded-full pointer-events-none"
             style={{ zIndex: 0 }}
           />
 
@@ -41,9 +41,9 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
               key={exp.id}
               className={`relative flex items-start group experience-card glass-card p-6 pl-16 rounded-xl backdrop-blur-md transition-all duration-500 cursor-pointer border-l-0 ${
                 isDarkMode
-                  ? "bg-card/30 border-purple-500/20 hover:border-purple-400/40"
-                  : "bg-white/50 border-purple-500/20 hover:border-purple-400/40"
-              } shadow-lg hover:shadow-xl hover:shadow-purple-500/10`}
+                  ? "bg-card/30 border-border hover:border-foreground/40"
+                  : "bg-card/30 border-border hover:border-foreground/40"
+              } shadow-lg hover:shadow-xl`}
               onClick={() => handleToggle(index)}
               tabIndex={0}
               role="button"
@@ -51,39 +51,23 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
             >
               {/* Timeline Dot */}
               <span
-                className={`absolute left-2 top-8 w-5 h-5 rounded-full border-2 ${
-                  isDarkMode
-                    ? "border-purple-400 bg-background"
-                    : "border-blue-400 bg-white"
-                } shadow-lg z-10 flex items-center justify-center transition-all duration-300`}
+                className={`absolute left-2 top-8 w-5 h-5 rounded-full border-2 border-border bg-background shadow-lg z-10 flex items-center justify-center transition-all duration-300`}
               >
-                <span
-                  className={`w-2 h-2 rounded-full ${
-                    isDarkMode ? "bg-purple-400" : "bg-blue-400"
-                  }`}
-                ></span>
+                <span className={`w-2 h-2 rounded-full bg-foreground`}></span>
               </span>
 
               <div className="flex-1">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2 mx-2">
                   <div>
-                    <h3
-                      className={`text-xl font-medium ${
-                        isDarkMode ? "text-blue-400" : "text-white"
-                      }`}
-                    >
+                    <h3 className={`text-xl font-medium text-foreground`}>
                       {exp.title}
                     </h3>
-                    <p className="text-lg font-light text-purple-700">
+                    <p className="text-lg font-light text-muted-foreground">
                       {exp.company}
                     </p>
                   </div>
                   <span
-                    className={`px-4 py-2 rounded-full text-sm font-medium ${
-                      isDarkMode
-                        ? "bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border-blue-500/30"
-                        : "bg-white/10 text-white border-white/20"
-                    } border w-fit`}
+                    className={`px-4 py-2 rounded-full text-sm font-medium bg-secondary text-foreground/80 border border-border w-fit`}
                   >
                     {exp.duration}
                   </span>
@@ -93,11 +77,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   {exp.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className={`px-3 py-1 rounded-full text-sm transition-all duration-300 ${
-                        isDarkMode
-                          ? "bg-secondary/50 text-foreground border-border"
-                          : "bg-gray-600/50 text-white border-gray-300"
-                      } border hover:scale-105`}
+                      className={`px-3 py-1 rounded-full text-sm transition-all duration-300 bg-secondary text-foreground border border-border hover:scale-105`}
                     >
                       {tech}
                     </span>
@@ -106,7 +86,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 {/* Expand/Collapse Button (optional chevron) */}
                 <button
                   type="button"
-                  className="flex items-center text-white hover:text-white focus:ring-2 focus:ring-black mt-2 mb-1"
+                  className="flex items-center text-foreground hover:text-foreground focus:ring-2 focus:ring-ring mt-2 mb-1"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleToggle(index);
@@ -143,7 +123,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   }`}
                   aria-hidden={openIndex !== index}
                 >
-                  <p className="text-base text-white dark:text-gray-300 leading-relaxed text-justify">
+                  <p className="text-base text-muted-foreground leading-relaxed text-justify">
                     {exp.description}
                   </p>
                 </div>

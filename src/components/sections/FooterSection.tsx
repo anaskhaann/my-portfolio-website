@@ -10,8 +10,8 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
     <footer
       className={`py-16 border-t transition-all duration-100 ${
         isDarkMode
-          ? "border-border bg-card/50 text-white"
-          : "border-slate-200 bg-white/50 text-black"
+          ? "border-border bg-card/50 text-foreground"
+          : "border-border bg-card/50 text-foreground"
       } animate-section`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,13 +25,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600"
-                    : "bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500"
-                }`}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl bg-secondary hover:bg-muted border border-border`}
               >
-                <Linkedin className="w-6 h-6 text-white" />
+                <Linkedin className="w-6 h-6 text-foreground" />
               </div>
             </a>
 
@@ -43,13 +39,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700"
-                    : "bg-gradient-to-br from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600"
-                }`}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl bg-secondary hover:bg-muted border border-border`}
               >
-                <Github className="w-6 h-6 text-white" />
+                <Github className="w-6 h-6 text-foreground" />
               </div>
             </a>
 
@@ -61,13 +53,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600"
-                    : "bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500"
-                }`}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl bg-secondary hover:bg-muted border border-border`}
               >
-                <MessageCircle className="w-6 h-6 text-white" />
+                <MessageCircle className="w-6 h-6 text-foreground" />
               </div>
             </a>
 
@@ -79,13 +67,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600"
-                    : "bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500"
-                }`}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl bg-secondary hover:bg-muted border border-border`}
               >
-                <Mail className="w-6 h-6 text-white" />
+                <Mail className="w-6 h-6 text-foreground" />
               </div>
             </a>
 
@@ -97,22 +81,16 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700"
-                    : "bg-gradient-to-br from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600"
-                }`}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl bg-secondary hover:bg-muted border border-border`}
               >
-                <Instagram className="w-6 h-6 text-white" />
+                <Instagram className="w-6 h-6 text-foreground" />
               </div>
             </a>
           </div>
 
           {/* Copyright */}
           <p
-            className={`text-lg transition-colors duration-300 ${
-              isDarkMode ? "text-muted-foreground" : "text-slate-600"
-            }`}
+            className={`text-lg transition-colors duration-300 text-muted-foreground`}
           >
             © 2025 Anas Khan. Crafted with ❤️ precision and passion.
           </p>

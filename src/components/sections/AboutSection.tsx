@@ -12,20 +12,18 @@ const AboutSection: React.FC<AboutSectionProps> = ({
   return (
     <section ref={aboutRef} id="about" className="py-10 animate-section">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-light text-center mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-light text-center mb-12 text-foreground">
           About Me
         </h2>
         <div
           className={`glass-card p-8 rounded-2xl backdrop-blur-md transition-all duration-300 ${
             isDarkMode
-              ? "bg-card/30 border-purple-500/20 hover:border-purple-400/40"
-              : "bg-white/50 border-purple-500/20 hover:border-purple-400/40"
+              ? "bg-card/30 border-border hover:border-foreground/40"
+              : "bg-card/30 border-border hover:border-foreground/40"
           } shadow-xl hover:shadow-2xl`}
         >
           <div
-            className={`prose prose-lg max-w-none transition-colors duration-300 text-justify ${
-              isDarkMode ? "text-muted-foreground" : "text-white"
-            }`}
+            className={`prose prose-lg max-w-none transition-colors duration-300 text-justify text-muted-foreground`}
           >
             {/* TODO: Update with your actual bio */}
             <p className="text-lg mb-2">
