@@ -41,9 +41,6 @@ export function useCursorFollower(
       return;
     }
 
-    // Hide the default system cursor for a custom experience.
-    document.body.style.cursor = "none";
-
     let mouseX = 0;
     let mouseY = 0;
     let cursorX = 0;
@@ -101,8 +98,6 @@ export function useCursorFollower(
     // Cleanup function to remove event listeners and restore the cursor.
     return () => {
       document.removeEventListener("mousemove", moveCursor);
-      // Restore the default system cursor.
-      document.body.style.cursor = "auto";
     };
   }, [cursorRef, cursorDotRef, isLoading]);
 }
