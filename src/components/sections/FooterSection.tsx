@@ -1,5 +1,5 @@
 import React from "react";
-import { Linkedin, Github, Instagram, MessageCircle, Mail } from "lucide-react";
+import { Linkedin, Github, Instagram, Send, Mail } from "lucide-react";
 
 interface FooterSectionProps {
   isDarkMode: boolean;
@@ -55,7 +55,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               <div
                 className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl bg-secondary hover:bg-muted border border-border`}
               >
-                <MessageCircle className="w-6 h-6 text-foreground" />
+                <Send className="w-6 h-6 text-foreground" />
               </div>
             </a>
 

@@ -15,25 +15,27 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
     if (!scope.current) return;
 
     const ctx = gsap.context(() => {
-      // Hero section animations with stagger
+      // Hero section animations with stagger and slight rotation for depth
       gsap.fromTo(
         ".hero-element",
         {
           opacity: 0,
           y: 60,
           scale: 0.9,
+          rotationX: 10,
         },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 1.2,
-          ease: "power3.out",
-          stagger: 0.2,
+          rotationX: 0,
+          duration: 1.4,
+          ease: "power4.out",
+          stagger: 0.25,
         }
       );
 
-      // Scroll-triggered animations for sections
+      // Scroll-triggered animations for sections with added blur for focus effect
       const sections = gsap.utils.toArray<HTMLElement>(".animate-section");
       sections.forEach((section) => {
         gsap.fromTo(
@@ -42,48 +44,52 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
             opacity: 0,
             y: 80,
             scale: 0.95,
+            filter: "blur(5px)",
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1,
-            ease: "power3.out",
+            filter: "blur(0px)",
+            duration: 1.2,
+            ease: "power4.out",
             scrollTrigger: {
               trigger: section,
               start: "top 90%",
               end: "top 60%",
-              scrub: 1.5, // Smoothly scrubs the animation
+              scrub: 1,
               toggleActions: "play reverse play reverse",
             },
           }
         );
       });
 
-      // Animate skill cards with bounce effect
+      // Animate skill cards with bounce effect and rotation for liveliness
       gsap.fromTo(
         ".skill-card",
         {
           opacity: 0,
           scale: 0.7,
           y: 40,
+          rotation: 5,
         },
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 0.8,
-          ease: "back.out(1.7)",
+          rotation: 0,
+          duration: 0.9,
+          ease: "back.out(1.4)",
           scrollTrigger: {
             trigger: ".skills-container",
             start: "top 80%",
             toggleActions: "play none none reverse",
           },
-          stagger: 0.1,
+          stagger: 0.15,
         }
       );
 
-      // Animate project cards with 3D effect
+      // Animate project cards with 3D effect and slight scale pulse for emphasis
       gsap.fromTo(
         ".project-card",
         {
@@ -96,14 +102,14 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
           opacity: 1,
           y: 0,
           rotationY: 0,
-          duration: 1,
-          ease: "power2.out",
+          duration: 1.2,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: ".projects-container",
             start: "top 80%",
             toggleActions: "play none none reverse",
           },
-          stagger: 0.15,
+          stagger: 0.2,
         }
       );
     }, scope); // Use scope for context
