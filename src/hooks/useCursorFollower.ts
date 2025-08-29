@@ -37,6 +37,9 @@ export function useCursorFollower(
       return;
     }
 
+    // Hide the system cursor on desktop
+    document.body.style.cursor = "none";
+
     let mouseX = 0;
     let mouseY = 0;
     let cursorX = 0;
@@ -48,8 +51,8 @@ export function useCursorFollower(
     };
 
     const animateCursor = () => {
-      cursorX += (mouseX - cursorX) * 0.1;
-      cursorY += (mouseY - cursorY) * 0.1;
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
       gsap.set(cursor, { x: cursorX - 15, y: cursorY - 15 });
       gsap.set(cursorDot, { x: mouseX - 4, y: mouseY - 4 });
       requestAnimationFrame(animateCursor);
@@ -79,6 +82,8 @@ export function useCursorFollower(
 
     return () => {
       document.removeEventListener("mousemove", moveCursor);
+      // Restore the system cursor
+      document.body.style.cursor = "auto";
     };
   }, [cursorRef, cursorDotRef, isLoading]);
 }
