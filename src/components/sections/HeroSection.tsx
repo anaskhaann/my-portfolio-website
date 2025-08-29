@@ -84,11 +84,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const { isDarkMode } = useTheme();
 
   return (
-    <section
-      id="home"
-      ref={homeRef}
-      className="min-h-screen max-h-fit flex items-center"
-    >
+    <section id="home" ref={homeRef} className="py-20 flex items-center">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-1 lg:order-2 flex justify-center hero-element">
