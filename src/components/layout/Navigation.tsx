@@ -70,7 +70,10 @@ const Navigation: React.FC<NavigationProps> = ({
    * Opens resume in new tab
    */
   const handleResumeDownload = () => {
-    window.open("/assets/resume.pdf", "_blank");
+    window.open(
+      "https://drive.google.com/file/d/16DDCrdMmQA3U8AIzFOGsYKLTJu3fFprc/view?usp=sharing",
+      "_blank"
+    );
   };
 
   return (
