@@ -13,13 +13,9 @@ const EducationSection: React.FC<EducationSectionProps> = ({
   educationRef,
 }) => {
   return (
-    <section
-      ref={educationRef}
-      id="education"
-      className="py-10 animate-section"
-    >
+    <section ref={educationRef} id="education" className="py-8 animate-section">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-light text-center mb-12 text-foreground">
+        <h2 className="text-4xl font-semibold text-center mb-8 text-foreground">
           Education
         </h2>
 
@@ -33,14 +29,14 @@ const EducationSection: React.FC<EducationSectionProps> = ({
           {education.map((ed) => (
             <div
               key={ed.id}
-              className={`relative flex items-start p-6 pl-16 rounded-xl glass-card backdrop-blur-md transition-all duration-300 border-l-0 ${
+              className={`relative flex items-start p-6 pl-8 rounded-xl glass-card backdrop-blur-md transition-all duration-300 ${
                 isDarkMode
                   ? "bg-card/30 border-border hover:border-foreground/40"
                   : "bg-card/30 border-border hover:border-foreground/40"
               }`}
             >
-              {/* Dot */}
-              <span className="absolute left-2 top-8 w-5 h-5 rounded-full border-2 border-border bg-background shadow-lg z-10 flex items-center justify-center">
+              {/* Timeline Dot */}
+              <span className="absolute left-2 top-8 w-5 h-5 rounded-full border-2 border-border bg-background shadow-lg z-10 flex items-center justify-center transition-all duration-300">
                 <span className="w-2 h-2 rounded-full bg-foreground" />
               </span>
 
@@ -50,11 +46,11 @@ const EducationSection: React.FC<EducationSectionProps> = ({
                     <h3 className="text-xl font-medium text-foreground">
                       {ed.degree}
                     </h3>
-                    <p className="text-lg font-light text-muted-foreground">
+                    <p className="text-lg font-normal italic text-muted-foreground">
                       {ed.institution}
                     </p>
                   </div>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium bg-secondary text-foreground/80 border border-border w-fit">
+                  <span className="px-4 py-2 rounded-full text-sm font-normal bg-secondary text-foreground/80 border border-border w-fit">
                     {ed.duration}
                   </span>
                 </div>

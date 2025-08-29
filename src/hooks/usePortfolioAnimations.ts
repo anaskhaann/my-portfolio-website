@@ -35,7 +35,7 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
 
       // Scroll-triggered animations for sections
       const sections = gsap.utils.toArray<HTMLElement>(".animate-section");
-      sections.forEach((section, index) => {
+      sections.forEach((section) => {
         gsap.fromTo(
           section,
           {
@@ -47,15 +47,15 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1.2,
+            duration: 1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: section,
-              start: "top 85%",
-              end: "bottom 15%",
-              toggleActions: "play none none reverse",
+              start: "top 90%",
+              end: "top 60%",
+              scrub: 1.5, // Smoothly scrubs the animation
+              toggleActions: "play reverse play reverse",
             },
-            delay: index * 0.1,
           }
         );
       });

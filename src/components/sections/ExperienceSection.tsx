@@ -22,14 +22,14 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
     <section
       ref={experienceRef}
       id="experience"
-      className="py-10 animate-section"
+      className="py-8 animate-section"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-light text-center mb-12 text-foreground">
+        <h2 className="text-4xl font-semibold text-center mb-8 text-foreground">
           Experience
         </h2>
         {/* Timeline Container */}
-        <div className="relative space-y-12 experience-container">
+        <div className="relative space-y-8 experience-container">
           {/* Vertical Timeline Line */}
           <div
             className="absolute left-5 top-0 bottom-0 w-1 bg-muted rounded-full pointer-events-none"
@@ -39,7 +39,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
           {experiences.map((exp, index) => (
             <div
               key={exp.id}
-              className={`relative flex items-start group experience-card glass-card p-6 pl-16 rounded-xl backdrop-blur-md transition-all duration-500 cursor-pointer border-l-0 ${
+              className={`relative flex items-start group experience-card glass-card p-6 pl-8 rounded-xl backdrop-blur-md transition-all duration-300 cursor-pointer ${
                 isDarkMode
                   ? "bg-card/30 border-border hover:border-foreground/40"
                   : "bg-card/30 border-border hover:border-foreground/40"
@@ -62,12 +62,12 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                     <h3 className={`text-xl font-medium text-foreground`}>
                       {exp.title}
                     </h3>
-                    <p className="text-lg font-light text-muted-foreground">
+                    <p className="text-lg font-normal italic text-muted-foreground">
                       {exp.company}
                     </p>
                   </div>
                   <span
-                    className={`px-4 py-2 rounded-full text-sm font-medium bg-secondary text-foreground/80 border border-border w-fit`}
+                    className={`px-4 py-2 rounded-full text-sm font-normal bg-secondary text-foreground/80 border border-border w-fit`}
                   >
                     {exp.duration}
                   </span>
@@ -86,7 +86,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 {/* Expand/Collapse Button (optional chevron) */}
                 <button
                   type="button"
-                  className="flex items-center text-foreground hover:text-foreground focus:ring-2 focus:ring-ring mt-2 mb-1"
+                  className="flex items-center text-foreground hover:text-foreground mt-2 mb-1"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleToggle(index);
@@ -123,7 +123,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   }`}
                   aria-hidden={openIndex !== index}
                 >
-                  <p className="text-base text-muted-foreground leading-relaxed text-justify">
+                  <p className="font-normal text-muted-foreground leading-relaxed text-justify">
                     {exp.description}
                   </p>
                 </div>

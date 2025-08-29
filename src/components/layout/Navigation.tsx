@@ -75,20 +75,20 @@ const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <nav className="fixed top-0 w-full z-40 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <button
             type="button"
             onClick={() => onSectionScroll("home")}
-            className="text-2xl font-black tracking-wide text-foreground transition-colors duration-300 cursor-pointer focus:outline-none"
+            className="text-3xl font-black tracking-wide text-foreground transition-colors duration-300 cursor-pointer focus:outline-none"
             aria-label="Scroll to home section"
           >
-            A.KHAN
+            /A\
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 font-medium">
             {/* Navigation Links */}
             {navigationItems.map((item) => (
               <button
@@ -159,13 +159,13 @@ const Navigation: React.FC<NavigationProps> = ({
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-md">
-            <div className="flex flex-col space-y-3">
+            <div className="flex flex-col space-y-2 font-medium">
               {/* Mobile Navigation Links */}
               {navigationItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.section)}
-                  className="text-left py-2 text-foreground/80 hover:text-foreground transition-colors duration-300"
+                  className="text-left py-1 text-foreground/80 hover:text-foreground transition-colors duration-300"
                 >
                   {item.name}
                 </button>

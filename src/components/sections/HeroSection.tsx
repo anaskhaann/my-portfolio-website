@@ -87,9 +87,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       id="home"
       ref={homeRef}
-      className="min-h-screen flex items-center pt-16"
+      className="min-h-screen max-h-fit flex items-center"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-1 lg:order-2 flex justify-center hero-element">
             <div className="relative group">
@@ -116,20 +116,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="order-2 lg:order-1 text-center lg:text-left space-y-6">
             {/* Greeting and Main Name */}
             <div className="hero-element">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal leading-tight">
                 <span className="block text-foreground mb-2 text-2xl sm:text-3xl lg:text-4xl">
-                  Hi there, I'm
+                  Hey there, I'm
                 </span>
-                <span className="text-foreground font-medium tracking-tight">
-                  Anas Khan
+                <span className="text-foreground font-bold tracking-tight">
+                  Mohd Anas
                 </span>
               </h1>
             </div>
 
             {/* Dynamic Role with Typing Animation */}
             <div className="hero-element">
-              <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-6 min-h-[3rem] flex items-center justify-center lg:justify-start">
-                <span className="text-foreground mr-3">
+              <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-6 min-h-[2rem] flex items-center justify-center lg:justify-start">
+                <span className="text-foreground mr-2">
                   {/* Here we will have dynamic typing animation */}I am{" "}
                 </span>
                 <span className="text-foreground font-medium">
@@ -141,10 +141,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Professional Tagline */}
             <div className="hero-element">
-              <p className="text-lg sm:text-xl lg:text-2xl font-light text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-lg sm:text-xl lg:text-2xl font-normal text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 I Build what I love and love what I Built.
               </p>
-              <p className="text-lg sm:text-xl lg:text-2xl font-light text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-lg sm:text-xl lg:text-2xl font-normal text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 I am Good at What I Do.
               </p>
             </div>

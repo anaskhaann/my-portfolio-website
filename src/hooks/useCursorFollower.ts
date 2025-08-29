@@ -3,7 +3,9 @@ import gsap from "gsap";
 
 // Helper function to detect mobile devices
 const isMobileDevice = () => {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
 };
 
 /**
@@ -13,7 +15,11 @@ const isMobileDevice = () => {
  * @param cursorDotRef - ref for the cursor dot element
  * @param isLoading - loading state (to delay effect until loaded)
  */
-export function useCursorFollower(cursorRef: React.RefObject<HTMLDivElement>, cursorDotRef: React.RefObject<HTMLDivElement>, isLoading: boolean) {
+export function useCursorFollower(
+  cursorRef: React.RefObject<HTMLDivElement>,
+  cursorDotRef: React.RefObject<HTMLDivElement>,
+  isLoading: boolean
+) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -23,11 +29,11 @@ export function useCursorFollower(cursorRef: React.RefObject<HTMLDivElement>, cu
 
     const cursor = cursorRef.current;
     const cursorDot = cursorDotRef.current;
-    
+
     // If it's a mobile device or elements don't exist, hide the cursors and return early
     if (mobile || !cursor || !cursorDot) {
-      if (cursor) cursor.style.display = 'none';
-      if (cursorDot) cursorDot.style.display = 'none';
+      if (cursor) cursor.style.display = "none";
+      if (cursorDot) cursorDot.style.display = "none";
       return;
     }
 
@@ -44,7 +50,7 @@ export function useCursorFollower(cursorRef: React.RefObject<HTMLDivElement>, cu
     const animateCursor = () => {
       cursorX += (mouseX - cursorX) * 0.1;
       cursorY += (mouseY - cursorY) * 0.1;
-      gsap.set(cursor, { x: cursorX - 20, y: cursorY - 20 });
+      gsap.set(cursor, { x: cursorX - 15, y: cursorY - 15 });
       gsap.set(cursorDot, { x: mouseX - 4, y: mouseY - 4 });
       requestAnimationFrame(animateCursor);
     };
@@ -65,11 +71,10 @@ export function useCursorFollower(cursorRef: React.RefObject<HTMLDivElement>, cu
     animateCursor();
 
     setTimeout(() => {
-      addHoverEffect("button", 1.8);
+      addHoverEffect("button", 1.5);
       addHoverEffect("a", 1.5);
-      addHoverEffect(".project-card", 1.3);
-      addHoverEffect(".skill-card", 1.2);
-      addHoverEffect(".experience-card", 1.2);
+      addHoverEffect(".project-card", 1.5);
+      addHoverEffect(".experience-card", 1.5);
     }, 1000);
 
     return () => {

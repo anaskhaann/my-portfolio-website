@@ -8,15 +8,15 @@ interface FooterSectionProps {
 const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
   return (
     <footer
-      className={`py-16 border-t transition-all duration-100 ${
+      className={`py-8 border-t transition-all duration-100 ${
         isDarkMode
           ? "border-border bg-card/50 text-foreground"
           : "border-border bg-card/50 text-foreground"
       } animate-section`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <div className="flex justify-center space-x-6 mb-8">
+          <div className="flex justify-center space-x-6 mb-4">
             {/* LinkedIn */}
             <a
               href="https://www.linkedin.com/in/kanas/"
@@ -92,7 +92,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
           <p
             className={`text-lg transition-colors duration-300 text-muted-foreground`}
           >
-            © 2025 Anas Khan. Crafted with ❤️ precision and passion.
+            © 2025 Anas. Crafted with ❤️, precision and passion by Me
           </p>
         </div>
       </div>

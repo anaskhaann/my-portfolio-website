@@ -70,15 +70,20 @@ const Portfolio = () => {
       projects: projectsRef,
       skills: skillsRef,
     };
-    const targetRef = sectionRefs[sectionName];
+
     const target = sectionRefs[sectionName]?.current;
-    if (lenis && target) {
-      lenis.scrollTo(target, {
-        offset: 0,
-        duration: 3,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+
+    if (target) {
+      gsap.to(window, {
+        scrollTo: {
+          y: target,
+          offsetY: 0, // Adjust if you have a fixed header
+        },
+        duration: 1.8,
+        ease: "power3.inOut",
       });
     }
+
     setIsMobileMenuOpen(false);
   };
 

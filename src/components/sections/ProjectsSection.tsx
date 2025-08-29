@@ -23,16 +23,16 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   const visibleProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
-    <section ref={projectsRef} id="projects" className="py-10 animate-section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-light text-center mb-12 text-foreground">
+    <section ref={projectsRef} id="projects" className="py-8 animate-section">
+      <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-8">
+        <h2 className="text-4xl font-semibold text-center mb-8 text-foreground">
           Projects
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 projects-container">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4 projects-container">
           {visibleProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`group project-card glass-card rounded-xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 ${
+              className={`group project-card glass-card rounded-xl overflow-hidden backdrop-blur-md transition-all duration-300 hover:scale-[1.2] ${
                 isDarkMode
                   ? "bg-card/30 border-border hover:border-foreground/40"
                   : "bg-card/30 border-border hover:border-foreground/40"
@@ -47,19 +47,19 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div
                   className={`absolute inset-0 transition-opacity duration-300 bg-background/60 opacity-0 group-hover:opacity-100`}
                 ></div>
               </div>
 
-              <div className="p-6">
-                <h3 className={`text-xl font-medium mb-4 text-foreground`}>
+              <div className="p-4">
+                <h3 className={`text-xl font-medium mb-2 text-foreground`}>
                   {project.title}
                 </h3>
-
-                <div className="flex flex-wrap gap-2 mb-4">
+                {/* Project Links Buttons */}
+                <div className="flex flex-wrap gap-2 mb-2">
                   <Button
                     size="sm"
                     variant="outline"
@@ -101,11 +101,11 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     </Button>
                   )}
                 </div>
-
+                {/* Project Description Section */}
                 {expandedProject === project.id && (
                   <div className="animate-fade-in">
                     <p
-                      className={`mb-4 leading-relaxed transition-colors duration-300 text-justify text-muted-foreground`}
+                      className={`mb-2 font-normal leading-relaxed transition-colors duration-300 text-justify text-muted-foreground`}
                     >
                       {project.description}
                     </p>
@@ -113,7 +113,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                       {project.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-3 py-1 rounded-full text-xs bg-secondary text-foreground/80 border border-border transition-all duration-300 hover:scale-105"
+                          className="px-2 py-1 rounded-full text-xs bg-secondary text-foreground/80 border border-border transition-all duration-300 hover:scale-105"
                         >
                           {tech}
                         </span>
@@ -122,7 +122,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   </div>
                 )}
 
-                <div className="mt-4 text-center">
+                <div className="mt-2 text-center">
                   <span
                     className={`text-sm transition-colors duration-300 text-muted-foreground`}
                   >
@@ -149,12 +149,12 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           </div>
         )}
         {/* More projects on GitHub */}
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-6">
           <a
             href="https://github.com/anaskhaann"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-secondary border border-border text-foreground hover:bg-muted transition-all duration-300 font-medium shadow-sm hover:shadow-lg"
+            className="inline-flex items-center px-4 py-2 rounded-lg bg-secondary border border-border text-foreground hover:bg-muted transition-all duration-300 font-medium shadow-sm hover:shadow-lg"
           >
             <Github className="w-5 h-5 mr-2" />
             For more projects, Checkout my GitHub

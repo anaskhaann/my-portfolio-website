@@ -38,7 +38,8 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
     const newLenis = new Lenis();
 
     // Integrate with GSAP ScrollTrigger using the official proxy method
-    ScrollTrigger.scrollerProxy(document.body, {
+    const scroller = document.documentElement;
+    ScrollTrigger.scrollerProxy(scroller, {
       scrollTop(value) {
         if (arguments.length) {
           newLenis.scrollTo(value, { immediate: true });
@@ -53,6 +54,9 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
           height: window.innerHeight,
         };
       },
+      // Tell ScrollTrigger how to get the scroll position.
+      // This is essential for smooth scrolling to work correctly.
+      pinType: "transform",
     });
 
     const scrollUpdate = () => ScrollTrigger.update();
@@ -63,6 +67,7 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
       newLenis.raf(time * 1000);
     };
     gsap.ticker.add(update);
+    gsap.ticker.lagSmoothing(0);
 
     const resizeObserver = new ResizeObserver(() => {
       newLenis.resize();
@@ -74,7 +79,7 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
 
     // Cleanup on unmount
     return () => {
-      ScrollTrigger.scrollerProxy(document.body, undefined);
+      ScrollTrigger.scrollerProxy(scroller, undefined);
       newLenis.off("scroll", scrollUpdate);
       gsap.ticker.remove(update);
       resizeObserver.disconnect();
