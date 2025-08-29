@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 
-// Helper function to detect mobile devices
+/**
+ * Detects if the current device is a mobile device based on its user agent.
+ * @returns {boolean} True if the device is mobile, otherwise false.
+ */
 const isMobileDevice = () => {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
@@ -9,11 +12,12 @@ const isMobileDevice = () => {
 };
 
 /**
- * Custom hook for animated cursor follower effect.
+ * A custom hook that creates a cursor follower effect.
+ * The cursor is disabled on mobile devices.
  *
- * @param cursorRef - ref for the main cursor element
- * @param cursorDotRef - ref for the cursor dot element
- * @param isLoading - loading state (to delay effect until loaded)
+ * @param cursorRef - A React ref for the main cursor element.
+ * @param cursorDotRef - A React ref for the cursor's dot element.
+ * @param isLoading - A boolean to delay the effect until the page has loaded.
  */
 export function useCursorFollower(
   cursorRef: React.RefObject<HTMLDivElement>,
@@ -23,21 +27,21 @@ export function useCursorFollower(
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check if it's a mobile device
+    // Determine if the device is mobile.
     const mobile = isMobileDevice();
     setIsMobile(mobile);
 
     const cursor = cursorRef.current;
     const cursorDot = cursorDotRef.current;
 
-    // If it's a mobile device or elements don't exist, hide the cursors and return early
+    // Disable the cursor follower on mobile devices or if refs are not available.
     if (mobile || !cursor || !cursorDot) {
       if (cursor) cursor.style.display = "none";
       if (cursorDot) cursorDot.style.display = "none";
       return;
     }
 
-    // Hide the system cursor on desktop
+    // Hide the default system cursor for a custom experience.
     document.body.style.cursor = "none";
 
     let mouseX = 0;
@@ -45,11 +49,18 @@ export function useCursorFollower(
     let cursorX = 0;
     let cursorY = 0;
 
+    /**
+     * Updates the mouse coordinates.
+     * @param {MouseEvent} e - The mouse event.
+     */
     const moveCursor = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     };
 
+    /**
+     * Animates the cursor to follow the mouse position smoothly.
+     */
     const animateCursor = () => {
       cursorX += (mouseX - cursorX) * 0.15;
       cursorY += (mouseY - cursorY) * 0.15;
@@ -58,6 +69,11 @@ export function useCursorFollower(
       requestAnimationFrame(animateCursor);
     };
 
+    /**
+     * Adds a hover effect to specified elements, scaling the cursor.
+     * @param {string} selector - The CSS selector for the elements.
+     * @param {number} [scale=1.5] - The amount to scale the cursor on hover.
+     */
     const addHoverEffect = (selector: string, scale: number = 1.5) => {
       const elements = document.querySelectorAll(selector);
       elements.forEach((element) => {
@@ -70,9 +86,11 @@ export function useCursorFollower(
       });
     };
 
+    // Set up event listeners and start the animation.
     document.addEventListener("mousemove", moveCursor);
     animateCursor();
 
+    // Add hover effects to interactive elements after a short delay.
     setTimeout(() => {
       addHoverEffect("button", 1.5);
       addHoverEffect("a", 1.5);
@@ -80,9 +98,10 @@ export function useCursorFollower(
       addHoverEffect(".experience-card", 1.5);
     }, 1000);
 
+    // Cleanup function to remove event listeners and restore the cursor.
     return () => {
       document.removeEventListener("mousemove", moveCursor);
-      // Restore the system cursor
+      // Restore the default system cursor.
       document.body.style.cursor = "auto";
     };
   }, [cursorRef, cursorDotRef, isLoading]);

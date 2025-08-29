@@ -1,58 +1,67 @@
 import React from "react";
 
 interface AboutSectionProps {
+  /** Indicates whether dark mode is currently active. */
   isDarkMode: boolean;
+  /** A React ref to the main section element for targeting with animations or scrolling. */
   aboutRef: React.RefObject<HTMLElement>;
 }
 
+/**
+ * The "About Me" section of the portfolio.
+ * It provides a brief introduction and background.
+ *
+ * @param {AboutSectionProps} props - The props for the component.
+ */
 const AboutSection: React.FC<AboutSectionProps> = ({
   isDarkMode,
   aboutRef,
 }) => {
   return (
-    <section ref={aboutRef} id="about" className="py-8 animate-section">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-semibold text-center mb-8 text-foreground">
+    <section ref={aboutRef} id="about" className="animate-section py-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-8 text-center text-4xl font-semibold text-foreground">
           About Me
         </h2>
         <div
-          className={`glass-card p-4 rounded-xl backdrop-blur-md transition-all duration-300 ${
+          className={`glass-card rounded-xl p-4 backdrop-blur-md transition-all duration-300 ${
             isDarkMode
-              ? "bg-card/30 border-border hover:border-foreground/40"
-              : "bg-card/30 border-border hover:border-foreground/40"
+              ? "border-border bg-card/30 hover:border-foreground/40"
+              : "border-border bg-card/30 hover:border-foreground/40"
           } shadow-xl hover:shadow-2xl`}
         >
           <div
-            className={`font-normal max-w-none transition-colors duration-300 text-justify text-muted-foreground`}
+            className={`max-w-none font-normal text-justify text-muted-foreground transition-colors duration-300`}
           >
-            {/* TODO: Update with your actual bio */}
             <p className="mb-2">
-              Hello ! my name is Mohd Anas Khan, I have completed my Bachelors
-              in Computer Science and Engineering from RCOE, Mumbai. I
-              specialize in Artificial Intelligence and Data Science.
+              Hello! My name is Mohd Anas Khan, and I hold a Bachelor's degree
+              in Computer Science and Engineering from Rizvi College of
+              Engineering, Mumbai. I specialize in Artificial Intelligence and
+              Data Science.
             </p>
             <p className="mb-2">
-              A self-starter and collaborative team player, passionate about
-              building solutions that address real-world problems. Known for
-              taking initiative, learning quickly, and consistently delivering
-              results. I believe in dreaming big, starting small, and moving
-              fast, and I bring a strong commitment to continuous learning and
-              personal growth. I may not know everything, but I have the drive
-              and resourcefulness to figure things out and get things done.
+              I am a self-motivated and collaborative team player, passionate
+              about creating solutions that solve real-world challenges. I am
+              known for my ability to take initiative, learn quickly, and
+              consistently deliver high-quality results. I believe in the
+              philosophy of dreaming big, starting small, and moving fast. My
+              commitment to continuous learning and personal growth means that
+              while I may not know everything, I have the determination and
+              resourcefulness to find solutions and get the job done.
             </p>
             <p className="mb-2">
-              My skillset is quite wide-ranged, I like to choose the best tools
-              to get the best product as fast as possible. I'm a quick learner,
-              especially in fast-paced environments where I'm able to hone
-              skills on the fly to improve and deliver on time.
+              My skillset is diverse, allowing me to select the best tools for
+              building efficient and effective products. I thrive in fast-paced
+              environments where I can quickly acquire new skills to improve and
+              meet deadlines.
               <br />
-              I believe in writing clean, maintainable code and following best
-              practices to deliver high-quality products. I'm always eager to
-              learn new technologies and take on challenging projects that push
-              my limits.
+              I am dedicated to writing clean, maintainable code and adhering to
+              best practices to ensure the delivery of high-quality products. I
+              am always eager to explore new technologies and take on
+              challenging projects that push my boundaries.
               <br />
-              When I'm not coding, you can find me Gaming, Swimming, or
-              Sleeping.
+              When I'm not coding, you can find me gaming, swimming, or catching
+              up on sleep.
             </p>
           </div>
         </div>

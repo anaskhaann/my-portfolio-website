@@ -3,39 +3,24 @@ import { Moon, Sun, Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface NavigationProps {
-  /**
-   * Current theme mode (dark/light)
-   */
+  /** Indicates whether dark mode is currently active. */
   isDarkMode: boolean;
-  /**
-   * Mobile menu open state
-   */
+  /** Controls the visibility of the mobile navigation menu. */
   isMobileMenuOpen: boolean;
-  /**
-   * Function to toggle theme
-   */
+  /** A function to toggle the color theme between light and dark mode. */
   onThemeToggle: () => void;
-  /**
-   * Function to toggle mobile menu
-   */
+  /** A function to toggle the visibility of the mobile navigation menu. */
   onMobileMenuToggle: () => void;
-  /**
-   * Function to scroll to specific section
-   */
+  /** A function to handle scrolling to a specific section of the page. */
   onSectionScroll: (sectionName: string) => void;
 }
 
 /**
- * Navigation Component
+ * The main navigation component for the website.
+ * It provides links to different sections, a theme toggle, and a resume download button.
+ * It is responsive and adapts to different screen sizes.
  *
- * Renders the main navigation bar with:
- * - Logo/brand name
- * - Desktop navigation links
- * - Mobile hamburger menu
- * - Theme toggle button
- * - Resume download button
- *
- * Responsive design with mobile-first approach.
+ * @param {NavigationProps} props - The props for the component.
  */
 const Navigation: React.FC<NavigationProps> = ({
   isDarkMode,
@@ -44,7 +29,7 @@ const Navigation: React.FC<NavigationProps> = ({
   onMobileMenuToggle,
   onSectionScroll,
 }) => {
-  // Navigation menu items configuration
+  // Defines the navigation links and their corresponding section IDs.
   const navigationItems = [
     { name: "About", section: "about" },
     { name: "Experience", section: "history" },
@@ -53,20 +38,20 @@ const Navigation: React.FC<NavigationProps> = ({
   ];
 
   /**
-   * Handle navigation item click
-   * Scrolls to section and closes mobile menu
+   * Handles clicks on navigation links.
+   * It scrolls to the selected section and closes the mobile menu if it's open.
+   * @param {string} section - The ID of the section to scroll to.
    */
   const handleNavClick = (section: string) => {
     onSectionScroll(section);
-    // Close mobile menu after navigation (for mobile UX)
+    // Close the mobile menu after a navigation link is clicked.
     if (isMobileMenuOpen) {
       onMobileMenuToggle();
     }
   };
 
   /**
-   * Handle resume download
-   * Opens resume in new tab
+   * Opens the user's resume in a new browser tab.
    */
   const handleResumeDownload = () => {
     window.open(
@@ -76,110 +61,108 @@ const Navigation: React.FC<NavigationProps> = ({
   };
 
   return (
-    <nav className="fixed top-0 w-full z-40 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo/Brand */}
+    <nav className="fixed top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-md">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo/Brand Name - Scrolls to the top of the page on click. */}
           <button
             type="button"
             onClick={() => onSectionScroll("home")}
-            className="text-3xl font-black tracking-wide text-foreground transition-colors duration-300 cursor-pointer focus:outline-none"
+            className="cursor-pointer text-3xl font-black tracking-wide text-foreground transition-colors duration-300 focus:outline-none"
             aria-label="Scroll to home section"
           >
             /A\
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6 font-medium">
-            {/* Navigation Links */}
+          {/* Desktop Navigation Links */}
+          <div className="hidden items-center space-x-6 font-medium md:flex">
             {navigationItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.section)}
-                className="text-foreground/80 hover:text-foreground transition-colors duration-300 relative group"
+                className="group relative text-foreground/80 transition-colors duration-300 hover:text-foreground"
               >
                 {item.name}
-                {/* Animated underline effect */}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-foreground/40 group-hover:w-full transition-all duration-300" />
+                {/* Underline animation on hover. */}
+                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-foreground/40 transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
 
-            {/* Resume Download Button */}
+            {/* Resume Download Button for Desktop */}
             <Button
               size="sm"
-              className="bg-foreground text-background hover:opacity-90 border-0 shadow-lg shadow-black/10 dark:shadow-white/10 transition-all duration-300"
+              className="border-0 bg-foreground text-background shadow-lg shadow-black/10 transition-all duration-300 hover:opacity-90 dark:shadow-white/10"
               onClick={handleResumeDownload}
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="mr-2 h-4 w-4" />
               Resume
             </Button>
 
-            {/* Theme Toggle Button */}
+            {/* Theme Toggle Button for Desktop */}
             <button
               onClick={onThemeToggle}
-              className="p-2 rounded-full bg-secondary hover:bg-muted border border-border transition-all duration-300"
+              className="rounded-full border border-border bg-secondary p-2 transition-all duration-300 hover:bg-muted"
               aria-label="Toggle theme"
             >
               {isDarkMode ? (
-                <Sun className="w-5 h-5" />
+                <Sun className="h-5 w-5" />
               ) : (
-                <Moon className="w-5 h-5" />
+                <Moon className="h-5 w-5" />
               )}
             </button>
           </div>
 
-          {/* Mobile Controls */}
-          <div className="md:hidden flex items-center space-x-2">
-            {/* Mobile Theme Toggle */}
+          {/* Mobile Navigation Controls */}
+          <div className="flex items-center space-x-2 md:hidden">
+            {/* Theme Toggle Button for Mobile */}
             <button
               onClick={onThemeToggle}
-              className="p-2 rounded-full bg-secondary hover:bg-muted border border-border transition-all duration-300"
+              className="rounded-full border border-border bg-secondary p-2 transition-all duration-300 hover:bg-muted"
               aria-label="Toggle theme"
             >
               {isDarkMode ? (
-                <Sun className="w-5 h-5" />
+                <Sun className="h-5 w-5" />
               ) : (
-                <Moon className="w-5 h-5" />
+                <Moon className="h-5 w-5" />
               )}
             </button>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle Button */}
             <button
               onClick={onMobileMenuToggle}
               className="p-2"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="h-6 w-6" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="h-6 w-6" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Collapsible Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-md">
+          <div className="border-t border-border bg-background/95 py-4 backdrop-blur-md md:hidden">
             <div className="flex flex-col space-y-2 font-medium">
-              {/* Mobile Navigation Links */}
               {navigationItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.section)}
-                  className="text-left py-1 text-foreground/80 hover:text-foreground transition-colors duration-300"
+                  className="py-1 text-left text-foreground/80 transition-colors duration-300 hover:text-foreground"
                 >
                   {item.name}
                 </button>
               ))}
 
-              {/* Mobile Resume Button */}
+              {/* Resume Download Button for Mobile */}
               <Button
                 size="sm"
                 className="w-fit bg-foreground text-background hover:opacity-90"
                 onClick={handleResumeDownload}
               >
-                <Download className="w-4 h-4 mr-2" />
+                <Download className="mr-2 h-4 w-4" />
                 Resume
               </Button>
             </div>

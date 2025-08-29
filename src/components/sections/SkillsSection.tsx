@@ -2,46 +2,55 @@ import React from "react";
 import type { SkillCategory } from "@/types";
 
 interface SkillsSectionProps {
+  /** An array of skill categories, each containing a list of skills. */
   skillCategories: SkillCategory[];
+  /** Indicates whether dark mode is currently active. */
   isDarkMode: boolean;
+  /** A React ref to the main section element for targeting with animations or scrolling. */
   skillsRef: React.RefObject<HTMLElement>;
 }
 
+/**
+ * The "Skills" section of the portfolio.
+ * It displays a categorized list of skills with their corresponding icons.
+ *
+ * @param {SkillsSectionProps} props - The props for the component.
+ */
 const SkillsSection: React.FC<SkillsSectionProps> = ({
   skillCategories,
   isDarkMode,
   skillsRef,
 }) => {
   return (
-    <section ref={skillsRef} id="skills" className="py-8 animate-section">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-semibold text-center mb-8 text-foreground">
+    <section ref={skillsRef} id="skills" className="animate-section py-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-8 text-center text-4xl font-semibold text-foreground">
           Skills
         </h2>
-        <div className="space-y-4 skills-container">
+        <div className="skills-container space-y-4">
           {skillCategories.map((category, categoryIndex) => (
             <div key={categoryIndex}>
-              <h3 className="text-xl font-medium mb-4 text-center text-muted-foreground">
+              <h3 className="mb-4 text-center text-xl font-medium text-muted-foreground">
                 {category.category}
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className={`skill-card flex items-center space-x-2 px-4 py-2 rounded-full glass-card backdrop-blur-md transition-smooth duration-300 hover:scale-110 group ${
+                    className={`skill-card group flex items-center space-x-2 rounded-full px-4 py-2 backdrop-blur-md glass-card transition-smooth duration-300 hover:scale-110 ${
                       isDarkMode
-                        ? "bg-card/30 border-border hover:border-foreground/40"
-                        : "bg-card/30 border-border hover:border-foreground/40"
+                        ? "border-border bg-card/30 hover:border-foreground/40"
+                        : "border-border bg-card/30 hover:border-foreground/40"
                     } shadow-lg hover:shadow-xl`}
                   >
-                    {/* Skill icon - supports both PNG and SVG */}
+                    {/* Skill icon, supporting both PNG and SVG formats. */}
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className="w-6 h-6 object-contain transition-smooth duration-150 group-hover:scale-110"
+                      className="h-6 w-6 object-contain transition-smooth duration-150 group-hover:scale-110"
                     />
                     <span
-                      className={`font-normal transition-smooth duration-150 text-foreground`}
+                      className={`font-normal text-foreground transition-smooth duration-150`}
                     >
                       {skill.name}
                     </span>

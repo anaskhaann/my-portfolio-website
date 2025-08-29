@@ -5,17 +5,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Custom hook to initialize GSAP animations for the portfolio sections.
- * Manages animation setup and cleanup automatically.
- * @param scope - A React ref to the container element for the animations.
+ * A custom hook that sets up and manages GSAP animations for the portfolio.
+ * It handles the initialization of animations and their cleanup.
+ *
+ * @param scope - A React ref to the main container element where animations will be scoped.
  */
 export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
   useLayoutEffect(() => {
-    // Ensure the scope is connected to a DOM element
+    // Exit if the ref is not yet connected to a DOM element.
     if (!scope.current) return;
 
+    // Create a GSAP context for safe animation cleanup.
     const ctx = gsap.context(() => {
-      // Hero section animations with stagger and slight rotation for depth
+      // Animate elements in the hero section with a staggered fade-in effect.
       gsap.fromTo(
         ".hero-element",
         {
@@ -35,7 +37,7 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
         }
       );
 
-      // Scroll-triggered animations for sections with added blur for focus effect
+      // Animate sections on scroll, with a blur effect for focus.
       const sections = gsap.utils.toArray<HTMLElement>(".animate-section");
       sections.forEach((section) => {
         gsap.fromTo(
@@ -64,7 +66,7 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
         );
       });
 
-      // Animate skill cards with bounce effect and rotation for liveliness
+      // Animate skill cards with a playful bounce and rotation effect.
       gsap.fromTo(
         ".skill-card",
         {
@@ -89,7 +91,7 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
         }
       );
 
-      // Animate project cards with 3D effect and slight scale pulse for emphasis
+      // Animate project cards with a 3D rotation effect.
       gsap.fromTo(
         ".project-card",
         {
@@ -112,9 +114,9 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
           stagger: 0.2,
         }
       );
-    }, scope); // Use scope for context
+    }, scope); // Scope the animations to the provided element.
 
-    // Cleanup function
+    // Cleanup function to revert all animations within the context.
     return () => ctx.revert();
-  }, [scope]); // Rerun effect if scope changes
+  }, [scope]); // Rerun the effect if the scope changes.
 }

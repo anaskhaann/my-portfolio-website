@@ -5,45 +5,55 @@ interface LoadingScreenProps {
   onLoadingComplete: () => void;
 }
 
+/**
+ * A loading screen component that cycles through a list of greetings in different languages
+ * before revealing the main content. It uses Framer Motion for animations.
+ *
+ * @param {LoadingScreenProps} props - The props for the component.
+ * @param {() => void} props.onLoadingComplete - A callback function that is called when the loading animation is complete.
+ */
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [index, setIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
-  // List of greetings
+  // A list of greetings to be displayed during the loading sequence.
   const greetings = [
-    "Hello",
-    "آداب",
-    "Привет",
-    "مرحبًا",
-    "Hola",
-    "हेलो",
-    "Bonjour",
-    "Ciao",
+    "Hello", // English
+    "آداب", // Urdu
+    "Привет", // Russian
+    "مرحبًا", // Arabic
+    "Hola", // Spanish
+    "हेलो", // Hindi
+    "Bonjour", // French
+    "Ciao", // Italian
   ];
 
   useEffect(() => {
+    // This effect manages the timing and sequence of the greetings animation.
     const timer = setTimeout(
       () => {
         if (index < greetings.length - 1) {
+          // Move to the next greeting.
           setIndex((prevIndex) => prevIndex + 1);
         } else {
-          // After the last greeting, start exit animation immediately
+          // Once all greetings have been shown, trigger the exit animation.
           setTimeout(() => {
             setIsVisible(false);
-            // Call onLoadingComplete after the exit animation completes
+            // Notify the parent component that loading is complete after the exit animation.
             setTimeout(() => {
               onLoadingComplete();
-            }, 600); // Reduced time for faster transition
-          }, 300); // Reduced hold time for faster sequence
+            }, 600); // Corresponds to the exit animation duration.
+          }, 300); // A short delay before starting the exit animation.
         }
       },
-      index === 0 ? 200 : 200 // Set initial start time to zero
+      index === 0 ? 200 : 200 // Delay between greetings.
     );
 
+    // Cleanup function to clear the timeout when the component unmounts or re-renders.
     return () => clearTimeout(timer);
   }, [index, onLoadingComplete, greetings.length]);
 
-  // Animation variants
+  // Animation variants for Framer Motion.
   const slideUp: Variants = {
     initial: {
       top: 0,
@@ -64,6 +74,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     },
   };
 
+  // Defines the curve animation for the SVG background.
   const curve: Variants = {
     initial: {
       d: `M0 0 L100 0 L100 100 Q50 130 0 100 L0 0`,
@@ -94,7 +105,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             <p>{greetings[index]}</p>
           </motion.div>
 
-          {/* Curved background animation */}
+          {/* The curved SVG background that animates on exit. */}
           <motion.svg
             className="absolute top-0 -z-10 h-[calc(100%+300px)] w-full"
             viewBox="0 0 100 100"

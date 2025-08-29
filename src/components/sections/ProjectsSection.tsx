@@ -4,13 +4,24 @@ import { Github, ExternalLink, Play } from "lucide-react";
 import type { Project } from "@/types";
 
 interface ProjectsSectionProps {
+  /** An array of project objects to be displayed. */
   projects: Project[];
+  /** Indicates whether dark mode is currently active. */
   isDarkMode: boolean;
+  /** The ID of the currently expanded project, or `null` if none is expanded. */
   expandedProject: number | null;
+  /** A function to set the ID of the expanded project. */
   setExpandedProject: (id: number | null) => void;
+  /** A React ref to the main section element for targeting with animations or scrolling. */
   projectsRef: React.RefObject<HTMLElement>;
 }
 
+/**
+ * The "Projects" section of the portfolio.
+ * It displays a grid of projects with expandable details.
+ *
+ * @param {ProjectsSectionProps} props - The props for the component.
+ */
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   projects,
   isDarkMode,
@@ -23,66 +34,66 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   const visibleProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
-    <section ref={projectsRef} id="projects" className="py-8 animate-section">
-      <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-8">
-        <h2 className="text-4xl font-semibold text-center mb-8 text-foreground">
+    <section ref={projectsRef} id="projects" className="animate-section py-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-4 lg:px-8">
+        <h2 className="mb-8 text-center text-4xl font-semibold text-foreground">
           Projects
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4 projects-container">
+        <div className="projects-container grid gap-4 md:grid-cols-2 lg:grid-cols-2">
           {visibleProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`group project-card glass-card rounded-xl overflow-hidden backdrop-blur-md transition-all duration-300 hover:scale-[1.2] ${
+              className={`project-card glass-card group cursor-pointer overflow-hidden rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-[1.2] ${
                 isDarkMode
-                  ? "bg-card/30 border-border hover:border-foreground/40"
-                  : "bg-card/30 border-border hover:border-foreground/40"
-              } shadow-lg hover:shadow-2xl cursor-pointer`}
+                  ? "border-border bg-card/30 hover:border-foreground/40"
+                  : "border-border bg-card/30 hover:border-foreground/40"
+              } shadow-lg hover:shadow-2xl`}
               onClick={() =>
                 setExpandedProject(
                   expandedProject === project.id ? null : project.id
                 )
               }
             >
-              <div className="relative overflow-hidden h-48">
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div
-                  className={`absolute inset-0 transition-opacity duration-300 bg-background/60 opacity-0 group-hover:opacity-100`}
+                  className={`absolute inset-0 bg-background/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
                 ></div>
               </div>
 
               <div className="p-4">
-                <h3 className={`text-xl font-medium mb-2 text-foreground`}>
+                <h3 className={`mb-2 text-xl font-medium text-foreground`}>
                   {project.title}
                 </h3>
-                {/* Project Links Buttons */}
-                <div className="flex flex-wrap gap-2 mb-2">
+                {/* Links to the project's GitHub, live demo, and video. */}
+                <div className="mb-2 flex flex-wrap gap-2">
                   <Button
                     size="sm"
                     variant="outline"
-                    className="border-border hover:border-foreground/50 bg-secondary hover:bg-muted text-foreground transition-all duration-300"
+                    className="border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
                     onClick={(e) => {
                       e.stopPropagation();
                       window.open(project.githubUrl, "_blank");
                     }}
                   >
-                    <Github className="w-4 h-4 mr-2" />
+                    <Github className="mr-2 h-4 w-4" />
                     GitHub
                   </Button>
                   {project.liveUrl && (
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-border hover:border-foreground/50 bg-secondary hover:bg-muted text-foreground transition-all duration-300"
+                      className="border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.open(project.liveUrl, "_blank");
                       }}
                     >
-                      <ExternalLink className="w-4 h-4 mr-2" />
+                      <ExternalLink className="mr-2 h-4 w-4" />
                       Live
                     </Button>
                   )}
@@ -90,22 +101,22 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-border hover:border-foreground/50 bg-secondary hover:bg-muted text-foreground transition-all duration-300"
+                      className="border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.open(project.videoUrl, "_blank");
                       }}
                     >
-                      <Play className="w-4 h-4 mr-2" />
+                      <Play className="mr-2 h-4 w-4" />
                       Demo
                     </Button>
                   )}
                 </div>
-                {/* Project Description Section */}
+                {/* Expanded view with project description and technologies. */}
                 {expandedProject === project.id && (
                   <div className="animate-fade-in">
                     <p
-                      className={`mb-2 font-normal leading-relaxed transition-colors duration-300 text-justify text-muted-foreground`}
+                      className={`mb-2 text-justify font-normal leading-relaxed text-muted-foreground transition-colors duration-300`}
                     >
                       {project.description}
                     </p>
@@ -113,7 +124,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                       {project.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-2 py-1 rounded-full text-xs bg-secondary text-foreground/80 border border-border transition-all duration-300 hover:scale-105"
+                          className="rounded-full border border-border bg-secondary px-2 py-1 text-xs text-foreground/80 transition-all duration-300 hover:scale-105"
                         >
                           {tech}
                         </span>
@@ -124,7 +135,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
                 <div className="mt-2 text-center">
                   <span
-                    className={`text-sm transition-colors duration-300 text-muted-foreground`}
+                    className={`text-sm text-muted-foreground transition-colors duration-300`}
                   >
                     {expandedProject === project.id
                       ? "Hide Details"
@@ -135,28 +146,28 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             </div>
           ))}
         </div>
-        {/* View More / Show Less Button */}
+        {/* "View More" / "Show Less" button for projects. */}
         {hasMore && (
-          <div className="flex justify-center mt-8">
+          <div className="mt-8 flex justify-center">
             <Button
               size="lg"
               variant="outline"
-              className="border-border hover:border-foreground/50 bg-secondary hover:bg-muted text-foreground transition-all duration-300"
+              className="border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
               onClick={() => setShowAll((prev) => !prev)}
             >
               {showAll ? "Show Less" : "View More"}
             </Button>
           </div>
         )}
-        {/* More projects on GitHub */}
-        <div className="flex justify-center mt-6">
+        {/* Link to GitHub for more projects. */}
+        <div className="mt-6 flex justify-center">
           <a
             href="https://github.com/anaskhaann"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-4 py-2 rounded-lg bg-secondary border border-border text-foreground hover:bg-muted transition-all duration-300 font-medium shadow-sm hover:shadow-lg"
+            className="inline-flex items-center rounded-lg border border-border bg-secondary px-4 py-2 font-medium text-foreground shadow-sm transition-all duration-300 hover:bg-muted hover:shadow-lg"
           >
-            <Github className="w-5 h-5 mr-2" />
+            <Github className="mr-2 h-5 w-5" />
             For more projects, Checkout my GitHub
           </a>
         </div>

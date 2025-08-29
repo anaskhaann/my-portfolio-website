@@ -20,24 +20,22 @@ import {
 } from "@/data/portfolioData";
 import { useLenis } from "@/providers/LenisProvider";
 
-// Register GSAP plugins
+// Register GSAP plugins for scroll-to functionality and scroll-triggered animations.
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 /**
- * Main Portfolio Page Component
- *
- * This component orchestrates the content sections of the portfolio.
- * Layout and global elements are handled by AppLayout.
+ * The main page component for the portfolio.
+ * It brings together all the different sections of the portfolio and manages their state.
  */
 const Portfolio = () => {
-  // ===== STATE MANAGEMENT =====
+  // State for theme, mobile menu, loading status, and expanded project.
   const { isDarkMode, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isLoading, setIsLoading } = useLoading();
-  const { lenis } = useLenis(); // Get the shared Lenis instance
+  const { lenis } = useLenis(); // Lenis instance for smooth scrolling.
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
 
-  // ===== REFS FOR DOM ELEMENTS =====
+  // Refs for each section to enable smooth scrolling.
   const homeRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const historyRef = useRef<HTMLElement>(null);
@@ -45,20 +43,18 @@ const Portfolio = () => {
   const skillsRef = useRef<HTMLElement>(null);
   const mainContentRef = useRef<HTMLDivElement>(null);
 
-  // ===== ANIMATIONS & LOADING =====
-  // The usePortfolioAnimations hook now manages its own lifecycle via useLayoutEffect.
-  // We just need to pass it the ref of the container element.
+  // Custom hook to initialize and manage GSAP animations.
   usePortfolioAnimations(mainContentRef);
 
+  // Callback to hide the loading screen when animations are complete.
   const handleLoadingComplete = () => {
     setIsLoading(false);
   };
 
-  // ===== THEME MANAGEMENT =====
-  // Now handled by useTheme context
-  // const toggleTheme = ... (removed)
-
-  // ===== NAVIGATION =====
+  /**
+   * Scrolls to a specific section of the page using GSAP.
+   * @param {string} sectionName - The name of the section to scroll to.
+   */
   const scrollToSection = (sectionName: string) => {
     const sectionRefs: { [key: string]: React.RefObject<HTMLElement> } = {
       home: homeRef,
@@ -74,17 +70,16 @@ const Portfolio = () => {
       gsap.to(window, {
         scrollTo: {
           y: target,
-          offsetY: 0, // Adjust if you have a fixed header
+          offsetY: 0, // Adjust this if you have a fixed header.
         },
         duration: 1.8,
         ease: "power3.inOut",
       });
     }
 
-    setIsMobileMenuOpen(false);
+    setIsMobileMenuOpen(false); // Close the mobile menu after scrolling.
   };
 
-  // ===== RENDER LOGIC =====
   return (
     <AppLayout
       isDarkMode={isDarkMode}
