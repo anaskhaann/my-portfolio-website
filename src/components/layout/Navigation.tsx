@@ -47,8 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({
   // Navigation menu items configuration
   const navigationItems = [
     { name: "About", section: "about" },
-    { name: "Experience", section: "experience" },
-    { name: "Education", section: "education" },
+    { name: "Experience", section: "history" },
     { name: "Projects", section: "projects" },
     { name: "Skills", section: "skills" },
   ];

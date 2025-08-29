@@ -4,12 +4,11 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LoadingScreen from "@/components/LoadingScreen";
 import HeroSection from "@/components/sections/HeroSection";
-import ExperienceSection from "@/components/sections/ExperienceSection";
+import HistorySection from "@/components/sections/HistorySection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import AboutSection from "@/components/sections/AboutSection";
 import AppLayout from "@/components/layout/AppLayout"; // Import the new layout
-import EducationSection from "@/components/sections/EducationSection";
 import { useTheme } from "@/hooks/useTheme";
 import { useLoading } from "@/hooks/useLoading";
 import { usePortfolioAnimations } from "@/hooks/usePortfolioAnimations";
@@ -41,8 +40,7 @@ const Portfolio = () => {
   // ===== REFS FOR DOM ELEMENTS =====
   const homeRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
-  const experienceRef = useRef<HTMLElement>(null);
-  const educationRef = useRef<HTMLElement>(null);
+  const historyRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
   const mainContentRef = useRef<HTMLDivElement>(null);
@@ -65,8 +63,7 @@ const Portfolio = () => {
     const sectionRefs: { [key: string]: React.RefObject<HTMLElement> } = {
       home: homeRef,
       about: aboutRef,
-      experience: experienceRef,
-      education: educationRef,
+      history: historyRef,
       projects: projectsRef,
       skills: skillsRef,
     };
@@ -107,15 +104,11 @@ const Portfolio = () => {
       >
         <HeroSection onSectionScroll={scrollToSection} homeRef={homeRef} />
         <AboutSection isDarkMode={isDarkMode} aboutRef={aboutRef} />
-        <ExperienceSection
+        <HistorySection
           experiences={experiences}
-          isDarkMode={isDarkMode}
-          experienceRef={experienceRef}
-        />
-        <EducationSection
           education={education}
           isDarkMode={isDarkMode}
-          educationRef={educationRef}
+          historyRef={historyRef}
         />
         <ProjectsSection
           projects={projects}
