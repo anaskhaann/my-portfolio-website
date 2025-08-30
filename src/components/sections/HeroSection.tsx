@@ -2,24 +2,22 @@ import React, { useState, useEffect } from "react";
 
 interface HeroSectionProps {
   /**
-   * Function to scroll to specific section
+   * Handles scrolling to different parts of the page.
    */
   onSectionScroll: (sectionName: string) => void;
   /**
-   * Ref for the home section (for scroll-to-home functionality)
+   * A reference to the main hero section element, used for scrolling.
    */
   homeRef?: React.RefObject<HTMLElement>;
 }
 
 /**
- * HeroSection Component
+ * The main landing page section.
  *
- * Main landing section featuring:
- * - Profile photo with floating animations
- * - Name and role with typing animation
- * - Responsive layout (photo on top for mobile, side-by-side for desktop)
- *
- * Uses typewriter effect for dynamic role display.
+ * This component welcomes visitors with:
+ * - A profile picture with animated decorations.
+ * - The user's name and a role that types itself out.
+ * - A layout that works well on both mobile and desktop screens.
  */
 import { useTheme } from "@/hooks/useTheme";
 
@@ -27,50 +25,46 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   onSectionScroll,
   homeRef,
 }) => {
-  // Typing animation state management
+  // State for the typing animation
   const [typingText, setTypingText] = useState("");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Words to cycle through in typing animation
+  // The list of words to display in the animation
   const typingWords = ["an Engineer", "a Developer", "a Gamer"];
 
   /**
-   * Typing Animation Effect
-   *
-   * Creates a typewriter effect that:
-   * 1. Types out each word character by character
-   * 2. Pauses when word is complete
-   * 3. Deletes the word character by character
-   * 4. Moves to next word and repeats
+   * Manages the typewriter animation for the user's role.
+   * It cycles through the `typingWords` array, typing each one out,
+   * pausing, and then deleting it before moving to the next.
    */
   useEffect(() => {
-    const typingSpeed = 150; // Speed for typing characters
-    const deletingSpeed = 100; // Speed for deleting characters
-    const pauseDuration = 1500; // Pause duration when word is complete
+    const typingSpeed = 150; // How fast to type
+    const deletingSpeed = 100; // How fast to delete
+    const pauseDuration = 1500; // How long to wait after a word is typed
 
     const timeout = setTimeout(
       () => {
         const currentWord = typingWords[currentWordIndex];
 
         if (isDeleting) {
-          // Deleting phase: remove characters
+          // If deleting, remove characters one by one
           if (currentCharIndex > 0) {
             setCurrentCharIndex((prev) => prev - 1);
             setTypingText(currentWord.substring(0, currentCharIndex - 1));
           } else {
-            // Finished deleting, move to next word
+            // When the word is fully deleted, switch to the next word
             setIsDeleting(false);
             setCurrentWordIndex((prev) => (prev + 1) % typingWords.length);
           }
         } else {
-          // Typing phase: add characters
+          // If typing, add characters one by one
           if (currentCharIndex < currentWord.length) {
             setCurrentCharIndex((prev) => prev + 1);
             setTypingText(currentWord.substring(0, currentCharIndex + 1));
           } else {
-            // Finished typing, start deleting after pause
+            // When the word is fully typed, wait and then start deleting
             setTimeout(() => setIsDeleting(true), pauseDuration);
           }
         }
@@ -101,16 +95,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="absolute inset-0 bg-muted/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              {/* Floating decorative elements with improved animations */}
+              {/* Small animated circles floating around the profile picture. */}
               <div className="absolute -top-6 -right-6 w-8 h-8 bg-muted rounded-full shadow-lg animate-pulse"></div>
               <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-muted rounded-full shadow-lg animate-bounce"></div>
               <div className="absolute top-1/2 -left-8 w-4 h-4 bg-muted rounded-full shadow-lg animate-ping"></div>
             </div>
           </div>
 
-          {/* Text Content Section - Shows second on mobile, first on desktop */}
+          {/* Container for all the text content. The order changes on different screen sizes. */}
           <div className="order-2 lg:order-1 text-center lg:text-left space-y-6">
-            {/* Greeting and Main Name */}
+            {/* Greeting and user's name */}
             <div className="hero-element">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal leading-tight">
                 <span className="block text-foreground mb-2 text-2xl sm:text-3xl lg:text-4xl">
@@ -122,11 +116,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </h1>
             </div>
 
-            {/* Dynamic Role with Typing Animation */}
+            {/* The role that appears with the typing animation */}
             <div className="hero-element">
               <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-6 min-h-[2rem] flex items-center justify-center lg:justify-start">
                 <span className="text-foreground mr-2">
-                  {/* Here we will have dynamic typing animation */}I am{" "}
+                  {/* Static text before the animation */}I am{" "}
                 </span>
                 <span className="text-foreground font-medium">
                   {typingText}
@@ -135,7 +129,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </div>
 
-            {/* Professional Tagline */}
+            {/* A personal or professional tagline */}
             <div className="hero-element">
               <p className="text-lg sm:text-xl lg:text-2xl font-normal text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 I Build what I love and love what I Built.

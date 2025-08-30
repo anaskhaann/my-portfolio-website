@@ -46,14 +46,14 @@ const AboutSection: React.FC<AboutSectionProps> = ({
               consistently deliver high-quality results. I believe in the
               philosophy of dreaming big, starting small, and moving fast. My
               commitment to continuous learning and personal growth means that
-              while I may not know everything, I have the determination and
+              even if I may not know everything, I have the determination and
               resourcefulness to find solutions and get the job done.
             </p>
             <p className="mb-2">
               My skillset is diverse, allowing me to select the best tools for
               building efficient and effective products. I thrive in fast-paced
               environments where I can quickly acquire new skills to improve and
-              meet deadlines.
+              finish on time.
               <br />
               I am dedicated to writing clean, maintainable code and adhering to
               best practices to ensure the delivery of high-quality products. I
