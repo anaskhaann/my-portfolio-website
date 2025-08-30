@@ -37,14 +37,14 @@ export const experiences: Experience[] = [
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Natural Language to SQL AI",
+    title: "AI Chatbot for MySQL Databases",
     description:
-      "Developed an AI tool enabling natural language SQL queries using LangChain, Streamlit, and Meta's LLaMA, allowing non-technical users to interact with MySQL and SQLite databases. Improved performance with caching and fine-tuned model parameters, reducing response times by 15-20% and enhancing query accuracy.",
+      "Developed an Agentic AI Chatbot enabling natural language SQL queries using LangChain, Streamlit, and Meta's LLaMA, allowing non-technical users to interact with MySQL and SQLite databases. User can not only get they query but llm will connect to database and run those query in read only mode to get the result and return them in Natural Language. Improved performance with caching and fine-tuned model parameters, reducing response times by 15-20% and enhancing query accuracy.",
     technologies: ["Python", "Langchain", "Streamlit", "MySQL"],
     githubUrl: "https://github.com/anaskhaann/Chat-with-Database-SQL",
     videoUrl:
       "https://drive.google.com/file/d/1_zDUrBSChOOdiV0xt4BLuEMJCrTBH9nL/view?usp=sharing",
-    imageUrl: "/assets/projects/nl_to_sql.png",
+    imageUrl: "/assets/projects/nl_to_sql.gif",
   },
   {
     id: 2,
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/anaskhaann/my-portfolio-website",
     liveUrl: "https://anaskhaann.vercel.app/",
-    imageUrl: "/assets/projects/portfolio.gif",
+    imageUrl: "/assets/projects/portfolio.png",
   },
   {
     id: 3,
@@ -93,6 +93,7 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Python", icon: "/assets/skills/python.svg" },
       { name: "JavaScript", icon: "/assets/skills/js.svg" },
+      { name: "TypeScript", icon: "/assets/skills/TypeScript.svg" },
       { name: "HTML", icon: "/assets/skills/html.svg" },
       { name: "CSS", icon: "/assets/skills/css.svg" },
       { name: "Bash/Shell", icon: "/assets/skills/bash.svg" },
@@ -103,10 +104,17 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Git", icon: "/assets/skills/git.svg" },
       { name: "Flask", icon: "/assets/skills/flask.svg" },
-      { name: "Jupyter", icon: "/assets/skills/jupyter.svg" },
       { name: "Numpy", icon: "/assets/skills/numpy.svg" },
       { name: "Pandas", icon: "/assets/skills/pandas.svg" },
       { name: "Matplotlib", icon: "/assets/skills/matplotlib.svg" },
+      { name: "Sk Learn", icon: "/assets/skills/sklearn.svg" },
+      { name: "TensorFlow", icon: "/assets/skills/TensorFlow.svg" },
+      { name: "Pytorch", icon: "/assets/skills/PyTorch.svg" },
+      { name: "Langchain", icon: "/assets/skills/langchain.svg" },
+      { name: "FastApi", icon: "/assets/skills/FastAPI.svg" },
+      { name: "NodeJs", icon: "/assets/skills/Nodejs.svg" },
+      { name: "ReactJs", icon: "/assets/skills/React.svg" },
+      { name: "GSAP", icon: "/assets/skills/gsap.svg" },
     ],
   },
   {
@@ -118,14 +126,17 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    category: "Tools & Technologies",
+    category: "Extras",
     skills: [
-      { name: "VS Code", icon: "/assets/skills/vscode.svg" },
-      { name: "Linux", icon: "/assets/skills/linux.svg" },
       { name: "GitHub", icon: "/assets/skills/github.svg" },
-      { name: "Docker", icon: "/assets/skills/docker.svg" },
-      { name: "UV", icon: "/assets/skills/uv.svg" },
+      { name: "GitHub Actions", icon: "/assets/skills/GitHubActions.svg" },
+      { name: "VS Code", icon: "/assets/skills/vscode.svg" },
       { name: "Anaconda", icon: "/assets/skills/anaconda.svg" },
+      { name: "Notebook", icon: "/assets/skills/jupyter.svg" },
+      { name: "UV", icon: "/assets/skills/uv.svg" },
+      { name: "HuggingFace", icon: "/assets/skills/huggingface.svg" },
+      { name: "Linux", icon: "/assets/skills/linux.svg" },
+      { name: "Docker", icon: "/assets/skills/docker.svg" },
     ],
   },
 ];
