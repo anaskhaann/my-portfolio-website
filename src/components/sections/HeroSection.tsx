@@ -78,17 +78,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const { isDarkMode } = useTheme();
 
   return (
-    <section id="home" ref={homeRef} className="py-20 flex items-center">
+    <section id="home" ref={homeRef} className="mt-2 py-24 flex items-center">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-1 lg:order-2 flex justify-center hero-element">
             <div className="relative group">
-              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-border shadow-2xl relative transition-all duration-300 ease-in-out group-hover:scale-105">
+              <div className="w-72 h-72 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-border shadow-2xl relative transition-all duration-300 ease-in-out group-hover:scale-105">
                 <div className="w-full h-full relative">
                   <img
                     src="/assets/pfp.jpg"
                     alt="Profile Photo"
-                    className="w-full h-full object-cover absolute inset-0 transition-all duration-300 ease-in-out group-hover:scale-110"
+                    className="w-full h-full object-cover absolute inset-0 transition-all duration-300 ease-in-out group-hover:scale-105"
                   />
                 </div>
 
