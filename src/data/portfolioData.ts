@@ -44,11 +44,20 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/anaskhaann/Chat-with-Database-SQL",
     videoUrl:
       "https://drive.google.com/file/d/1_zDUrBSChOOdiV0xt4BLuEMJCrTBH9nL/view?usp=sharing",
-    imageUrl: "/assets/projects/nl_to_sql.gif",
+    imageUrl: "/assets/projects/nl_to_sql.webp",
   },
   {
     id: 2,
-    title: "Personal Portfolio Website",
+    title: "Chat Tube",
+    description:
+      "Created a RAG pipeline for Youtube Videos. The user can ask relevant question related to the video. The user query will match the context and retrieve the relevant context for result. The transcript of the videos are embedded using QWEN 8b Model and a simple similarity retrievel applied to fetch top similar results as context. The entire flow of the conversation consist of A Parallel Chain and Sequencial Chain Combining Together to retrieve context and return response for the user query.",
+    technologies: ["Python", "Langchain", "HuggingFace", "Groq"],
+    githubUrl: "https://github.com/anaskhaann/chat_tube",
+    imageUrl: "/assets/projects/chat_tube.webp",
+  },
+  {
+    id: 3,
+    title: "Personal Portfolio",
     description:
       "Built a fully responsive portfolio using React (TypeScript), Tailwind CSS, and Vite to showcase skills, projects, and experience. Integrated modern UI/UX features including dark/light mode, smooth scrolling (Lenis), and animations (GSAP, ScrollTrigger). Structured with reusable components and dynamic sections for scalability and maintainability.",
     technologies: [
@@ -61,25 +70,51 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/anaskhaann/my-portfolio-website",
     liveUrl: "https://anaskhaann.vercel.app/",
-    imageUrl: "/assets/projects/portfolio.png",
+    imageUrl: "/assets/projects/portfolio.webp",
   },
   {
-    id: 3,
+    id: 4,
+    title: "Mini Splunk",
+    description:
+      "Developed an intelligent log classification tool in Python using regex, BERT embeddings (Sentence Transformers),and LLMs (Groq API), automating the labeling of 10,000+ log entries with an accuracy improvement of 25%, which enhanced service monitoring and reduced downtime incidents by 15%. Built and refined a machine learning pipeline for log data processing — including ingestion, embedding generation, model evaluation, and threshold tuning — achieving 90%+ precision in supervised classification (logistic regression) and uncovering hidden patterns through unsupervised clustering (DBSCAN), leading to faster issue diagnosis.",
+    technologies: [
+      "Python",
+      "Pandas",
+      "Sklearn",
+      "Groq",
+      "Bert",
+      "Llama",
+      "Regex",
+    ],
+    githubUrl: "https://github.com/anaskhaann/mini-splunk.git",
+    imageUrl: "/assets/projects/mini_splunk.webp",
+  },
+  {
+    id: 5,
     title: "Gesture Based Presentation Controller",
     description:
       "Developed a Gesture-Based Presentation system using Python, OpenCV, and MediaPipe, enabling touch-free slide navigation and annotation for an intuitive presentation experience. Achieved 85% hand detection accuracy and 90% gesture recognition accuracy, with optimized slide transition under 0.5s, ensuring fast and reliable real-time control.",
     technologies: ["Python", "MediaPipe", "OpenCV", "Numpy"],
     githubUrl: "https://github.com/anaskhaann/Gesture-Based-Presentation",
-    imageUrl: "/assets/projects/gesture_controller.gif",
+    imageUrl: "/assets/projects/gesture_controller.webp",
   },
   {
-    id: 4,
+    id: 6,
     title: "Web Automation With Selenium",
     description:
       "This project is based on my repo named 'Daily Life Journal'. It is designed to automate the task of printing and creating a book from web content. It automates webpage-to-PDF conversion with ease, perfect for batch downloading and archiving web content.",
     technologies: ["Python", "Selenium"],
     githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
-    imageUrl: "/assets/projects/web_selenium.gif",
+    imageUrl: "/assets/projects/web_selenium.webp",
+  },
+  {
+    id: 7,
+    title: "Full Stack Web App",
+    description:
+      "Built a social media app using Express.js and MongoDB with core features like boards, pins, and personalized feeds. Implemented secure authentication with Passport.js and dynamic UI using EJS templating. ",
+    technologies: ["Express", "Nodejs", "MongoDB", "Tailwind CSS"],
+    githubUrl: "https://github.com/anaskhaann/Pinterest-Clone",
+    imageUrl: "/assets/projects/full_stack.webp",
   },
 ];
 

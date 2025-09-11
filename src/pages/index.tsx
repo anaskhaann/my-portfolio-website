@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,9 +47,9 @@ const Portfolio = () => {
   usePortfolioAnimations(mainContentRef);
 
   // Callback to hide the loading screen when animations are complete.
-  const handleLoadingComplete = () => {
+  const handleLoadingComplete = useCallback(() => {
     setIsLoading(false);
-  };
+  }, [setIsLoading]);
 
   /**
    * Scrolls to a specific section of the page using GSAP.

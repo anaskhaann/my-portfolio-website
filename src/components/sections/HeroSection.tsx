@@ -86,9 +86,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="w-72 h-72 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-border shadow-2xl relative transition-all duration-300 ease-in-out group-hover:scale-105">
                 <div className="w-full h-full relative">
                   <img
-                    src="/assets/pfp.jpg"
+                    src="/assets/pfp.webp"
                     alt="Profile Photo"
                     className="w-full h-full object-cover absolute inset-0 transition-all duration-300 ease-in-out group-hover:scale-105"
+                    loading="lazy"
                   />
                 </div>
 
