@@ -29,7 +29,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   ];
 
   useEffect(() => {
-    // This effect manages the timing and sequence of the greetings animation.
     const timer = setTimeout(
       () => {
         if (index < greetings.length - 1) {
@@ -46,7 +45,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           }, 300); // A short delay before starting the exit animation.
         }
       },
-      index === 0 ? 200 : 200 // Delay between greetings.
+      250 // Consistent delay for all greetings
     );
 
     // Cleanup function to clear the timeout when the component unmounts or re-renders.
@@ -74,18 +73,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     },
   };
 
-  // Defines the curve animation for the SVG background.
-  const curve: Variants = {
-    initial: {
-      d: `M0 0 L100 0 L100 100 Q50 130 0 100 L0 0`,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
-    },
-    exit: {
-      d: `M0 0 L100 0 L100 100 Q50 100 0 100 L0 0`,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
-    },
-  };
-
   return (
     <AnimatePresence mode="wait">
       {isVisible && (
@@ -104,20 +91,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             <p>{"👋🏻"}</p>
             <p>{greetings[index]}</p>
           </motion.div>
-
-          {/* The curved SVG background that animates on exit. */}
-          <motion.svg
-            className="absolute top-0 -z-10 h-[calc(100%+300px)] w-full"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <motion.path
-              className="fill-background"
-              variants={curve}
-              initial="initial"
-              exit="exit"
-            />
-          </motion.svg>
         </motion.div>
       )}
     </AnimatePresence>
