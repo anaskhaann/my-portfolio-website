@@ -37,7 +37,7 @@ const AppLayout = ({
   return (
     <div className="relative">
       <div
-        className={`min-h-screen bg-background text-foreground transition-all duration-500 ease-out`}
+        className={`min-h-screen bg-background text-foreground transition-all duration-300 ease-out`}
         style={{
           opacity: 1,
           visibility: "visible",
@@ -47,14 +47,14 @@ const AppLayout = ({
         {/* Custom animated cursor elements. */}
         <div
           ref={cursorRef}
-          className={`fixed h-10 w-10 pointer-events-none z-50 mix-blend-difference rounded-full border-2 transition-colors duration-300 ${
+          className={`fixed h-10 w-10 pointer-events-none z-50 mix-blend-difference rounded-full border-2 transition-colors duration-150 ${
             isDarkMode ? "border-primary" : "border-slate-900"
           }`}
           style={{ transform: "translate(-50%, -50%)" }}
         />
         <div
           ref={cursorDotRef}
-          className={`fixed h-2 w-2 pointer-events-none z-50 rounded-full transition-colors duration-300 ${
+          className={`fixed h-2 w-2 pointer-events-none z-50 rounded-full transition-colors duration-150 ${
             isDarkMode ? "bg-primary" : "bg-slate-900"
           }`}
           style={{ transform: "translate(-50%, -50%)" }}

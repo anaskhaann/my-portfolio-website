@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Play } from "lucide-react";
 import type { Project } from "@/types";
+import Masonry from "react-masonry-css";
 
 interface ProjectsSectionProps {
   /** An array of project objects to be displayed. */
@@ -30,8 +31,15 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   projectsRef,
 }) => {
   const [showAll, setShowAll] = React.useState(false);
-  const hasMore = projects.length > 4;
-  const visibleProjects = showAll ? projects : projects.slice(0, 4);
+  const hasMore = projects.length > 6;
+  const visibleProjects = showAll ? projects : projects.slice(0, 6);
+
+  // Breakpoints for masonry layout
+  const breakpointColumnsObj = {
+    default: 3,
+    1100: 2,
+    700: 1,
+  };
 
   return (
     <section ref={projectsRef} id="projects" className="animate-section py-8">
@@ -39,29 +47,35 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         <h2 className="mb-8 text-center text-4xl font-semibold text-foreground">
           Projects
         </h2>
-        <div className="projects-container grid gap-4 md:grid-cols-2 lg:grid-cols-2">
+        {/* Masonry container for responsive grid */}
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="projects-container flex gap-6"
+          columnClassName="masonry-column"
+        >
           {visibleProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`project-card glass-card group cursor-pointer overflow-hidden rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-[1.2] ${
+              className={`project-card glass-card group cursor-pointer overflow-hidden rounded-2xl backdrop-blur-md transition-all duration-500 mb-6 ${
                 isDarkMode
-                  ? "border-border bg-card/30 hover:border-foreground/40"
-                  : "border-border bg-card/30 hover:border-foreground/40"
-              } shadow-lg hover:shadow-2xl`}
+                  ? "border-border bg-gradient-to-br from-card/30 to-card/10 hover:border-foreground/60 hover:shadow-2xl hover:shadow-foreground/20"
+                  : "border-border bg-gradient-to-br from-card/30 to-card/10 hover:border-foreground/60 hover:shadow-2xl hover:shadow-foreground/20"
+              } shadow-lg hover:scale-105 hover:-translate-y-1`}
               onClick={() =>
                 setExpandedProject(
                   expandedProject === project.id ? null : project.id
                 )
               }
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden rounded-t-2xl">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div
-                  className={`absolute inset-0 bg-background/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                  className={`absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
                 ></div>
               </div>
 
@@ -145,7 +159,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
             </div>
           ))}
-        </div>
+        </Masonry>
         {/* "View More" / "Show Less" button for projects. */}
         {hasMore && (
           <div className="mt-8 flex justify-center">
@@ -159,8 +173,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             </Button>
           </div>
         )}
-        {/* Link to GitHub for more projects. */}
-        <div className="mt-6 flex justify-center">
+        {/* Link to GitHub for more projects.Comment for time beign */}
+        {/* <div className="mt-6 flex justify-center">
           <a
             href="https://github.com/anaskhaann"
             target="_blank"
@@ -171,6 +185,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             For more projects, Checkout my GitHub
           </a>
         </div>
+         */}
       </div>
     </section>
   );
