@@ -44,11 +44,11 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/anaskhaann/Chat-with-Database-SQL",
     videoUrl:
       "https://drive.google.com/file/d/1_zDUrBSChOOdiV0xt4BLuEMJCrTBH9nL/view?usp=sharing",
-    imageUrl: "/assets/projects/nl_to_sql.gif",
+    imageUrl: "/assets/projects/nl_to_sql.webp",
   },
   {
     id: 2,
-    title: "Personal Portfolio Website",
+    title: "Personal Portfolio",
     description:
       "Built a fully responsive portfolio using React (TypeScript), Tailwind CSS, and Vite to showcase skills, projects, and experience. Integrated modern UI/UX features including dark/light mode, smooth scrolling (Lenis), and animations (GSAP, ScrollTrigger). Structured with reusable components and dynamic sections for scalability and maintainability.",
     technologies: [
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/anaskhaann/my-portfolio-website",
     liveUrl: "https://anaskhaann.vercel.app/",
-    imageUrl: "/assets/projects/portfolio.png",
+    imageUrl: "/assets/projects/portfolio.webp",
   },
   {
     id: 3,
@@ -70,7 +70,7 @@ export const projects: Project[] = [
       "Developed a Gesture-Based Presentation system using Python, OpenCV, and MediaPipe, enabling touch-free slide navigation and annotation for an intuitive presentation experience. Achieved 85% hand detection accuracy and 90% gesture recognition accuracy, with optimized slide transition under 0.5s, ensuring fast and reliable real-time control.",
     technologies: ["Python", "MediaPipe", "OpenCV", "Numpy"],
     githubUrl: "https://github.com/anaskhaann/Gesture-Based-Presentation",
-    imageUrl: "/assets/projects/gesture_controller.gif",
+    imageUrl: "/assets/projects/gesture_controller.webp",
   },
   {
     id: 4,
@@ -79,7 +79,7 @@ export const projects: Project[] = [
       "This project is based on my repo named 'Daily Life Journal'. It is designed to automate the task of printing and creating a book from web content. It automates webpage-to-PDF conversion with ease, perfect for batch downloading and archiving web content.",
     technologies: ["Python", "Selenium"],
     githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
-    imageUrl: "/assets/projects/web_selenium.gif",
+    imageUrl: "/assets/projects/web_selenium.webp",
   },
 ];
 
