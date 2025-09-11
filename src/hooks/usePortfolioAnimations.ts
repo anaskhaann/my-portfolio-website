@@ -32,8 +32,8 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
           scale: 1,
           rotationX: 0,
           duration: 1.4,
-          ease: "power4.out",
-          stagger: 0.25,
+          ease: "power2.out",
+          stagger: 0.3,
         }
       );
 
@@ -54,7 +54,7 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
             scale: 1,
             filter: "blur(0px)",
             duration: 1.2,
-            ease: "power4.out",
+            ease: "power2.out",
             scrollTrigger: {
               trigger: section,
               start: "top 90%",
@@ -80,14 +80,14 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
           scale: 1,
           y: 0,
           rotation: 0,
-          duration: 0.9,
+          duration: 0.6,
           ease: "back.out(1.4)",
           scrollTrigger: {
             trigger: ".skills-container",
             start: "top 80%",
             toggleActions: "play none none reverse",
           },
-          stagger: 0.15,
+          stagger: 0.1,
         }
       );
 
@@ -104,14 +104,14 @@ export function usePortfolioAnimations(scope: React.RefObject<HTMLElement>) {
           opacity: 1,
           y: 0,
           rotationY: 0,
-          duration: 1.2,
-          ease: "power3.out",
+          duration: 0.6,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: ".projects-container",
             start: "top 80%",
             toggleActions: "play none none reverse",
           },
-          stagger: 0.2,
+          stagger: 0.1,
         }
       );
     }, scope); // Scope the animations to the provided element.
