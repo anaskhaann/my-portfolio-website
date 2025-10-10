@@ -1,8 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Play } from "lucide-react";
+import { Github, ExternalLink, Play, ChevronDown } from "lucide-react";
 import type { Project } from "@/types";
-import Masonry from "react-masonry-css";
 
 interface ProjectsSectionProps {
   /** An array of project objects to be displayed. */
@@ -31,135 +30,92 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   projectsRef,
 }) => {
   const [showAll, setShowAll] = React.useState(false);
-  const hasMore = projects.length > 6;
-  const visibleProjects = showAll ? projects : projects.slice(0, 6);
-
-  // Breakpoints for masonry layout
-  const breakpointColumnsObj = {
-    default: 3,
-    1100: 2,
-    700: 1,
-  };
+  const hasMore = projects.length > 4;
+  const visibleProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
     <section ref={projectsRef} id="projects" className="animate-section py-8">
-      <div className="mx-auto max-w-6xl px-4 sm:px-4 lg:px-8">
-        <h2 className="mb-8 text-center text-4xl font-semibold text-foreground">
+      <div className="mx-auto max-w-2xl px-4 sm:px-4 lg:px-8">
+        <h2 className="mb-8 text-3xl font-semibold text-foreground">
           Projects
         </h2>
-        {/* Masonry container for responsive grid */}
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="projects-container flex gap-6"
-          columnClassName="masonry-column"
-        >
-          {visibleProjects.map((project, index) => (
+        {/* List container for projects */}
+        <div className="flex flex-col">
+          {visibleProjects.map((project) => (
             <div
               key={project.id}
-              className={`project-card glass-card group cursor-pointer overflow-hidden rounded-2xl backdrop-blur-md transition-all duration-500 mb-6 ${
-                isDarkMode
-                  ? "border-border bg-gradient-to-br from-card/30 to-card/10 hover:border-foreground/60 hover:shadow-2xl hover:shadow-foreground/20"
-                  : "border-border bg-gradient-to-br from-card/30 to-card/10 hover:border-foreground/60 hover:shadow-2xl hover:shadow-foreground/20"
-              } shadow-lg hover:scale-105 hover:-translate-y-1`}
+              className="border-b border-border py-4 px-4 cursor-pointer transition-all duration-500"
               onClick={() =>
                 setExpandedProject(
                   expandedProject === project.id ? null : project.id
                 )
               }
             >
-              <div className="relative h-48 overflow-hidden rounded-t-2xl">
-                <img
-                  src={project.imageUrl}
-                  alt={project.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
-                ></div>
-              </div>
-
-              <div className="p-4">
-                <h3 className={`mb-2 text-xl font-medium text-foreground`}>
-                  {project.title}
-                </h3>
-                {/* Links to the project's GitHub, live demo, and video. */}
-                <div className="mb-2 flex flex-wrap gap-2">
+              <h3 className={`mb-2 text-xl font-medium text-foreground`}>
+                {project.title}
+              </h3>
+              {/* Links to the project's GitHub, live demo, and video. */}
+              <div className="mb-2 flex flex-wrap gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="h-6 px-2 text-xs border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(project.githubUrl, "_blank");
+                  }}
+                >
+                  <Github className="mr-1 h-3 w-3" />
+                  GitHub
+                </Button>
+                {project.liveUrl && (
                   <Button
                     size="sm"
                     variant="outline"
-                    className="border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
+                    className="h-6 px-2 text-xs border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
                     onClick={(e) => {
                       e.stopPropagation();
-                      window.open(project.githubUrl, "_blank");
+                      window.open(project.liveUrl, "_blank");
                     }}
                   >
-                    <Github className="mr-2 h-4 w-4" />
-                    GitHub
+                    <ExternalLink className="mr-1 h-3 w-3" />
+                    Live
                   </Button>
-                  {project.liveUrl && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(project.liveUrl, "_blank");
-                      }}
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Live
-                    </Button>
-                  )}
-                  {project.videoUrl && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(project.videoUrl, "_blank");
-                      }}
-                    >
-                      <Play className="mr-2 h-4 w-4" />
-                      Demo
-                    </Button>
-                  )}
-                </div>
-                {/* Expanded view with project description and technologies. */}
-                {expandedProject === project.id && (
-                  <div className="animate-fade-in">
-                    <p
-                      className={`mb-2 text-justify font-normal leading-relaxed text-muted-foreground transition-colors duration-300`}
-                    >
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="rounded-full border border-border bg-secondary px-2 py-1 text-xs text-foreground/80 transition-all duration-300 hover:scale-105"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
                 )}
-
-                <div className="mt-2 text-center">
-                  <span
-                    className={`text-sm text-muted-foreground transition-colors duration-300`}
+              </div>
+              {/* Expanded view with project description and technologies. */}
+              {expandedProject === project.id && (
+                <div className="animate-fade-in">
+                  <p
+                    className={`mb-2 text-justify font-normal leading-relaxed text-sm ${
+                      isDarkMode ? "text-white" : "text-muted-foreground"
+                    } transition-colors duration-300`}
                   >
-                    {expandedProject === project.id
-                      ? "Hide Details"
-                      : "Show Details"}
-                  </span>
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="rounded-full border border-border bg-secondary px-2 py-1 text-xs text-foreground/80 transition-all duration-300 hover:scale-105"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+              )}
+
+              <div className="mt-2 flex justify-center">
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-300 ${
+                    expandedProject === project.id ? "rotate-180" : ""
+                  }`}
+                />
               </div>
             </div>
           ))}
-        </Masonry>
+        </div>
         {/* "View More" / "Show Less" button for projects. */}
         {hasMore && (
           <div className="mt-8 flex justify-center">

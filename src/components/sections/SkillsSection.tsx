@@ -23,35 +23,34 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({
 }) => {
   return (
     <section ref={skillsRef} id="skills" className="animate-section py-8">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-center text-4xl font-semibold text-foreground">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-8 text-3xl font-semibold text-foreground">
           Worked with
         </h2>
         <div className="skills-container space-y-4">
           {skillCategories.map((category, categoryIndex) => (
             <div key={categoryIndex}>
-              <h3 className="mb-4 text-center text-xl font-medium text-muted-foreground">
+              <h3 className="mb-4 text-center text-lg font-medium text-muted-foreground">
                 {category.category}
               </h3>
-              <div className="flex flex-wrap justify-center gap-2">
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className={`skill-card group flex items-center space-x-2 rounded-full px-4 py-2 backdrop-blur-md glass-card transition-smooth duration-150 hover:scale-110 ${
+                    className={`skill-card group relative flex items-center justify-center rounded-full px-4 py-2 backdrop-blur-md glass-card transition-smooth duration-150 hover:scale-110 ${
                       isDarkMode
                         ? "border-border bg-card/30 hover:border-foreground/40"
                         : "border-border bg-card/30 hover:border-foreground/40"
                     } shadow-lg hover:shadow-xl`}
                   >
-                    {/* Skill icon, supporting both PNG and SVG formats. */}
+                    {/* Skill icon, hidden by default, appears on hover */}
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className="h-6 w-6 object-contain transition-smooth duration-100 group-hover:scale-110"
-                      loading="lazy"
+                      className="absolute inset-0 m-auto h-5 w-5 object-contain opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110"
                     />
                     <span
-                      className={`font-normal text-foreground transition-smooth duration-100`}
+                      className={`font-normal text-foreground transition-smooth duration-100 group-hover:opacity-0`}
                     >
                       {skill.name}
                     </span>

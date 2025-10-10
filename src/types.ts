@@ -35,10 +35,6 @@ export interface Project {
   githubUrl: string;
   /** The URL to the live demo of the project (optional). */
   liveUrl?: string;
-  /** The URL to a video demonstration of the project (optional). */
-  videoUrl?: string;
-  /** The URL for the project's cover image. */
-  imageUrl: string;
 }
 
 /**

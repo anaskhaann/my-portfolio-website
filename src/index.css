@@ -114,6 +114,7 @@ All colors MUST be HSL.
       "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
     letter-spacing: -0.01em;
+    overflow-x: hidden;
   }
 }
 

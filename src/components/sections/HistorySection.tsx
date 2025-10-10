@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import type { Experience, EducationItem } from "@/types";
 
 interface HistorySectionProps {
@@ -27,6 +28,9 @@ const HistorySection: React.FC<HistorySectionProps> = ({
   const [activeTab, setActiveTab] = useState<"experience" | "education">(
     "experience"
   );
+  const [expandedExperience, setExpandedExperience] = useState<number | null>(
+    null
+  );
 
   const handleTabChange = (tab: "experience" | "education") => {
     setActiveTab(tab);
@@ -34,8 +38,8 @@ const HistorySection: React.FC<HistorySectionProps> = ({
 
   return (
     <section ref={historyRef} id="history" className="animate-section py-8">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-center text-4xl font-semibold text-foreground">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-8 text-3xl font-semibold text-foreground">
           Experience & Education
         </h2>
 
@@ -44,7 +48,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({
           <div className="flex rounded-lg border border-border bg-secondary/50 p-1 backdrop-blur-sm">
             <button
               onClick={() => handleTabChange("experience")}
-              className={`rounded-md px-6 py-2 font-medium transition-all duration-300 ${
+              className={`rounded-md px-4 py-1.5 font-medium transition-all duration-300 ${
                 activeTab === "experience"
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
@@ -54,7 +58,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({
             </button>
             <button
               onClick={() => handleTabChange("education")}
-              className={`rounded-md px-6 py-2 font-medium transition-all duration-300 ${
+              className={`rounded-md px-4 py-1.5 font-medium transition-all duration-300 ${
                 activeTab === "education"
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
@@ -79,13 +83,18 @@ const HistorySection: React.FC<HistorySectionProps> = ({
               {experiences.map((exp, index) => (
                 <div
                   key={exp.id}
-                  className={`experience-card glass-card group relative flex cursor-pointer items-start rounded-xl p-6 pl-8 backdrop-blur-md transition-all duration-300 ${
+                  className={`experience-card glass-card group relative flex cursor-pointer items-start rounded-xl p-4 pl-6 backdrop-blur-md transition-all duration-300 ${
                     isDarkMode
                       ? "border-border bg-card/30 hover:border-foreground/40"
                       : "border-border bg-card/30 hover:border-foreground/40"
                   } shadow-lg hover:shadow-xl`}
                   tabIndex={0}
                   role="button"
+                  onClick={() =>
+                    setExpandedExperience(
+                      expandedExperience === exp.id ? null : exp.id
+                    )
+                  }
                 >
                   {/* Timeline marker dot. */}
                   <span
@@ -99,15 +108,21 @@ const HistorySection: React.FC<HistorySectionProps> = ({
                   <div className="flex-1">
                     <div className="mx-2 mb-2 flex flex-col lg:flex-row lg:items-center lg:justify-between">
                       <div>
-                        <h3 className={`text-xl font-medium text-foreground`}>
+                        <h3 className={`text-lg font-medium text-foreground`}>
                           {exp.title}
                         </h3>
-                        <p className="text-lg font-normal italic text-muted-foreground">
+                        <p
+                          className={`text-base font-normal italic ${
+                            isDarkMode ? "text-white" : "text-muted-foreground"
+                          }`}
+                        >
                           {exp.company}
                         </p>
                       </div>
                       <span
-                        className={`w-fit rounded-full border border-border bg-secondary px-4 py-2 text-sm font-normal text-foreground/80`}
+                        className={`w-fit rounded-full border border-border bg-secondary px-4 py-2 text-sm font-normal ${
+                          isDarkMode ? "text-white" : "text-foreground/80"
+                        }`}
                       >
                         {exp.duration}
                       </span>
@@ -117,16 +132,31 @@ const HistorySection: React.FC<HistorySectionProps> = ({
                       {exp.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className={`rounded-full border border-border bg-secondary px-3 py-1 text-sm text-foreground transition-all duration-300 hover:scale-105`}
+                          className={`rounded-full border border-border bg-secondary px-3 py-1 text-sm ${
+                            isDarkMode ? "text-white" : "text-foreground"
+                          } transition-all duration-300 hover:scale-105`}
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
                     {/* Job description. */}
-                    <p className="text-justify font-normal leading-relaxed text-muted-foreground">
-                      {exp.description}
-                    </p>
+                    {expandedExperience === exp.id && (
+                      <p
+                        className={`text-justify font-normal leading-relaxed text-sm ${
+                          isDarkMode ? "text-white" : "text-muted-foreground"
+                        } transition-colors duration-300`}
+                      >
+                        {exp.description}
+                      </p>
+                    )}
+                    <div className="mt-2 flex justify-center">
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform duration-300 ${
+                          expandedExperience === exp.id ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -145,7 +175,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({
               {education.map((ed) => (
                 <div
                   key={ed.id}
-                  className={`relative flex items-start rounded-xl p-6 pl-8 backdrop-blur-md transition-all duration-300 glass-card ${
+                  className={`relative flex items-start rounded-xl p-4 pl-6 backdrop-blur-md transition-all duration-300 glass-card ${
                     isDarkMode
                       ? "border-border bg-card/30 hover:border-foreground/40"
                       : "border-border bg-card/30 hover:border-foreground/40"
@@ -159,14 +189,22 @@ const HistorySection: React.FC<HistorySectionProps> = ({
                   <div className="flex-1">
                     <div className="mx-2 mb-2 flex flex-col lg:flex-row lg:items-center lg:justify-between">
                       <div>
-                        <h3 className="text-xl font-medium text-foreground">
+                        <h3 className={`text-lg font-medium text-foreground`}>
                           {ed.degree}
                         </h3>
-                        <p className="text-lg font-normal italic text-muted-foreground">
+                        <p
+                          className={`text-base font-normal italic ${
+                            isDarkMode ? "text-white" : "text-muted-foreground"
+                          }`}
+                        >
                           {ed.institution}
                         </p>
                       </div>
-                      <span className="w-fit rounded-full border border-border bg-secondary px-4 py-2 text-sm font-normal text-foreground/80">
+                      <span
+                        className={`w-fit rounded-full border border-border bg-secondary px-4 py-2 text-sm font-normal ${
+                          isDarkMode ? "text-white" : "text-foreground/80"
+                        }`}
+                      >
                         {ed.duration}
                       </span>
                     </div>

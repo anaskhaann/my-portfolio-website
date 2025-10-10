@@ -42,9 +42,6 @@ export const projects: Project[] = [
       "Developed an Agentic AI Chatbot enabling natural language SQL queries using LangChain, Streamlit, and Meta's LLaMA, allowing non-technical users to interact with MySQL and SQLite databases. User can not only get they query but llm will connect to database and run those query in read only mode to get the result and return them in Natural Language. Improved performance with caching and fine-tuned model parameters, reducing response times by 15-20% and enhancing query accuracy.",
     technologies: ["Python", "Langchain", "Streamlit", "MySQL"],
     githubUrl: "https://github.com/anaskhaann/Chat-with-Database-SQL",
-    videoUrl:
-      "https://drive.google.com/file/d/1_zDUrBSChOOdiV0xt4BLuEMJCrTBH9nL/view?usp=sharing",
-    imageUrl: "/assets/projects/nl_to_sql.webp",
   },
   {
     id: 2,
@@ -53,7 +50,6 @@ export const projects: Project[] = [
       "Created a RAG pipeline for Youtube Videos. The user can ask relevant question related to the video. The user query will match the context and retrieve the relevant context for result. The transcript of the videos are embedded using QWEN 8b Model and a simple similarity retrievel applied to fetch top similar results as context. The entire flow of the conversation consist of A Parallel Chain and Sequencial Chain Combining Together to retrieve context and return response for the user query.",
     technologies: ["Python", "Langchain", "HuggingFace", "Groq"],
     githubUrl: "https://github.com/anaskhaann/chat_tube",
-    imageUrl: "/assets/projects/chat_tube.webp",
   },
   {
     id: 3,
@@ -70,7 +66,6 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/anaskhaann/my-portfolio-website",
     liveUrl: "https://anaskhaann.vercel.app/",
-    imageUrl: "/assets/projects/portfolio.webp",
   },
   {
     id: 4,
@@ -87,7 +82,6 @@ export const projects: Project[] = [
       "Regex",
     ],
     githubUrl: "https://github.com/anaskhaann/mini-splunk.git",
-    imageUrl: "/assets/projects/mini_splunk.webp",
   },
   {
     id: 5,
@@ -96,7 +90,6 @@ export const projects: Project[] = [
       "Developed a Gesture-Based Presentation system using Python, OpenCV, and MediaPipe, enabling touch-free slide navigation and annotation for an intuitive presentation experience. Achieved 85% hand detection accuracy and 90% gesture recognition accuracy, with optimized slide transition under 0.5s, ensuring fast and reliable real-time control.",
     technologies: ["Python", "MediaPipe", "OpenCV", "Numpy"],
     githubUrl: "https://github.com/anaskhaann/Gesture-Based-Presentation",
-    imageUrl: "/assets/projects/gesture_controller.webp",
   },
   {
     id: 6,
@@ -105,7 +98,6 @@ export const projects: Project[] = [
       "This project is based on my repo named 'Daily Life Journal'. It is designed to automate the task of printing and creating a book from web content. It automates webpage-to-PDF conversion with ease, perfect for batch downloading and archiving web content.",
     technologies: ["Python", "Selenium"],
     githubUrl: "https://github.com/anaskhaann/Web-Automation-With-Selenium",
-    imageUrl: "/assets/projects/web_selenium.webp",
   },
   {
     id: 7,
@@ -114,7 +106,6 @@ export const projects: Project[] = [
       "Built a social media app using Express.js and MongoDB with core features like boards, pins, and personalized feeds. Implemented secure authentication with Passport.js and dynamic UI using EJS templating. ",
     technologies: ["Express", "Nodejs", "MongoDB", "Tailwind CSS"],
     githubUrl: "https://github.com/anaskhaann/Pinterest-Clone",
-    imageUrl: "/assets/projects/full_stack.webp",
   },
 ];
 

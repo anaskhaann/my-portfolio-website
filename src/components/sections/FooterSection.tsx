@@ -1,5 +1,5 @@
 import React from "react";
-import { Linkedin, Github, Instagram, Send, Mail } from "lucide-react";
+import { Linkedin, Github, Mail } from "lucide-react";
 
 interface FooterSectionProps {
   /** Indicates whether dark mode is currently active. */
@@ -21,9 +21,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
           : "border-border bg-card/50 text-foreground"
       }`}
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <div className="mb-4 flex justify-center space-x-6">
+          <div className="mb-4 flex justify-center space-x-4">
             {/* LinkedIn Profile */}
             <a
               href="https://www.linkedin.com/in/kanas/"
@@ -32,9 +32,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`flex h-12 w-12 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
+                className={`flex h-7 w-7 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
               >
-                <Linkedin className="h-6 w-6 text-foreground" />
+                <Linkedin className="h-4 w-4 text-foreground" />
               </div>
             </a>
 
@@ -46,23 +46,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`flex h-12 w-12 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
+                className={`flex h-7 w-7 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
               >
-                <Github className="h-6 w-6 text-foreground" />
-              </div>
-            </a>
-
-            {/* Telegram Contact */}
-            <a
-              href="https://t.me/anaskhaann"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group transition-transform duration-300 hover:scale-110"
-            >
-              <div
-                className={`flex h-12 w-12 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
-              >
-                <Send className="h-6 w-6 text-foreground" />
+                <Github className="h-4 w-4 text-foreground" />
               </div>
             </a>
 
@@ -74,32 +60,20 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`flex h-12 w-12 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
+                className={`flex h-7 w-7 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
               >
-                <Mail className="h-6 w-6 text-foreground" />
-              </div>
-            </a>
-
-            {/* Instagram Profile */}
-            <a
-              href="https://www.instagram.com/khan._.anas/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group transition-transform duration-300 hover:scale-110"
-            >
-              <div
-                className={`flex h-12 w-12 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
-              >
-                <Instagram className="h-6 w-6 text-foreground" />
+                <Mail className="h-4 w-4 text-foreground" />
               </div>
             </a>
           </div>
 
           {/* Copyright Notice */}
           <p
-            className={`text-lg text-muted-foreground transition-colors duration-300`}
+            className={`text-base ${
+              isDarkMode ? "text-white" : "text-muted-foreground"
+            } transition-colors duration-300`}
           >
-            © 2025 Anas. Crafted with ❤️, precision and passion by Me
+            © 2025 Anas. Crafted with ❤️. Last Updated Sept,2025.
           </p>
         </div>
       </div>

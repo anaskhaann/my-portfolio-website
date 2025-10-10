@@ -83,7 +83,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           exit="exit"
         >
           <motion.div
-            className="flex items-center text-4xl font-black text-foreground md:text-4xl"
+            className="flex items-center text-5xl font-bold text-foreground md:text-6xl"
             variants={fade}
             initial="initial"
             animate="enter"

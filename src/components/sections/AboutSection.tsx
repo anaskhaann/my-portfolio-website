@@ -19,8 +19,8 @@ const AboutSection: React.FC<AboutSectionProps> = ({
 }) => {
   return (
     <section ref={aboutRef} id="about" className="animate-section py-8">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-center text-4xl font-semibold text-foreground">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-8 text-3xl font-semibold text-foreground">
           About Me
         </h2>
         <div
@@ -31,7 +31,9 @@ const AboutSection: React.FC<AboutSectionProps> = ({
           } shadow-xl hover:shadow-2xl`}
         >
           <div
-            className={`max-w-none font-normal text-justify text-muted-foreground transition-colors duration-300`}
+            className={`max-w-none font-normal text-justify text-sm ${
+              isDarkMode ? "text-white" : "text-muted-foreground"
+            } transition-colors duration-300`}
           >
             <p className="mb-2">
               Hello! My name is Mohd Anas Khan, and I hold a Bachelor's degree

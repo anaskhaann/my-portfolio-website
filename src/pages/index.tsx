@@ -72,8 +72,8 @@ const Portfolio = () => {
           y: target,
           offsetY: 0, // Adjust this if you have a fixed header.
         },
-        duration: 1.8,
-        ease: "power3.inOut",
+        duration: 1.5,
+        ease: "power2.inOut",
       });
     }
 
