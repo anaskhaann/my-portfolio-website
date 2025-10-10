@@ -120,7 +120,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({
                         </p>
                       </div>
                       <span
-                        className={`w-fit rounded-full border border-border bg-secondary px-4 py-2 text-sm font-normal ${
+                        className={`w-fit rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-normal ${
                           isDarkMode ? "text-white" : "text-foreground/80"
                         }`}
                       >
@@ -132,7 +132,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({
                       {exp.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className={`rounded-full border border-border bg-secondary px-3 py-1 text-sm ${
+                          className={`rounded-lg border border-border bg-secondary px-3 py-1 text-sm ${
                             isDarkMode ? "text-white" : "text-foreground"
                           } transition-all duration-300 hover:scale-105`}
                         >
@@ -201,7 +201,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({
                         </p>
                       </div>
                       <span
-                        className={`w-fit rounded-full border border-border bg-secondary px-4 py-2 text-sm font-normal ${
+                        className={`w-fit rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-normal ${
                           isDarkMode ? "text-white" : "text-foreground/80"
                         }`}
                       >

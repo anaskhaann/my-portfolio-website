@@ -37,7 +37,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className={`skill-card group relative flex items-center justify-center rounded-full px-4 py-2 backdrop-blur-md glass-card transition-smooth duration-150 hover:scale-110 ${
+                    className={`skill-card group relative flex items-center justify-center rounded-lg cursor-pointer px-4 py-2 backdrop-blur-md glass-card transition-smooth duration-150 hover:scale-110 ${
                       isDarkMode
                         ? "border-border bg-card/30 hover:border-foreground/40"
                         : "border-border bg-card/30 hover:border-foreground/40"

@@ -97,7 +97,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="rounded-full border border-border bg-secondary px-2 py-1 text-xs text-foreground/80 transition-all duration-300 hover:scale-105"
+                        className="rounded-lg border border-border bg-secondary px-2 py-1 text-xs text-foreground/80 transition-all duration-300 hover:scale-105"
                       >
                         {tech}
                       </span>

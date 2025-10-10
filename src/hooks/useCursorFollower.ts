@@ -61,8 +61,8 @@ export function useCursorFollower(
     const animateCursor = () => {
       cursorX += (mouseX - cursorX) * 0.15;
       cursorY += (mouseY - cursorY) * 0.15;
-      gsap.set(cursor, { x: cursorX - 15, y: cursorY - 15 });
-      gsap.set(cursorDot, { x: mouseX - 4, y: mouseY - 4 });
+      gsap.set(cursor, { x: cursorX - 30, y: cursorY - 30 });
+      gsap.set(cursorDot, { x: mouseX - 30, y: mouseY - 30 });
       requestAnimationFrame(animateCursor);
     };
 

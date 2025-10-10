@@ -30,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section id="home" ref={homeRef} className="mt-12 py-8">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-8">
-        <div className="flex flex-row gap-4 lg:gap-7 items-center">
+        <div className="flex flex-row gap-4 lg:gap-6 items-center">
           {/* Text content: name and title */}
           <div className="flex-1 text-left space-y-6">
             {/* Greeting and user's name */}
