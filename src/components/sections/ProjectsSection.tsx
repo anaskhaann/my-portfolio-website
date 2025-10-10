@@ -65,7 +65,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     window.open(project.githubUrl, "_blank");
                   }}
                 >
-                  <Github className="mr-1 h-3 w-3" />
+                  <Github className="mr-1 h-4 w-4" />
                   GitHub
                 </Button>
                 {project.liveUrl && (
@@ -78,7 +78,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                       window.open(project.liveUrl, "_blank");
                     }}
                   >
-                    <ExternalLink className="mr-1 h-3 w-3" />
+                    <ExternalLink className="mr-1 h-4 w-4" />
                     Live
                   </Button>
                 )}

@@ -50,15 +50,6 @@ All colors MUST be HSL.
     --input: 0 0% 88%;
     --ring: 0 0% 20%;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 7%;
-    --sidebar-primary: 0 0% 7%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 7%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 0 0% 20%;
-
     --radius: 0.5rem;
   }
 
@@ -91,15 +82,6 @@ All colors MUST be HSL.
     --border: 0 0% 14%;
     --input: 0 0% 14%;
     --ring: 0 0% 70%;
-
-    --sidebar-background: 0 0% 5%;
-    --sidebar-foreground: 0 0% 96%;
-    --sidebar-primary: 0 0% 96%;
-    --sidebar-primary-foreground: 0 0% 7%;
-    --sidebar-accent: 0 0% 10%;
-    --sidebar-accent-foreground: 0 0% 96%;
-    --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 0 0% 70%;
   }
 }
 
@@ -163,50 +145,6 @@ All colors MUST be HSL.
     background: hsl(var(--card));
     border: 1px solid hsl(var(--foreground) / 0.35);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-  }
-
-  /* Floating animation */
-  .float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  /* Typing cursor animation */
-  .typing-cursor {
-    animation: blink 1s infinite;
-  }
-
-  @keyframes blink {
-    0%,
-    50% {
-      opacity: 1;
-    }
-    51%,
-    100% {
-      opacity: 0;
-    }
-  }
-
-  /* Smooth reveal animation */
-  .reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   /* Locomotive Scroll reveal animations */

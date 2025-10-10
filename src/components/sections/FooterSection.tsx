@@ -32,9 +32,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`flex h-7 w-7 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
+                className={`flex h-9 w-9 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
               >
-                <Linkedin className="h-4 w-4 text-foreground" />
+                <Linkedin className="h-5 w-5 text-foreground" />
               </div>
             </a>
 
@@ -46,9 +46,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`flex h-7 w-7 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
+                className={`flex h-9 w-9 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
               >
-                <Github className="h-4 w-4 text-foreground" />
+                <Github className="h-5 w-5 text-foreground" />
               </div>
             </a>
 
@@ -60,9 +60,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ isDarkMode }) => {
               className="group transition-transform duration-300 hover:scale-110"
             >
               <div
-                className={`flex h-7 w-7 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
+                className={`flex h-9 w-9 items-center justify-center rounded-full border border-border bg-secondary shadow-lg transition-all duration-300 group-hover:shadow-xl hover:bg-muted`}
               >
-                <Mail className="h-4 w-4 text-foreground" />
+                <Mail className="h-5 w-5 text-foreground" />
               </div>
             </a>
           </div>

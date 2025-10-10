@@ -36,34 +36,24 @@ const AboutSection: React.FC<AboutSectionProps> = ({
             } transition-colors duration-300`}
           >
             <p className="mb-2">
-              Hello! My name is Mohd Anas Khan, and I hold a Bachelor's degree
-              in Computer Science and Engineering from Rizvi College of
-              Engineering, Mumbai. I specialize in Artificial Intelligence and
-              Data Science.
+              I’m a passionate and self-driven technologist specializing in
+              Artificial Intelligence and Data Science. I thrive on solving
+              real-world challenges through smart, efficient, and scalable
+              solutions. Known for taking initiative and learning quickly, I’m
+              dedicated to delivering high-quality results while continuously
+              improving my skills.
             </p>
             <p className="mb-2">
-              I am a self-motivated and collaborative team player, passionate
-              about creating solutions that solve real-world challenges. I am
-              known for my ability to take initiative, learn quickly, and
-              consistently deliver high-quality results. I believe in the
-              philosophy of dreaming big, starting small, and moving fast. My
-              commitment to continuous learning and personal growth means that
-              even if I may not know everything, I have the determination and
-              resourcefulness to find solutions and get the job done.
+              I believe in dreaming big, starting small, and moving fast — a
+              mindset that fuels my curiosity and commitment to growth. My
+              diverse technical background allows me to choose the right tools
+              for the job, write clean and maintainable code, and adapt swiftly
+              to dynamic, fast-paced environments.
             </p>
             <p className="mb-2">
-              My skillset is diverse, allowing me to select the best tools for
-              building efficient and effective products. I thrive in fast-paced
-              environments where I can quickly acquire new skills to improve and
-              finish on time.
-              <br />
-              I am dedicated to writing clean, maintainable code and adhering to
-              best practices to ensure the delivery of high-quality products. I
-              am always eager to explore new technologies and take on
-              challenging projects that push my boundaries.
-              <br />
-              When I'm not coding, you can find me gaming, swimming, or catching
-              up on sleep.
+              Beyond coding, I enjoy gaming, swimming, and recharging with a
+              good rest — because creativity often sparks when the mind is
+              refreshed.
             </p>
           </div>
         </div>
