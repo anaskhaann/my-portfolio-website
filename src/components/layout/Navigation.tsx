@@ -62,7 +62,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <nav className="fixed top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo/Brand Name - Scrolls to the top of the page on click. */}
           <button
@@ -134,9 +134,9 @@ const Navigation: React.FC<NavigationProps> = ({
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-5 w-5" />
               )}
             </button>
           </div>
@@ -162,7 +162,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 className="w-fit bg-foreground text-background hover:opacity-90"
                 onClick={handleResumeDownload}
               >
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="mr-2 h-5 w-5" />
                 Resume
               </Button>
             </div>
