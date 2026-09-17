@@ -146,17 +146,6 @@ All colors MUST be HSL.
     border: 1px solid hsl(var(--foreground) / 0.35);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   }
-
-  /* Locomotive Scroll reveal animations */
-  [data-scroll] {
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  [data-scroll].is-inview {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
-  }
 }
 
 /* Progressive enhancement for better performance */
@@ -168,10 +157,6 @@ All colors MUST be HSL.
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
-  .has-scroll-smooth [data-scroll-container] {
-    transform: none !important;
-  }
 }
 
 /* Enhanced mobile responsiveness */
@@ -179,9 +164,5 @@ All colors MUST be HSL.
   .glass-card {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-  }
-
-  [data-scroll-container] {
-    overflow-x: hidden;
   }
 }

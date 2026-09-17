@@ -42,7 +42,7 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-Make sure you have [Node.js](https://nodejs.org/en/) (version 18 or higher) and [npm](https://www.npmjs.com/) installed on your machine.
+Make sure you have [Bun](https://bun.sh/) installed on your machine.
 
 ### Installation
 
@@ -54,9 +54,9 @@ Make sure you have [Node.js](https://nodejs.org/en/) (version 18 or higher) and 
     ```sh
     cd my-portfolio-website
     ```
-3.  Install NPM packages:
+3.  Install packages:
     ```sh
-    npm install
+    bun install
     ```
 
 ### Running the Development Server
@@ -64,7 +64,7 @@ Make sure you have [Node.js](https://nodejs.org/en/) (version 18 or higher) and 
 To start the development server, run the following command. This will open the project in your default browser at `http://localhost:8080`.
 
 ```sh
-npm run dev
+bun run dev
 ```
 
 ### Building for Production
@@ -72,7 +72,7 @@ npm run dev
 To create a production-ready build of the application, run:
 
 ```sh
-npm run build
+bun run build
 ```
 
 This will create a `dist` folder with the optimized and minified files ready for deployment.
@@ -100,7 +100,7 @@ my-portfolio-website/
 │   ├── types.ts           # TypeScript type definitions
 │   ├── App.tsx            # Root component with providers
 │   └── main.tsx           # Application entry point
-├── .eslintrc.cjs          # ESLint configuration
+├── eslint.config.js      # ESLint configuration
 ├── tailwind.config.ts     # Tailwind CSS configuration
 ├── tsconfig.json          # TypeScript configuration
 └── vite.config.ts         # Vite configuration
