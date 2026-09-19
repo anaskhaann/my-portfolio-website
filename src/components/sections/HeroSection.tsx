@@ -1,83 +1,51 @@
-import React from "react";
+import Image from "next/image";
+import { siteConfig } from "@/content/site";
+import Reveal from "@/components/motion/Reveal";
 
-interface HeroSectionProps {
-  /**
-   * Handles scrolling to different parts of the page.
-   */
-  onSectionScroll: (sectionName: string) => void;
-  /**
-   * A reference to the main hero section element, used for scrolling.
-   */
-  homeRef?: React.RefObject<HTMLElement>;
-}
-
-/**
- * The main landing page section.
- *
- * This component welcomes visitors with:
- * - A profile picture with animated decorations.
- * - The user's name and a role.
- * - A layout that works well on both mobile and desktop screens.
- */
-import { useTheme } from "@/hooks/useTheme";
-
-const HeroSection: React.FC<HeroSectionProps> = ({
-  onSectionScroll,
-  homeRef,
-}) => {
-  const { isDarkMode } = useTheme();
-
+export default function HeroSection() {
   return (
-    <section id="home" ref={homeRef} className="mt-12 py-8">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-8">
-        <div className="flex flex-row gap-4 lg:gap-6 items-center">
-          {/* Text content: name and title */}
-          <div className="flex-1 text-left space-y-6">
-            {/* Greeting and user's name */}
-            <div className="hero-element">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-4xl font-normal leading-tight">
-                <span className="text-foreground font-bold tracking-tight">
-                  Mohd Anas
+    <section id="home" className="mt-12 py-8">
+      <div className="mx-auto mb-8 w-full max-w-2xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-row items-center gap-4 lg:gap-6">
+          <div className="flex-1 space-y-6 text-left">
+            <Reveal>
+              <h1 className="text-2xl font-normal leading-tight sm:text-3xl lg:text-4xl xl:text-4xl">
+                <span className="font-bold tracking-tight text-foreground">
+                  {siteConfig.name}
                 </span>
               </h1>
-              <div className="text-lg sm:text-xl lg:text-2xl xl:text-2xl flex items-center justify-start">
-                <span className="text-foreground">AI/ML Engineer</span>
+              <div className="flex items-center justify-start text-lg sm:text-xl lg:text-2xl xl:text-2xl">
+                <span className="text-foreground">{siteConfig.role}</span>
               </div>
-            </div>
+            </Reveal>
           </div>
 
-          {/* Profile image */}
-          <div className="flex justify-center hero-element">
+          <Reveal delay={0.1}>
             <div className="relative group">
-              <div className="w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full overflow-hidden border-2 border-border shadow-2xl relative transition-all duration-300 ease-in-out group-hover:scale-105">
-                <div className="w-full h-full relative">
-                  <img
-                    src="/assets/pfp.webp"
-                    alt="Profile Photo"
-                    className="w-full h-full object-cover absolute inset-0 transition-all duration-300 ease-in-out group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-
-                <div className="absolute inset-0 bg-muted/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative h-28 w-28 overflow-hidden rounded-full border-2 border-border shadow-2xl transition-all duration-300 ease-in-out group-hover:scale-105 md:h-36 md:w-36 lg:h-40 lg:w-40">
+                <Image
+                  src="/assets/pfp.webp"
+                  alt="Profile Photo"
+                  fill
+                  sizes="(max-width: 768px) 112px, 160px"
+                  className="object-cover transition-all duration-300 ease-in-out group-hover:scale-105"
+                  priority
+                />
+                <div className="absolute inset-0 bg-muted/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
               </div>
 
-              {/* Small animated circles floating around the profile picture. */}
-              <div className="absolute -top-6 -right-6 w-5 h-5 bg-muted rounded-full shadow-lg animate-pulse"></div>
-              <div className="absolute -bottom-6 -left-6 w-5 h-5 bg-muted rounded-full shadow-lg animate-bounce"></div>
-              <div className="absolute top-1/2 -left-8 w-4 h-4 bg-muted rounded-full shadow-lg animate-ping"></div>
+              <div className="absolute -top-6 -right-6 h-5 w-5 animate-pulse rounded-full bg-muted shadow-lg"></div>
+              <div className="absolute -bottom-6 -left-6 h-5 w-5 animate-bounce rounded-full bg-muted shadow-lg"></div>
+              <div className="absolute top-1/2 -left-8 h-4 w-4 animate-ping rounded-full bg-muted shadow-lg"></div>
             </div>
-          </div>
+          </Reveal>
         </div>
-        {/* A personal or professional tagline */}
-        <div className="hero-element mt-2">
-          <p className="text-base sm:text-lg lg:text-xl font-normal text-black dark:text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
+        <Reveal delay={0.2}>
+          <p className="mx-auto mt-2 max-w-2xl text-base font-normal leading-relaxed text-black sm:text-lg lg:mx-0 lg:text-xl dark:text-white">
             I Build what I love and love what I Built. I am Good at What I Do.
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

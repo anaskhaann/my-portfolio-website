@@ -1,57 +1,39 @@
-import React from "react";
-import type { SkillCategory } from "@/types";
+import Image from "next/image";
+import { skillCategories } from "@/content/skills";
+import Reveal from "@/components/motion/Reveal";
 
-interface SkillsSectionProps {
-  /** An array of skill categories, each containing a list of skills. */
-  skillCategories: SkillCategory[];
-  /** Indicates whether dark mode is currently active. */
-  isDarkMode: boolean;
-  /** A React ref to the main section element for targeting with animations or scrolling. */
-  skillsRef: React.RefObject<HTMLElement>;
-}
-
-/**
- * The "Skills" section of the portfolio.
- * It displays a categorized list of skills with their corresponding icons.
- *
- * @param {SkillsSectionProps} props - The props for the component.
- */
-const SkillsSection: React.FC<SkillsSectionProps> = ({
-  skillCategories,
-  isDarkMode,
-  skillsRef,
-}) => {
+export default function SkillsSection() {
   return (
-    <section ref={skillsRef} id="skills" className="animate-section py-8">
+    <section id="skills" className="py-8">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-3xl font-semibold text-foreground">
-          Worked with
-        </h2>
-        <div className="skills-container space-y-4">
-          {skillCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex}>
-              <h3 className="mb-4 text-center text-lg font-medium text-muted-foreground">
-                {category.category}
-              </h3>
+        <Reveal>
+          <h2 className="mb-8 text-3xl font-semibold text-foreground">
+            Worked with
+          </h2>
+        </Reveal>
+        <div className="space-y-4">
+          {skillCategories.map((category) => (
+            <div key={category.category}>
+              <Reveal>
+                <h3 className="mb-4 text-center text-lg font-medium text-muted-foreground">
+                  {category.category}
+                </h3>
+              </Reveal>
               <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
+                {category.skills.map((skill) => (
                   <div
-                    key={skillIndex}
-                    className={`skill-card group relative flex items-center justify-center rounded-lg cursor-pointer px-4 py-2 backdrop-blur-md glass-card transition-smooth duration-150 hover:scale-110 ${
-                      isDarkMode
-                        ? "border-border bg-card/30 hover:border-foreground/40"
-                        : "border-border bg-card/30 hover:border-foreground/40"
-                    } shadow-lg hover:shadow-xl`}
+                    key={skill.name}
+                    className="glass-card group relative flex cursor-pointer items-center justify-center rounded-lg border-border bg-card/30 px-4 py-2 shadow-lg backdrop-blur-md transition-all duration-150 hover:scale-110 hover:border-foreground/40 hover:shadow-xl"
                   >
-                    {/* Skill icon, hidden by default, appears on hover */}
-                    <img
+                    <Image
                       src={skill.icon}
                       alt={skill.name}
-                      className="absolute inset-0 m-auto h-5 w-5 object-contain opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110"
+                      width={20}
+                      height={20}
+                      loading="lazy"
+                      className="absolute inset-0 m-auto object-contain opacity-0 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100"
                     />
-                    <span
-                      className={`font-normal text-foreground transition-smooth duration-100 group-hover:opacity-0`}
-                    >
+                    <span className="font-normal text-foreground transition-opacity duration-100 group-hover:opacity-0">
                       {skill.name}
                     </span>
                   </div>
@@ -63,6 +45,4 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({
       </div>
     </section>
   );
-};
-
-export default SkillsSection;
+}

@@ -1,122 +1,105 @@
-import React from "react";
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Play, ChevronDown } from "lucide-react";
+import { Github, ExternalLink, ChevronDown } from "lucide-react";
 import type { Project } from "@/types";
+import Reveal from "@/components/motion/Reveal";
 
 interface ProjectsSectionProps {
-  /** An array of project objects to be displayed. */
   projects: Project[];
-  /** Indicates whether dark mode is currently active. */
-  isDarkMode: boolean;
-  /** The ID of the currently expanded project, or `null` if none is expanded. */
-  expandedProject: number | null;
-  /** A function to set the ID of the expanded project. */
-  setExpandedProject: (id: number | null) => void;
-  /** A React ref to the main section element for targeting with animations or scrolling. */
-  projectsRef: React.RefObject<HTMLElement>;
+  moreHref?: string;
 }
 
-/**
- * The "Projects" section of the portfolio.
- * It displays a grid of projects with expandable details.
- *
- * @param {ProjectsSectionProps} props - The props for the component.
- */
-const ProjectsSection: React.FC<ProjectsSectionProps> = ({
+export default function ProjectsSection({
   projects,
-  isDarkMode,
-  expandedProject,
-  setExpandedProject,
-  projectsRef,
-}) => {
-  const [showAll, setShowAll] = React.useState(false);
+  moreHref,
+}: ProjectsSectionProps) {
+  const [showAll, setShowAll] = useState(false);
+  const [expandedProject, setExpandedProject] = useState<number | null>(null);
   const hasMore = projects.length > 4;
   const visibleProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
-    <section ref={projectsRef} id="projects" className="animate-section py-8">
+    <section id="projects" className="py-8">
       <div className="mx-auto max-w-2xl px-4 sm:px-4 lg:px-8">
-        <h2 className="mb-8 text-3xl font-semibold text-foreground">
-          Projects
-        </h2>
-        {/* List container for projects */}
+        <Reveal>
+          <h2 className="mb-8 text-3xl font-semibold text-foreground">
+            Projects
+          </h2>
+        </Reveal>
         <div className="flex flex-col">
           {visibleProjects.map((project) => (
-            <div
-              key={project.id}
-              className="border-b border-border py-4 px-4 cursor-pointer transition-all duration-500"
-              onClick={() =>
-                setExpandedProject(
-                  expandedProject === project.id ? null : project.id
-                )
-              }
-            >
-              <h3 className={`mb-2 text-xl font-medium text-foreground`}>
-                {project.title}
-              </h3>
-              {/* Links to the project's GitHub, live demo, and video. */}
-              <div className="mb-2 flex flex-wrap gap-2">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="h-6 px-2 text-xs border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(project.githubUrl, "_blank");
-                  }}
-                >
-                  <Github className="mr-1 h-4 w-4" />
-                  GitHub
-                </Button>
-                {project.liveUrl && (
+            <Reveal key={project.id}>
+              <div
+                className="cursor-pointer border-b border-border px-4 py-4 transition-all duration-500"
+                onClick={() =>
+                  setExpandedProject(
+                    expandedProject === project.id ? null : project.id
+                  )
+                }
+              >
+                <h3 className="mb-2 text-xl font-medium text-foreground">
+                  {project.title}
+                </h3>
+                <div className="mb-2 flex flex-wrap gap-2">
                   <Button
                     size="sm"
                     variant="outline"
-                    className="h-6 px-2 text-xs border-border bg-secondary text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
+                    className="h-6 border-border bg-secondary px-2 text-xs text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
                     onClick={(e) => {
                       e.stopPropagation();
-                      window.open(project.liveUrl, "_blank");
+                      window.open(project.githubUrl, "_blank");
                     }}
                   >
-                    <ExternalLink className="mr-1 h-4 w-4" />
-                    Live
+                    <Github className="mr-1 h-4 w-4" />
+                    GitHub
                   </Button>
-                )}
-              </div>
-              {/* Expanded view with project description and technologies. */}
-              {expandedProject === project.id && (
-                <div className="animate-fade-in">
-                  <p
-                    className={`mb-2 text-justify font-normal leading-relaxed text-sm ${
-                      isDarkMode ? "text-white" : "text-muted-foreground"
-                    } transition-colors duration-300`}
-                  >
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="rounded-lg border border-border bg-secondary px-2 py-1 text-xs text-foreground/80 transition-all duration-300 hover:scale-105"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  {project.liveUrl && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="h-6 border-border bg-secondary px-2 text-xs text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(project.liveUrl, "_blank");
+                      }}
+                    >
+                      <ExternalLink className="mr-1 h-4 w-4" />
+                      Live
+                    </Button>
+                  )}
                 </div>
-              )}
+                {expandedProject === project.id && (
+                  <div className="animate-fade-in">
+                    <p className="mb-2 text-justify text-sm font-normal leading-relaxed text-muted-foreground transition-colors duration-300">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-lg border border-border bg-secondary px-2 py-1 text-xs text-foreground/80 transition-all duration-300 hover:scale-105"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-              <div className="mt-2 flex justify-center">
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-300 ${
-                    expandedProject === project.id ? "rotate-180" : ""
-                  }`}
-                />
+                <div className="mt-2 flex justify-center">
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-300 ${
+                      expandedProject === project.id ? "rotate-180" : ""
+                    }`}
+                  />
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
-        {/* "View More" / "Show Less" button for projects. */}
         {hasMore && (
           <div className="mt-8 flex justify-center">
             <Button
@@ -129,22 +112,17 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             </Button>
           </div>
         )}
-        {/* Link to GitHub for more projects.Comment for time beign */}
-        {/* <div className="mt-6 flex justify-center">
-          <a
-            href="https://github.com/anaskhaann"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center rounded-lg border border-border bg-secondary px-4 py-2 font-medium text-foreground shadow-sm transition-all duration-300 hover:bg-muted hover:shadow-lg"
-          >
-            <Github className="mr-2 h-5 w-5" />
-            For more projects, Checkout my GitHub
-          </a>
-        </div>
-         */}
+        {moreHref && (
+          <div className="mt-3 text-center">
+            <Link
+              href={moreHref}
+              className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
+            >
+              All projects →
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
-};
-
-export default ProjectsSection;
+}
