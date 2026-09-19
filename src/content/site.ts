@@ -6,6 +6,8 @@ export const siteConfig: SiteConfig = {
   url: "https://anaskhaann.vercel.app",
   description: "Mohd Anas — AI/ML Engineer building intelligent, scalable software.",
   email: "anaskhaann.work@gmail.com",
+  resumeUrl:
+    "https://drive.google.com/file/d/16DDCrdMmQA3U8AIzFOGsYKLTJu3fFprc/view?usp=sharing",
   navigation: [
     { name: "About", href: "/about" },
     { name: "Experience", href: "/experience" },

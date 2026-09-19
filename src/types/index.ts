@@ -51,6 +51,7 @@ export interface SiteConfig {
   url: string;
   description: string;
   email: string;
+  resumeUrl: string;
   navigation: NavItem[];
   socials: Social[];
 }
