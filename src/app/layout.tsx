@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { siteConfig } from "@/content/site";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
-import CursorMount from "@/components/motion/CursorMount";
+import CursorLoader from "@/components/motion/CursorLoader";
 import IntroGate from "@/components/motion/IntroGate";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
@@ -87,7 +87,7 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="dark">
             <TooltipProvider>
               <ScrollProgress className="bg-none bg-foreground" />
-              <CursorMount />
+              <CursorLoader />
               <IntroGate>
                 <SiteHeader />
                 <main>{children}</main>
