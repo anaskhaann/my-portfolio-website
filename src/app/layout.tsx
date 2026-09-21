@@ -4,6 +4,8 @@ import { ThemeProvider } from "next-themes";
 import { siteConfig } from "@/content/site";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
+import CursorMount from "@/components/motion/CursorMount";
+import IntroGate from "@/components/motion/IntroGate";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -80,9 +82,12 @@ export default function RootLayout({
         />
         <ReactLenis root options={{ autoRaf: true }}>
           <ThemeProvider attribute="class" defaultTheme="dark">
-            <SiteHeader />
-            <main>{children}</main>
-            <SiteFooter />
+            <CursorMount />
+            <IntroGate>
+              <SiteHeader />
+              <main>{children}</main>
+              <SiteFooter />
+            </IntroGate>
           </ThemeProvider>
         </ReactLenis>
       </body>

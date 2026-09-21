@@ -20,7 +20,7 @@ export default function HeroSection() {
             </Reveal>
           </div>
 
-          <Reveal delay={0.1}>
+          <Reveal delay={0.05}>
             <div className="relative group">
               <div className="relative h-28 w-28 overflow-hidden rounded-full border-2 border-border shadow-2xl transition-all duration-300 ease-in-out group-hover:scale-105 md:h-36 md:w-36 lg:h-40 lg:w-40">
                 <Image
@@ -28,6 +28,7 @@ export default function HeroSection() {
                   alt="Profile Photo"
                   fill
                   sizes="(max-width: 768px) 112px, 160px"
+                  data-intro-image
                   className="object-cover transition-all duration-300 ease-in-out group-hover:scale-105"
                   priority
                 />
@@ -40,7 +41,7 @@ export default function HeroSection() {
             </div>
           </Reveal>
         </div>
-        <Reveal delay={0.2}>
+        <Reveal delay={0.1}>
           <p className="mx-auto mt-2 max-w-2xl text-base font-normal leading-relaxed text-black sm:text-lg lg:mx-0 lg:text-xl dark:text-white">
             I Build what I love and love what I Built. I am Good at What I Do.
           </p>
