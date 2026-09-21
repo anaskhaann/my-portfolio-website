@@ -10,7 +10,7 @@ export const metadata = routeMetadata(
 export default function ExperiencePage() {
   return (
     <div className="pt-16">
-      <ExperienceSection />
+      <ExperienceSection pageTitle />
     </div>
   );
 }

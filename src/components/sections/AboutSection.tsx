@@ -2,16 +2,27 @@ import Link from "next/link";
 import { profile } from "@/content/profile";
 import Reveal from "@/components/motion/Reveal";
 
-export default function AboutSection({ preview = false }: { preview?: boolean }) {
+export default function AboutSection({
+  preview = false,
+  pageTitle = false,
+}: {
+  preview?: boolean;
+  pageTitle?: boolean;
+}) {
   const paragraphs = preview ? profile.bio.slice(0, 1) : profile.bio;
+  const Title = pageTitle ? "h1" : "h2";
 
   return (
-    <section id="about" className="py-8">
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-section">
+      <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <h2 className="mb-8 text-3xl font-semibold text-foreground">
+          <Title
+            className={`mb-8 font-semibold text-foreground ${
+              pageTitle ? "text-h1" : "text-h2"
+            }`}
+          >
             About Me
-          </h2>
+          </Title>
         </Reveal>
         <Reveal delay={0.05}>
           <div className="rounded-xl border-border bg-card/30 p-4 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-foreground/40 hover:shadow-2xl glass-card">

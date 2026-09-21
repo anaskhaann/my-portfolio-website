@@ -7,13 +7,13 @@ import { CopyButton } from "@/components/copy-button";
 
 export default function HeroSection() {
   return (
-    <section id="home" className="mt-12 py-8">
-      <div className="mx-auto mb-8 w-full max-w-2xl px-4 sm:px-6 lg:px-8">
+    <section id="home" className="py-section">
+      <div className="mx-auto mb-8 w-full max-w-content px-4 sm:px-6 lg:px-8">
         <div className="flex flex-row items-center gap-4 lg:gap-6">
           <div className="flex-1 space-y-6 text-left">
             <Reveal>
-              <h1 className="text-2xl font-normal leading-tight sm:text-3xl lg:text-4xl xl:text-4xl">
-                <span className="font-bold tracking-tight text-foreground">
+              <h1 className="text-display font-medium">
+                <span className="font-semibold tracking-tight text-foreground">
                   {siteConfig.name}
                 </span>
               </h1>

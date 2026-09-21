@@ -48,13 +48,23 @@ function toRegistryExperience(e: Experience): ExperienceItemType {
   };
 }
 
-export default function ExperienceSection() {
+export default function ExperienceSection({
+  pageTitle = false,
+}: {
+  pageTitle?: boolean;
+}) {
+  const Title = pageTitle ? "h1" : "h2";
+
   return (
-    <section id="history" className="py-8">
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-3xl font-semibold text-foreground">
+    <section id="history" className="py-section">
+      <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+        <Title
+          className={`mb-8 font-semibold text-foreground ${
+            pageTitle ? "text-h1" : "text-h2"
+          }`}
+        >
           Experience & Education
-        </h2>
+        </Title>
         <WorkExperience experiences={experiences.map(toRegistryExperience)} />
       </div>
     </section>

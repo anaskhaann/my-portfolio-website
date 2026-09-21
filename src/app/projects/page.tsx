@@ -11,7 +11,7 @@ export const metadata = routeMetadata(
 export default function ProjectsPage() {
   return (
     <div className="pt-16">
-      <ProjectsSection projects={projects} />
+      <ProjectsSection projects={projects} pageTitle />
     </div>
   );
 }

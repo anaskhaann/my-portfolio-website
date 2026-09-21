@@ -11,7 +11,7 @@ const icons: Record<string, typeof Github> = {
 export default function SiteFooter() {
   return (
     <footer className="border-t border-border bg-card/50 py-8 text-foreground">
-      <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-content px-4 text-center sm:px-6 lg:px-8">
         <div className="mb-4 flex items-center justify-center space-x-4">
           {siteConfig.socials.slice(0, 3).map((s) => {
             const Icon = icons[s.name] ?? Mail;

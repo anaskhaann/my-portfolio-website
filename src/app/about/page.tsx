@@ -14,7 +14,7 @@ export const revalidate = 3600;
 export default function AboutPage() {
   return (
     <div className="pt-16">
-      <AboutSection />
+      <AboutSection pageTitle />
       <ContributionsSection />
       <SkillsSection />
     </div>

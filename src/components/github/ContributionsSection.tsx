@@ -10,9 +10,9 @@ export default async function ContributionsSection() {
   if (!data.length) return null;
 
   return (
-    <section className="py-8" aria-label="GitHub activity">
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-4 text-3xl font-semibold text-foreground">
+    <section className="py-section" aria-label="GitHub activity">
+      <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-4 text-h2 font-semibold text-foreground">
           Activity
         </h2>
         <Suspense fallback={<GitHubContributionsFallback />}>

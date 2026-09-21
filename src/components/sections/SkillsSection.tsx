@@ -4,10 +4,10 @@ import Reveal from "@/components/motion/Reveal";
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-8">
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-section">
+      <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <h2 className="mb-8 text-3xl font-semibold text-foreground">
+          <h2 className="mb-8 text-h2 font-semibold text-foreground">
             Worked with
           </h2>
         </Reveal>

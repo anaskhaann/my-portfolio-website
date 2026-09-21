@@ -6,11 +6,13 @@ import ProjectList from "@/components/sections/ProjectList";
 interface ProjectsSectionProps {
   projects: Project[];
   moreHref?: string;
+  pageTitle?: boolean;
 }
 
 export default async function ProjectsSection({
   projects,
   moreHref,
+  pageTitle = false,
 }: ProjectsSectionProps) {
   const entries = await Promise.all(
     projects.map(async (project) => {
@@ -24,14 +26,19 @@ export default async function ProjectsSection({
   const stars: Record<number, number | null> = Object.fromEntries(
     entries.map((e) => [e.id, e.stars])
   );
+  const Title = pageTitle ? "h1" : "h2";
 
   return (
-    <section id="projects" className="py-8">
-      <div className="mx-auto max-w-2xl px-4 sm:px-4 lg:px-8">
+    <section id="projects" className="py-section">
+      <div className="mx-auto max-w-content px-4 sm:px-4 lg:px-8">
         <Reveal>
-          <h2 className="mb-8 text-3xl font-semibold text-foreground">
+          <Title
+            className={`mb-8 font-semibold text-foreground ${
+              pageTitle ? "text-h1" : "text-h2"
+            }`}
+          >
             Projects
-          </h2>
+          </Title>
         </Reveal>
         <ProjectList projects={projects} stars={stars} moreHref={moreHref} />
       </div>
