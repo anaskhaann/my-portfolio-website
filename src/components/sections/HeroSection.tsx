@@ -53,6 +53,7 @@ export default function HeroSection() {
             <CopyButton
               text={siteConfig.email}
               size="sm"
+              aria-label="Copy email"
               className="h-6 px-2 text-xs"
             >
               Copy email

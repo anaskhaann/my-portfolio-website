@@ -39,7 +39,6 @@ export default function CommandMenu() {
     setOpen(false);
     router.push(href);
   };
-
   return (
     <>
       <Button
@@ -47,9 +46,7 @@ export default function CommandMenu() {
         size="sm"
         onClick={() => setOpen(true)}
         className="hidden h-8 gap-2 border-border bg-secondary px-3 text-xs text-muted-foreground md:inline-flex"
-        aria-label="Open navigation search"
       >
-        <Search className="h-3.5 w-3.5" />
         Search
         <kbd className="rounded border border-border bg-background px-1 font-mono text-[10px]">
           ⌘K

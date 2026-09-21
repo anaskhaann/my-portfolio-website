@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -18,6 +19,22 @@ import {
 
 function ThemeToggle({ className = "" }: { className?: string }) {
   const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  // Render a same-size placeholder until mounted: resolvedTheme is undefined
+  // on the server, and rendering the toggler early would hydrate a different
+  // icon (Moon vs Sun) than the server sent.
+  if (!mounted) {
+    return (
+      <span
+        aria-hidden="true"
+        className={`inline-block h-9 w-9 rounded-full border border-border bg-secondary ${className}`}
+      />
+    );
+  }
+
   return (
     <AnimatedThemeToggler
       theme={resolvedTheme === "dark" ? "dark" : "light"}
@@ -39,7 +56,7 @@ export default function SiteHeader() {
         <Link
           href="/"
           className="cursor-pointer text-3xl font-black tracking-wide text-foreground"
-          aria-label="Mohd Anas — home"
+          aria-label="Mohd Anas — home (/A\)"
         >
           /A\
         </Link>
