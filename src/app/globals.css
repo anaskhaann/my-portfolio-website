@@ -146,6 +146,10 @@
     letter-spacing: normal;
     overflow-x: hidden;
   }
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
 }
 
 @utility py-section {

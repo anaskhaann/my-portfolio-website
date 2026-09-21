@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Menu, Download } from "lucide-react";
+import { Menu, Download, Search } from "lucide-react";
 import { siteConfig } from "@/content/site";
+import { openPalette } from "@/lib/palette";
 import CommandMenu from "@/components/command/CommandMenu";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import {
@@ -102,6 +103,19 @@ export default function SiteHeader() {
                     </Link>
                   </SheetClose>
                 ))}
+                <SheetClose asChild>
+                  <button
+                    type="button"
+                    onClick={openPalette}
+                    className="flex items-center gap-2 rounded-md px-3 py-2 font-medium text-foreground/80 hover:bg-muted hover:text-foreground"
+                  >
+                    <Search className="h-4 w-4" />
+                    Search
+                    <kbd className="rounded border border-border bg-background px-1 font-mono text-[10px]">
+                      ⌘K
+                    </kbd>
+                  </button>
+                </SheetClose>
                 <a
                   href={siteConfig.resumeUrl}
                   target="_blank"

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { Github, ExternalLink, ChevronDown } from "lucide-react";
 import type { Project } from "@/types";
 import { parseRepoSlug } from "@/lib/github";
@@ -29,16 +31,12 @@ export default function ProjectList({
   return (
     <>
       <div className="flex flex-col gap-3">
-        {visibleProjects.map((project) => (
-          <Reveal key={project.id}>
-            <div
-              className="cursor-pointer"
-              onClick={() =>
-                setExpandedProject(
-                  expandedProject === project.id ? null : project.id
-                )
-              }
-            >
+        {visibleProjects.map((project) => {
+          const expanded = expandedProject === project.id;
+          const slug = parseRepoSlug(project.githubUrl);
+          const count = stars[project.id];
+          return (
+            <Reveal key={project.id}>
               <MagicCard
                 className="rounded-xl px-4 py-4"
                 gradientSize={220}
@@ -46,49 +44,60 @@ export default function ProjectList({
                 gradientFrom="rgba(128,128,128,0.55)"
                 gradientTo="transparent"
               >
-                <h3 className="mb-2 text-xl font-medium text-foreground">
-                  {project.title}
-                </h3>
+                <button
+                  type="button"
+                  aria-expanded={expanded}
+                  aria-controls={`project-panel-${project.id}`}
+                  onClick={() =>
+                    setExpandedProject(expanded ? null : project.id)
+                  }
+                  className="flex w-full cursor-pointer items-center justify-between gap-2 text-left"
+                >
+                  <h3 className="mb-2 text-xl font-medium text-foreground">
+                    {project.title}
+                  </h3>
+                  <ChevronDown
+                    className={`h-4 w-4 shrink-0 transition-transform duration-300 ${
+                      expanded ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
                 <div className="mb-2 flex flex-wrap items-center gap-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="h-6 border-border bg-secondary px-2 text-xs text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open(project.githubUrl, "_blank");
-                    }}
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      buttonVariants({ size: "sm", variant: "outline" }),
+                      "h-6 border-border bg-secondary px-2 text-xs text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
+                    )}
                   >
                     <Github className="mr-1 h-4 w-4" />
                     GitHub
-                  </Button>
+                  </a>
                   {project.liveUrl && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="h-6 border-border bg-secondary px-2 text-xs text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(project.liveUrl, "_blank");
-                      }}
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        buttonVariants({ size: "sm", variant: "outline" }),
+                        "h-6 border-border bg-secondary px-2 text-xs text-foreground transition-all duration-300 hover:border-foreground/50 hover:bg-muted"
+                      )}
                     >
                       <ExternalLink className="mr-1 h-4 w-4" />
                       Live
-                    </Button>
+                    </a>
                   )}
-                  {(() => {
-                    const slug = parseRepoSlug(project.githubUrl);
-                    const count = stars[project.id];
-                    if (!slug || count == null) return null;
-                    return (
-                      <span onClick={(e) => e.stopPropagation()}>
-                        <GitHubStars repo={slug} stargazersCount={count} />
-                      </span>
-                    );
-                  })()}
+                  {slug && count != null && (
+                    <GitHubStars repo={slug} stargazersCount={count} />
+                  )}
                 </div>
-                {expandedProject === project.id && (
-                  <div className="animate-fade-in">
+                {expanded && (
+                  <div
+                    id={`project-panel-${project.id}`}
+                    className="animate-fade-in"
+                  >
                     <p className="mb-2 text-justify text-sm font-normal leading-relaxed text-muted-foreground transition-colors duration-300">
                       {project.description}
                     </p>
@@ -104,18 +113,10 @@ export default function ProjectList({
                     </div>
                   </div>
                 )}
-
-                <div className="mt-2 flex justify-center">
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-300 ${
-                      expandedProject === project.id ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
               </MagicCard>
-            </div>
-          </Reveal>
-        ))}
+            </Reveal>
+          );
+        })}
       </div>
       {hasMore && (
         <div className="mt-8 flex justify-center">

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { siteConfig } from "@/content/site";
 import { projects } from "@/content/projects";
+import { registerPaletteOpener } from "@/lib/palette";
 import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
@@ -27,7 +28,11 @@ export default function CommandMenu() {
       }
     };
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    const deregister = registerPaletteOpener(() => setOpen(true));
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      deregister();
+    };
   }, []);
 
   const go = (href: string) => {
