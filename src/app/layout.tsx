@@ -67,6 +67,7 @@ const jsonLd = {
   jobTitle: siteConfig.role,
   url: siteConfig.url,
   email: siteConfig.email,
+  image: `${siteConfig.url}/assets/pfp.webp`,
   sameAs: siteConfig.socials.map((s) => s.href),
 };
 
