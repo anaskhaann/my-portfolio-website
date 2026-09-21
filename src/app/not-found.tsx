@@ -1,20 +1,47 @@
-import Link from "next/link";
+import Link from "next/link"
+import { ArrowRightIcon, SearchXIcon } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty"
+import { Daikanoid } from "@/components/daikanoid"
 
 export default function NotFound() {
   return (
-    <div className="mx-auto max-w-2xl px-4 pt-24 sm:px-6 lg:px-8">
-      <section className="py-16 text-center">
-        <h1 className="mb-2 text-3xl font-semibold text-foreground">404</h1>
-        <p className="mb-6 text-sm text-muted-foreground">
-          This page could not be found.
-        </p>
-        <Link
-          href="/"
-          className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
-        >
-          Back home →
-        </Link>
+    <div>
+      <Empty className="py-12 max-lg:min-h-svh">
+        <EmptyHeader>
+          <EmptyMedia variant="icon">
+            <SearchXIcon />
+          </EmptyMedia>
+
+          <EmptyTitle className="text-base">Page not found</EmptyTitle>
+
+          <EmptyDescription>
+            The page you are looking for does not exist or has been moved.
+          </EmptyDescription>
+        </EmptyHeader>
+
+        <EmptyContent>
+          <Button variant="outline" asChild>
+            <Link href="/">
+              Go to Home
+              <ArrowRightIcon />
+            </Link>
+          </Button>
+        </EmptyContent>
+      </Empty>
+
+      {/* The canvas is fixed at 800x600, so the game is desktop only. */}
+      <section className="place-items-center pb-6 max-lg:hidden">
+        <Daikanoid />
       </section>
     </div>
-  );
+  )
 }

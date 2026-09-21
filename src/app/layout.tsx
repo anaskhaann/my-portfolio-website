@@ -6,6 +6,8 @@ import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 import CursorMount from "@/components/motion/CursorMount";
 import IntroGate from "@/components/motion/IntroGate";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -82,12 +84,15 @@ export default function RootLayout({
         />
         <ReactLenis root options={{ autoRaf: true }}>
           <ThemeProvider attribute="class" defaultTheme="dark">
-            <CursorMount />
-            <IntroGate>
-              <SiteHeader />
-              <main>{children}</main>
-              <SiteFooter />
-            </IntroGate>
+            <TooltipProvider>
+              <ScrollProgress className="bg-none bg-foreground" />
+              <CursorMount />
+              <IntroGate>
+                <SiteHeader />
+                <main>{children}</main>
+                <SiteFooter />
+              </IntroGate>
+            </TooltipProvider>
           </ThemeProvider>
         </ReactLenis>
       </body>

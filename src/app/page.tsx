@@ -3,7 +3,7 @@ import { siteConfig } from "@/content/site";
 import { projects } from "@/content/projects";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
-import HistorySection from "@/components/sections/HistorySection";
+import ExperienceSection from "@/components/experience/ExperienceSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 
@@ -18,7 +18,7 @@ export default function Home() {
     <div className="pt-16">
       <HeroSection />
       <AboutSection preview />
-      <HistorySection />
+      <ExperienceSection />
       <ProjectsSection projects={projects.slice(0, 4)} moreHref="/projects" />
       <SkillsSection />
     </div>

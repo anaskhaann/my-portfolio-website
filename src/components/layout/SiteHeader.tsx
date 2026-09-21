@@ -3,15 +3,34 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Menu, Download } from "lucide-react";
-import { useState } from "react";
+import { Menu, Download } from "lucide-react";
 import { siteConfig } from "@/content/site";
-import MobileNav from "@/components/layout/MobileNav";
+import CommandMenu from "@/components/command/CommandMenu";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
+function ThemeToggle({ className = "" }: { className?: string }) {
+  const { resolvedTheme, setTheme } = useTheme();
+  return (
+    <AnimatedThemeToggler
+      theme={resolvedTheme === "dark" ? "dark" : "light"}
+      onThemeChange={(t) => setTheme(t)}
+      variant="circle"
+      duration={400}
+      aria-label="Toggle theme"
+      className={`rounded-full border border-border bg-secondary p-2 transition-all duration-300 hover:bg-muted ${className}`}
+    />
+  );
+}
 
 export default function SiteHeader() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
-  const [open, setOpen] = useState(false);
 
   return (
     <header className="fixed top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-md">
@@ -23,7 +42,10 @@ export default function SiteHeader() {
         >
           /A\
         </Link>
-        <nav className="hidden items-center space-x-6 font-medium md:flex" aria-label="Primary">
+        <nav
+          className="hidden items-center space-x-6 font-medium md:flex"
+          aria-label="Primary"
+        >
           {siteConfig.navigation.map((item) => (
             <Link
               key={item.href}
@@ -35,6 +57,7 @@ export default function SiteHeader() {
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-foreground/40 transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
+          <CommandMenu />
           <a
             href={siteConfig.resumeUrl}
             target="_blank"
@@ -44,38 +67,55 @@ export default function SiteHeader() {
             <Download className="h-4 w-4" />
             Resume
           </a>
-          <button
-            type="button"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-full border border-border bg-secondary p-2 transition-all duration-300 hover:bg-muted"
-            aria-label="Toggle theme"
-          >
-            <Sun className="h-5 w-5 dark:hidden" />
-            <Moon className="hidden h-5 w-5 dark:block" />
-          </button>
+          <ThemeToggle />
         </nav>
         <div className="flex items-center gap-2 md:hidden">
-          <button
-            type="button"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-full border border-border bg-secondary p-2"
-            aria-label="Toggle theme"
-          >
-            <Sun className="h-5 w-5 dark:hidden" />
-            <Moon className="hidden h-5 w-5 dark:block" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="p-2"
-            aria-label="Toggle menu"
-            aria-expanded={open}
-          >
-            <Menu className="h-5 w-5" />
-          </button>
+          <ThemeToggle />
+          <Sheet>
+            <SheetTrigger asChild>
+              <button type="button" className="p-2" aria-label="Toggle menu">
+                <Menu className="h-5 w-5" />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" aria-label="Mobile">
+              <SheetTitle className="sr-only">Menu</SheetTitle>
+              <nav className="mt-8 flex flex-col gap-1" aria-label="Mobile">
+                <SheetClose asChild>
+                  <Link
+                    href="/"
+                    aria-current={pathname === "/" ? "page" : undefined}
+                    className="rounded-md px-3 py-2 font-medium text-foreground/80 hover:bg-muted hover:text-foreground"
+                  >
+                    Home
+                  </Link>
+                </SheetClose>
+                {siteConfig.navigation.map((item) => (
+                  <SheetClose asChild key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={
+                        pathname === item.href ? "page" : undefined
+                      }
+                      className="rounded-md px-3 py-2 font-medium text-foreground/80 hover:bg-muted hover:text-foreground"
+                    >
+                      {item.name}
+                    </Link>
+                  </SheetClose>
+                ))}
+                <a
+                  href={siteConfig.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background hover:opacity-90"
+                >
+                  <Download className="h-4 w-4" />
+                  Resume
+                </a>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-      {open && <MobileNav onNavigate={() => setOpen(false)} />}
     </header>
   );
 }

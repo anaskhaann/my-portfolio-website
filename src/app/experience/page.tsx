@@ -1,5 +1,5 @@
 import { routeMetadata } from "@/lib/seo";
-import HistorySection from "@/components/sections/HistorySection";
+import ExperienceSection from "@/components/experience/ExperienceSection";
 
 export const metadata = routeMetadata(
   "/experience",
@@ -10,7 +10,7 @@ export const metadata = routeMetadata(
 export default function ExperiencePage() {
   return (
     <div className="pt-16">
-      <HistorySection />
+      <ExperienceSection />
     </div>
   );
 }

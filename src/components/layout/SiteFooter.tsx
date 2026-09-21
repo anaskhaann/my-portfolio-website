@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { siteConfig } from "@/content/site";
+import { ShareMenu } from "@/components/share-menu";
 
 const icons: Record<string, typeof Github> = {
   LinkedIn: Linkedin,
@@ -11,7 +12,7 @@ export default function SiteFooter() {
   return (
     <footer className="border-t border-border bg-card/50 py-8 text-foreground">
       <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
-        <div className="mb-4 flex justify-center space-x-4">
+        <div className="mb-4 flex items-center justify-center space-x-4">
           {siteConfig.socials.slice(0, 3).map((s) => {
             const Icon = icons[s.name] ?? Mail;
             return (
@@ -29,6 +30,7 @@ export default function SiteFooter() {
               </a>
             );
           })}
+          <ShareMenu />
         </div>
         <p className="text-base text-muted-foreground">
           © 2025 Anas. Crafted with care. Last updated Sept 2025.

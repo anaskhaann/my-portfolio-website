@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 interface RevealProps {
   children: ReactNode;
@@ -13,13 +14,15 @@ export default function Reveal({ children, delay = 0, y = 12 }: RevealProps) {
   const reduce = useReducedMotion();
   if (reduce) return <>{children}</>;
   return (
-    <motion.div
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.35, delay }}
+    <BlurFade
+      delay={delay}
+      offset={y}
+      direction="up"
+      duration={0.35}
+      blur="0px"
+      inViewMargin="-80px"
     >
       {children}
-    </motion.div>
+    </BlurFade>
   );
 }
