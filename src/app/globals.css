@@ -145,6 +145,14 @@
     font-family: var(--font-sans);
     letter-spacing: normal;
     overflow-x: hidden;
+    /* Flex column over the full viewport height: header is fixed and
+       <main> grows (flex-1), so the footer sticks to the bottom on
+       short pages and flows naturally on long ones. Ancestors between
+       body and footer (providers, IntroGate fragment) render no boxes. */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
   :focus-visible {
     outline: 2px solid hsl(var(--ring));

@@ -137,7 +137,7 @@ export default function SiteHeader() {
                   href={siteConfig.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background hover:opacity-90"
+                  className="mb-1 ml-3 mt-4 inline-flex w-fit items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background hover:opacity-90"
                 >
                   <Download className="h-4 w-4" />
                   Resume

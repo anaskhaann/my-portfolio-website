@@ -7,22 +7,15 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Github, ExternalLink, ChevronDown } from "lucide-react";
 import type { Project } from "@/types";
-import { parseRepoSlug } from "@/lib/github";
 import Reveal from "@/components/motion/Reveal";
 import { MagicCard } from "@/components/ui/magic-card";
-import { GitHubStars } from "@/components/github-stars";
 
 interface ProjectListProps {
   projects: Project[];
-  stars: Record<number, number | null>;
   moreHref?: string;
 }
 
-export default function ProjectList({
-  projects,
-  stars,
-  moreHref,
-}: ProjectListProps) {
+export default function ProjectList({ projects, moreHref }: ProjectListProps) {
   const [showAll, setShowAll] = useState(false);
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
   const hasMore = projects.length > 4;
@@ -33,8 +26,6 @@ export default function ProjectList({
       <div className="flex flex-col gap-3">
         {visibleProjects.map((project) => {
           const expanded = expandedProject === project.id;
-          const slug = parseRepoSlug(project.githubUrl);
-          const count = stars[project.id];
           return (
             <Reveal key={project.id}>
               <MagicCard
@@ -88,9 +79,6 @@ export default function ProjectList({
                       <ExternalLink className="mr-1 h-4 w-4" />
                       Live
                     </a>
-                  )}
-                  {slug && count != null && (
-                    <GitHubStars repo={slug} stargazersCount={count} />
                   )}
                 </div>
                 {expanded && (

@@ -1,10 +1,8 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useLenis } from "lenis/react";
 import { Search } from "lucide-react";
 import { siteConfig } from "@/content/site";
-import { projects } from "@/content/projects";
 import { registerPaletteOpener } from "@/lib/palette";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,7 +17,7 @@ import {
 export default function CommandMenu() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
-
+  const lenis = useLenis();
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
@@ -34,6 +32,15 @@ export default function CommandMenu() {
       deregister();
     };
   }, []);
+
+  // Radix locks body scroll but Lenis keeps driving window scroll on wheel,
+  // so the page behind the palette moves. Pause it while open; the
+  // CommandList keeps its own native overflow scroll.
+  useEffect(() => {
+    if (!lenis) return;
+    if (open) lenis.stop();
+    else lenis.start();
+  }, [open, lenis]);
 
   const go = (href: string) => {
     setOpen(false);
@@ -53,7 +60,7 @@ export default function CommandMenu() {
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Go to a page or project…" />
+        <CommandInput placeholder="Go to a page…" />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Pages">
@@ -67,17 +74,6 @@ export default function CommandMenu() {
                 onSelect={() => go(item.href)}
               >
                 {item.name}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandGroup heading="Projects">
-            {projects.map((p) => (
-              <CommandItem
-                key={p.id}
-                value={p.title}
-                onSelect={() => go("/projects")}
-              >
-                {p.title}
               </CommandItem>
             ))}
           </CommandGroup>

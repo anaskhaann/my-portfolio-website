@@ -90,7 +90,7 @@ export default function RootLayout({
               <CursorLoader />
               <IntroGate>
                 <SiteHeader />
-                <main>{children}</main>
+                <main className="flex-1">{children}</main>
                 <SiteFooter />
               </IntroGate>
             </TooltipProvider>

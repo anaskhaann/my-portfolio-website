@@ -1,6 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { siteConfig } from "@/content/site";
-import ShareMenuLoader from "@/components/ShareMenuLoader";
 
 const icons: Record<string, typeof Github> = {
   LinkedIn: Linkedin,
@@ -30,7 +29,6 @@ export default function SiteFooter() {
               </a>
             );
           })}
-          <ShareMenuLoader />
         </div>
         <p className="text-base text-muted-foreground">
           © 2025 Anas. Crafted with care. Last updated Sept 2025.
