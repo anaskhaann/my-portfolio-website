@@ -1,51 +1,12 @@
-import { experiences } from "@/content/experience";
-import type { Experience } from "@/types";
-import {
-  WorkExperience,
-  type ExperienceItemType,
-} from "@/components/work-experience";
+import EducationList from "@/components/experience/EducationList";
+import ExperienceList from "@/components/experience/ExperienceList";
 
-const MONTHS: Record<string, string> = {
-  jan: "01",
-  feb: "02",
-  mar: "03",
-  apr: "04",
-  may: "05",
-  jun: "06",
-  jul: "07",
-  aug: "08",
-  sep: "09",
-  oct: "10",
-  nov: "11",
-  dec: "12",
-};
-
-function toPeriodDate(label: string): string {
-  const parts = label.trim().split(/\s+/);
-  if (parts.length < 2) return parts[0];
-  const month = MONTHS[parts[0].toLowerCase().slice(0, 3)] ?? "01";
-  return `${month}.${parts[1]}`;
-}
-
-function toRegistryExperience(e: Experience): ExperienceItemType {
-  const [startLabel] = e.duration.split(" - ");
-  return {
-    id: String(e.id),
-    companyName: e.company,
-    isCurrentEmployer: e.end === null,
-    positions: [
-      {
-        id: `${e.id}-0`,
-        title: e.title,
-        employmentPeriod: {
-          start: toPeriodDate(startLabel),
-          ...(e.end === null ? {} : { end: toPeriodDate(e.end) }),
-        },
-        description: e.description,
-        skills: e.technologies,
-      },
-    ],
-  };
+function Subheading({ children }: { children: string }) {
+  return (
+    <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+      {children}
+    </h3>
+  );
 }
 
 export default function ExperienceSection({
@@ -65,7 +26,12 @@ export default function ExperienceSection({
         >
           Experience & Education
         </Title>
-        <WorkExperience experiences={experiences.map(toRegistryExperience)} />
+        <Subheading>Experience</Subheading>
+        <ExperienceList />
+        <div className="mt-12">
+          <Subheading>Education</Subheading>
+          <EducationList />
+        </div>
       </div>
     </section>
   );

@@ -6,6 +6,6 @@ export const profile: Profile = {
     "I believe in dreaming big, starting small, and moving fast — a mindset that fuels my curiosity and commitment to growth. My diverse technical background allows me to choose the right tools for the job, write clean and maintainable code, and adapt swiftly to dynamic, fast-paced environments.",
     "Beyond coding, I enjoy gaming, swimming, and recharging with a good rest — because creativity often sparks when the mind is refreshed.",
   ],
-  availability: "Open to AI/ML roles",
-  currentRole: "AI/ML Engineer",
+  availability: "Unavailable",
+  currentRole: "Full Stack AI Engineer",
 };

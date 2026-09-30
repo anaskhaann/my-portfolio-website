@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Atkinson_Hyperlegible } from "next/font/google";
 import { ReactLenis } from "lenis/react";
 import { ThemeProvider } from "next-themes";
 import { siteConfig } from "@/content/site";
@@ -9,6 +10,14 @@ import IntroGate from "@/components/motion/IntroGate";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import "./globals.css";
+
+// Self-hosted at build time: no runtime request to Google Fonts.
+const atkinson = Atkinson_Hyperlegible({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-atkinson",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -77,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={atkinson.variable}>
       <body>
         <script
           type="application/ld+json"

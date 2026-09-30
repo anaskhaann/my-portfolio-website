@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState, type ReactNode } from "react";
 import { AppleHelloEffectHindi } from "@/components/apple-hello-effect-hindi";
 
-const STORAGE_KEY = "intro-seen";
 const READINESS_TIMEOUT_MS = 400;
 
 function timeout(ms: number): Promise<void> {
@@ -43,10 +42,11 @@ export default function IntroGate({
   useEffect(() => {
     let cancelled = false;
 
-    if (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      sessionStorage.getItem(STORAGE_KEY)
-    ) {
+    // Play on every full page load: sessionStorage survives a hard refresh
+    // in the same tab, so gating on it meant the intro never replayed.
+    // (Client-side navigation doesn't remount the layout, so this still
+    // fires only on real loads.) Reduced-motion users skip it entirely.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setReady(true);
       return;
     }
@@ -54,9 +54,9 @@ export default function IntroGate({
     setShowIntro(true);
     waitForReadiness(imageSelector).then(() => {
       if (cancelled) return;
-      sessionStorage.setItem(STORAGE_KEY, "true");
       setReady(true);
     });
+
 
     return () => {
       cancelled = true;

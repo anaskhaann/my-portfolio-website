@@ -3,8 +3,6 @@ export interface Experience {
   title: string;
   company: string;
   duration: string;
-  /** End date label, or null for the current role. */
-  end: string | null;
   description: string;
   technologies: string[];
 }

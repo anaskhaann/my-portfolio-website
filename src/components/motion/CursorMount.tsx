@@ -1,8 +1,8 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import CursorRing from "@/components/motion/CursorRing";
+import CursorTrail from "@/components/motion/CursorTrail";
 
 export default function CursorMount() {
   const reduceMotion = useReducedMotion();
@@ -21,7 +21,9 @@ export default function CursorMount() {
 
   return (
     <div aria-hidden="true">
-      <SmoothCursor />
+      <SmoothCursor cursor={<span className="block size-2 rounded-full bg-foreground" />} />
+      <CursorRing />
+      <CursorTrail />
     </div>
   );
 }

@@ -87,10 +87,12 @@ const DefaultCursorSVG: FC = () => {
 export function SmoothCursor({
   cursor = <DefaultCursorSVG />,
   springConfig = {
-    damping: 45,
-    stiffness: 400,
+    // Near-instant follow (~100ms settle, no overshoot): matches the old
+    // rAF-lerp follower. The registry defaults (400/45) trail visibly.
+    damping: 70,
+    stiffness: 1000,
     mass: 1,
-    restDelta: 0.001,
+    restDelta: 0.01,
   },
 }: SmoothCursorProps) {
   const lastMousePos = useRef<Position>({ x: 0, y: 0 })
@@ -106,12 +108,12 @@ export function SmoothCursor({
   const rotation = useSpring(0, {
     ...springConfig,
     damping: 60,
-    stiffness: 300,
+    stiffness: 800,
   })
   const scale = useSpring(1, {
     ...springConfig,
-    stiffness: 500,
-    damping: 35,
+    stiffness: 800,
+    damping: 55,
   })
 
   useEffect(() => {
