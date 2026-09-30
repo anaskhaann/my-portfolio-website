@@ -20,7 +20,7 @@ export default function ProjectsSection({
       <div className="mx-auto max-w-content px-4 sm:px-4 lg:px-8">
         <Reveal>
           <Title
-            className={`mb-8 font-semibold text-foreground ${
+            className={`mb-8 font-bold text-foreground ${
               pageTitle ? "text-h1" : "text-h2"
             }`}
           >

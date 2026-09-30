@@ -12,8 +12,8 @@ export default function HeroSection() {
         <div className="flex flex-row items-center gap-4 lg:gap-6">
           <div className="flex-1 space-y-6 text-left">
             <Reveal>
-              <h1 className="text-display font-medium">
-                <span className="font-semibold tracking-tight text-foreground">
+              <h1 className="text-display font-normal">
+                <span className="font-bold tracking-tight text-foreground">
                   {siteConfig.name}
                 </span>
               </h1>

@@ -7,7 +7,7 @@ export default function SkillsSection() {
     <section id="skills" className="py-section">
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <h2 className="mb-8 text-h2 font-semibold text-foreground">
+          <h2 className="mb-8 text-h2 font-bold text-foreground">
             Worked with
           </h2>
         </Reveal>
@@ -15,7 +15,7 @@ export default function SkillsSection() {
           {skillCategories.map((category) => (
             <div key={category.category}>
               <Reveal>
-                <h3 className="mb-4 text-center text-lg font-medium text-muted-foreground">
+                <h3 className="mb-4 text-center text-lg font-normal text-muted-foreground">
                   {category.category}
                 </h3>
               </Reveal>

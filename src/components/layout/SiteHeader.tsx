@@ -55,13 +55,13 @@ export default function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="cursor-pointer text-3xl font-black tracking-wide text-foreground"
+          className="cursor-pointer text-3xl font-bold tracking-wide text-foreground"
           aria-label="Mohd Anas — home (/A\)"
         >
           /A\
         </Link>
         <nav
-          className="hidden items-center space-x-6 font-medium md:flex"
+          className="hidden items-center space-x-6 font-normal md:flex"
           aria-label="Primary"
         >
           {siteConfig.navigation.map((item) => (
@@ -80,7 +80,7 @@ export default function SiteHeader() {
             href={siteConfig.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-md border-0 bg-foreground px-4 py-2 text-sm font-medium text-background shadow-lg transition-all duration-300 hover:opacity-90"
+            className="inline-flex items-center justify-center gap-2 rounded-md border-0 bg-foreground px-4 py-2 text-sm font-normal text-background shadow-lg transition-all duration-300 hover:opacity-90"
           >
             <Download className="h-4 w-4" />
             Resume
@@ -102,7 +102,7 @@ export default function SiteHeader() {
                   <Link
                     href="/"
                     aria-current={pathname === "/" ? "page" : undefined}
-                    className="rounded-md px-3 py-2 font-medium text-foreground/80 hover:bg-muted hover:text-foreground"
+                    className="rounded-md px-3 py-2 font-normal text-foreground/80 hover:bg-muted hover:text-foreground"
                   >
                     Home
                   </Link>
@@ -114,7 +114,7 @@ export default function SiteHeader() {
                       aria-current={
                         pathname === item.href ? "page" : undefined
                       }
-                      className="rounded-md px-3 py-2 font-medium text-foreground/80 hover:bg-muted hover:text-foreground"
+                      className="rounded-md px-3 py-2 font-normal text-foreground/80 hover:bg-muted hover:text-foreground"
                     >
                       {item.name}
                     </Link>
@@ -124,7 +124,7 @@ export default function SiteHeader() {
                   <button
                     type="button"
                     onClick={openPalette}
-                    className="flex items-center gap-2 rounded-md px-3 py-2 font-medium text-foreground/80 hover:bg-muted hover:text-foreground"
+                    className="flex items-center gap-2 rounded-md px-3 py-2 font-normal text-foreground/80 hover:bg-muted hover:text-foreground"
                   >
                     <Search className="h-4 w-4" />
                     Search
@@ -137,7 +137,7 @@ export default function SiteHeader() {
                   href={siteConfig.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mb-1 ml-3 mt-4 inline-flex w-fit items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background hover:opacity-90"
+                  className="mb-1 ml-3 mt-4 inline-flex w-fit items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-normal text-background hover:opacity-90"
                 >
                   <Download className="h-4 w-4" />
                   Resume

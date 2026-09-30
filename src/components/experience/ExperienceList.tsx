@@ -10,12 +10,12 @@ export default function ExperienceList() {
       {experiences.map((item) => (
         <li key={item.id} className="flex flex-col gap-1">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h3 className="font-semibold text-foreground">{item.title}</h3>
+            <h3 className="font-bold text-foreground">{item.title}</h3>
             <span className="text-sm text-muted-foreground">
               {item.duration}
             </span>
           </div>
-          <p className="text-sm font-medium text-muted-foreground">
+          <p className="text-sm font-normal text-muted-foreground">
             {item.company}
           </p>
           <p className="mt-1 text-justify text-sm font-normal leading-relaxed text-muted-foreground">

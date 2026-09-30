@@ -17,7 +17,7 @@ export default function AboutSection({
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
         <Reveal>
           <Title
-            className={`mb-8 font-semibold text-foreground ${
+            className={`mb-8 font-bold text-foreground ${
               pageTitle ? "text-h1" : "text-h2"
             }`}
           >
@@ -38,7 +38,7 @@ export default function AboutSection({
         {preview && (
           <Link
             href="/about"
-            className="mt-3 inline-block text-sm font-medium text-foreground underline-offset-4 hover:underline"
+            className="mt-3 inline-block text-sm font-normal text-foreground underline-offset-4 hover:underline"
           >
             More about me →
           </Link>

@@ -44,7 +44,7 @@ export default function ProjectList({ projects, moreHref }: ProjectListProps) {
                   }
                   className="flex w-full cursor-pointer items-center justify-between gap-2 text-left"
                 >
-                  <h3 className="mb-2 text-xl font-medium text-foreground">
+                  <h3 className="mb-2 text-xl font-normal text-foreground">
                     {project.title}
                   </h3>
                   <ChevronDown
@@ -122,7 +122,7 @@ export default function ProjectList({ projects, moreHref }: ProjectListProps) {
         <div className="mt-3 text-center">
           <Link
             href={moreHref}
-            className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
+            className="text-sm font-normal text-foreground underline-offset-4 hover:underline"
           >
             All projects →
           </Link>
