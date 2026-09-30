@@ -26,7 +26,7 @@
   --input: hsl(0 0% 88%);
   --ring: hsl(0 0% 20%);
   --radius: 0.5rem;
-  --space-section: 4rem;
+  --space-section: 2.5rem;
   --dk-background: #ffffff;
   --dk-foreground: #09090b;
   --dk-muted-foreground: #a1a1aa;
@@ -65,7 +65,7 @@
 
 @media (min-width: 48rem) {
   :root {
-    --space-section: 6rem;
+    --space-section: 4rem;
   }
 }
 
