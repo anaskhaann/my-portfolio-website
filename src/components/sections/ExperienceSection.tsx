@@ -1,5 +1,5 @@
-import EducationList from "@/components/experience/EducationList";
-import ExperienceList from "@/components/experience/ExperienceList";
+import EducationList from "@/components/sections/EducationList";
+import ExperienceList from "@/components/sections/ExperienceList";
 
 function Subheading({ children }: { children: string }) {
   return (

@@ -1,5 +1,5 @@
 import { routeMetadata } from "@/lib/seo";
-import ExperienceSection from "@/components/experience/ExperienceSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
 
 export const metadata = routeMetadata(
   "/experience",

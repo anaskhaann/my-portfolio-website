@@ -1,4 +1,4 @@
-import ExperienceSection from "@/components/experience/ExperienceSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
 import AboutSection from "@/components/sections/AboutSection";
 import HeroSection from "@/components/sections/HeroSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
